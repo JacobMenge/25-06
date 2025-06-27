@@ -7,7 +7,7 @@ title: Aufgabe 1.1 – Einführung in die IT
 
 Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.
 
-Bitte lade deine Ergebnisse bis spätestens **Freitag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
+Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
 
 ---
 
