@@ -11,7 +11,6 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 ---
 
 ## 1. Grundlagenaufgabe – Begriffe rund ums agile Arbeiten  
-**Verpflichtend**
 
 **Deine Aufgabe:**  
 Erstelle ein kurzes Glossar mit **mindestens sieben wichtigen Begriffen**, die heute im Zusammenhang mit agiler Arbeit und Projektmanagement-Tools besprochen wurden – z. B. *Kanban, Board, Karte, Workflow, Backlog, Sprint, Tag, Checkliste*.
