@@ -1,2 +1,8 @@
-title: Refactored Guide
+title: "Selbstlernaufgaben"
+description: "Modul 1 – Woche 1: Übersicht aller Selbstlernaufgaben"
 theme: minima
+baseurl: "" # oder z. B. /25-06 falls du es in einem Unterverzeichnis hostest
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
