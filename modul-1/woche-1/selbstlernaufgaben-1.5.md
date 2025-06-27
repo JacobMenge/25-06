@@ -10,7 +10,6 @@ Heute habt ihr die Gelegenheit, euer Wissen aus der gesamten Woche gemeinsam anz
 ---
 
 ## 1. Grundlagenaufgabe – Wählt ein Thema & bereitet eine Präsentation vor  
-**Verpflichtend**
 
 **Eure Aufgabe:**  
 Bereitet als Gruppe eine **kurze Präsentation (max. 10 Minuten)** zu einem Thema aus dieser Woche vor. Die Präsentation soll verständlich erklären:
