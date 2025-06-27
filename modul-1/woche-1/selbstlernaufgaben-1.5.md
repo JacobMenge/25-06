@@ -1,6 +1,6 @@
 # Selbstlernaufgabe – Teamarbeit & Präsentation: Digitales Arbeiten praktisch umsetzen
 
-Heute habt ihr die Gelegenheit, euer Wissen aus der gesamten Woche gemeinsam anzuwenden. Ihr arbeitet in Kleingruppen (2–4 Personen) an einer Präsentation, die ihr **am Montag ab 9 Uhr im Kurs** vorstellt. Diese Aufgabe begleitet euch durch den gesamten Tag.
+Heute habt ihr die Gelegenheit, euer Wissen aus der gesamten Woche gemeinsam anzuwenden. Ihr arbeitet in Kleingruppen (3–4 Personen) an einer Präsentation, die ihr **am Montag ab 9 Uhr im Kurs** vorstellt. Diese Aufgabe begleitet euch durch den gesamten Tag.
 
 ---
 
@@ -56,11 +56,13 @@ Erstellt eure Präsentation mit **Google Workspace** (z. B. Google Slides) ode
 
 ## Abgabehinweise
 
-- **Abgabe der Präsentation:** Bis Montag 8:30 Uhr im Google Classroom (PDF oder bearbeitbarer Link)  
-- **Vorbereitung:** Heute im Laufe des Tages in der Gruppe  
 - **Deadline für heute:** Bitte nutzt den heutigen Tag, um **bis spätestens 17:00 Uhr** mit allem fertig zu sein  
+- **Abgabe der Präsentation:**  
+  - Bis **Montag um 8:30 Uhr** im Google Classroom  
+  - Reicht **die fertigen Präsentationsfolien** sowie **alle wichtigen Links** ein, die ihr verwendet habt – z. B. zum Trello-Board, zu eurer Präsentation oder weiteren genutzten Tools  
+- **Format:** PDF oder bearbeitbarer Link (Google Slides, PowerPoint Online etc.)  
 - **Fragen:** Bei Rückfragen wendet euch an eure Kursleitung oder nutzt den Slack-Kanal
 
 ---
 
-Ihr habt heute den ganzen Tag Zeit für eure Vorbereitung. Nutzt die Gelegenheit, um kreativ, selbstorganisiert und digital zusammenzuarbeiten.
+Vielen Dank für eure Arbeit und die Zusammenarbeit in dieser Woche. Wir freuen uns auf eure Präsentationen am Montag!
