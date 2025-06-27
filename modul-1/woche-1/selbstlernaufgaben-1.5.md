@@ -68,6 +68,3 @@ Erstellt eure Präsentation mit **Google Workspace** (z. B. Google Slides) ode
 - **Format:** PDF oder bearbeitbarer Link (Google Slides, PowerPoint Online etc.)  
 - **Fragen:** Bei Rückfragen wendet euch an eure Kursleitung oder nutzt den Slack-Kanal
 
----
-
-Vielen Dank für eure Arbeit und die Zusammenarbeit in dieser Woche. Wir freuen uns auf eure Präsentationen am Montag!
