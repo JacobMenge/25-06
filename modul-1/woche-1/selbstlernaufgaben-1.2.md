@@ -6,14 +6,11 @@ title: Aufgabe 1.2 – Google Workspace vs. Microsoft 365
 
 # Selbstlernaufgaben – Google Workspace und Microsoft Office 365
 
-Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.
-
-Bitte lade deine Ergebnisse bis spätestens **Freitag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
+Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
 
 ---
 
 ## 1. Grundlagenaufgabe – Begriffe im Vergleich  
-**Verpflichtend**
 
 **Deine Aufgabe:**  
 Erstelle eine Übersicht mit **mindestens sechs zentralen Begriffen** aus dem heutigen Unterricht – zum Beispiel: *Cloud, Echtzeit-Zusammenarbeit, OneDrive, Google Drive, Word, Docs, Sheets, Slides, Versionierung*.
@@ -26,8 +23,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn
 
 ---
 
-## 2. Vertiefende Selbstlernaufgabe – Tools im Vergleich  
-**Freiwillig**
+## 2. Weiterführende Selbstlernaufgabe – Tools im Vergleich  
 
 **Deine Aufgabe:**  
 Vergleiche **zwei Tools** aus Google Workspace und Microsoft 365 (z. B. *Google Docs vs. MS Word*, *Google Drive vs. OneDrive*) anhand der folgenden Aspekte:
@@ -46,8 +42,7 @@ Stelle am Ende **deine persönliche Einschätzung** dar: *Welches Tool findest d
 
 ---
 
-## 3. Bonusaufgabe – Anwendungsszenario entwickeln  
-**Freiwillig**
+## 3. Vertiefende Selbstlernaufgabe – Anwendungsszenario entwickeln  
 
 **Deine Aufgabe:**  
 Stelle dir ein kleines Teamprojekt vor (z. B. ein Info-Flyer, eine Präsentation oder eine Umfrage). Wähle bewusst Tools aus **Google Workspace oder Microsoft 365**, kombiniere sie sinnvoll und **begründe deine Auswahl**.
