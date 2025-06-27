@@ -51,7 +51,7 @@ Statt eines Textes kannst du auch eine einfache Grafik, eine Collage oder eine M
 
 ## Abgabehinweise
 
-- **Frist:** Freitag, 23:59 Uhr  
+- **Frist:** Sonntag, 23:59 Uhr  
 - **Verpflichtend:** Nur die Grundlagenaufgabe  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
