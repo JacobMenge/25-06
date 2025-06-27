@@ -5,14 +5,11 @@ title: Aufgabe 1.1 – Einführung in die IT
 
 # Selbstlernaufgaben – Einführung in die IT
 
-Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.
-
 Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
 
 ---
 
 ## 1. Grundlagenaufgabe – Mein IT-Glossar  
-**Verpflichtend**
 
 **Deine Aufgabe:**  
 Erstelle ein persönliches Glossar mit 5 bis 7 Begriffen, die heute im Unterricht behandelt wurden – zum Beispiel CPU, RAM, EVA-Prinzip, Hardware oder Software.  
@@ -24,8 +21,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** – kurz und verständlich (
 
 ---
 
-## 2. Vertiefende Selbstlernaufgabe – EVA erklärt  
-**Freiwillig**
+## 2. Weiterführende Selbstlernaufgabe – EVA erklärt  
 
 **Deine Aufgabe:**  
 Suche dir ein Gerät aus deinem Alltag (z. B. Bankautomat, Drucker, Mikrowelle oder Smartphone) und erkläre, wie es nach dem EVA-Prinzip funktioniert.
@@ -42,8 +38,7 @@ Nutze dafür folgende Leitfragen:
 
 ---
 
-## 3. Bonusaufgabe – IT und Ich  
-**Freiwillig**
+## 3. Vertiefende Selbstlernaufgabe – IT und Ich  
 
 **Deine Aufgabe:**  
 Schreibe einen kurzen Text (ca. 150–200 Wörter) darüber, was du heute über IT gelernt hast und welche Aspekte du besonders spannend oder relevant fandest.  
