@@ -6,9 +6,7 @@ title: Aufgabe 1.4 – Projektmanagement-Tools
 
 # Selbstlernaufgaben – Projektmanagement-Tools: Trello, Notion, Jira
 
-Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.
-
-Bitte lade deine Ergebnisse bis spätestens **Freitag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
+Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
 
 ---
 
@@ -26,8 +24,7 @@ Beschreibe jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und gib bei
 
 ---
 
-## 2. Vertiefende Selbstlernaufgabe – Tools im Vergleich  
-**Freiwillig**
+## 2. Weiterführende Selbstlernaufgabe – Tools im Vergleich  
 
 **Deine Aufgabe:**  
 Wähle **zwei Tools** aus dem Unterricht (z. B. *Trello vs. Notion* oder *Jira vs. Trello*) und vergleiche sie in Bezug auf:
@@ -45,8 +42,7 @@ Welches Tool würdest du wann nutzen – und warum?
 
 ---
 
-## 3. Bonusaufgabe – Plane dein eigenes Mini-Projekt  
-**Freiwillig**
+## 3. Vertiefende Selbstlernaufgabe – Plane dein eigenes Mini-Projekt  
 
 **Deine Aufgabe:**  
 Denke dir ein kleines Beispielprojekt aus (z. B. *Organisation eines Team-Events, Erstellung einer Info-Broschüre, Bewerbungsvorbereitung*) und entwirf dazu eine einfache Projektstruktur in einem der Tools (Trello, Notion oder Jira).
@@ -66,7 +62,7 @@ Erstelle eine Übersicht oder ein Screenshot mit:
 
 ## Abgabehinweise
 
-- **Frist:** Freitag, 23:59 Uhr  
+- **Frist:** Sonntag, 23:59 Uhr  
 - **Verpflichtend:** Nur die Grundlagenaufgabe  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
