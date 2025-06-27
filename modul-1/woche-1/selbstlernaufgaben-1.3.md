@@ -1,3 +1,9 @@
+---
+layout: default
+title: Aufgabe 1.3 – Kommunikationstools & KI
+---
+
+
 # Selbstlernaufgaben – Kommunikationstools und KI im Arbeitsalltag
 
 Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.

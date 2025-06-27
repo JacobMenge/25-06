@@ -1,7 +1,7 @@
 title: "Selbstlernaufgaben"
-description: "Modul 1 – Woche 1: Übersicht aller Selbstlernaufgaben"
+description: "Modulübersicht aller Aufgaben im Selbstlernformat"
 theme: minima
-baseurl: "" # oder z. B. /25-06 falls du es in einem Unterverzeichnis hostest
+baseurl: "/25-06"
 markdown: kramdown
 plugins:
   - jekyll-feed
