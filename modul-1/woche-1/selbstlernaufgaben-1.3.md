@@ -6,14 +6,11 @@ title: Aufgabe 1.3 – Kommunikationstools & KI
 
 # Selbstlernaufgaben – Kommunikationstools und KI im Arbeitsalltag
 
-Im Anschluss an unseren gemeinsamen Unterricht hast du die Möglichkeit, die Inhalte eigenständig zu vertiefen. Dafür stehen dir drei Selbstlernaufgaben zur Verfügung. Die **Grundlagenaufgabe ist verpflichtend**. Die weiteren Aufgaben sind **freiwillig**, aber eine gute Gelegenheit, das Gelernte zu festigen, anzuwenden und zu reflektieren.
-
-Bitte lade deine Ergebnisse bis spätestens **Freitag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
+Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
 
 ---
 
 ## 1. Grundlagenaufgabe – Begriffe im digitalen Arbeitsalltag  
-**Verpflichtend**
 
 **Deine Aufgabe:**  
 Erstelle eine Übersicht mit **mindestens sechs wichtigen Begriffen** aus dem heutigen Unterricht – z. B. *Videokonferenz, Screensharing, Kalenderintegration, KI, Prompt, Sprachmodell*.
@@ -30,8 +27,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn
 
 ---
 
-## 2. Vertiefende Selbstlernaufgabe – Toolvergleich mit Praxisbezug  
-**Freiwillig**
+## 2. Weiterführende Selbstlernaufgabe – Toolvergleich mit Praxisbezug  
 
 **Deine Aufgabe:**  
 Vergleiche **zwei Kommunikationstools** (z. B. *Zoom vs. Teams* oder *Google Meet vs. Slack*) anhand folgender Aspekte:
@@ -48,8 +44,7 @@ Beziehe auch deine persönliche Meinung mit ein: *Welches Tool würdest du wann 
 
 ---
 
-## 3. Bonusaufgabe – Dein KI-Assistent im Büro  
-**Freiwillig**
+## 3. Vertiefende Selbstlernaufgabe – Dein KI-Assistent im Büro  
 
 **Deine Aufgabe:**  
 Formuliere **drei eigene Prompts**, mit denen du ChatGPT als digitalen Assistenten im Büroalltag nutzen würdest.
@@ -72,7 +67,7 @@ Du kannst die Prompts in einer einfachen Liste sammeln. Falls du magst, kannst d
 
 ## Abgabehinweise
 
-- **Frist:** Freitag, 23:59 Uhr  
+- **Frist:** Sonntag, 23:59 Uhr  
 - **Verpflichtend:** Nur die Grundlagenaufgabe  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
