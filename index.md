@@ -1,9 +1,11 @@
 ---
 layout: default
-title: Übersicht
+title: 25-06
 ---
 
-# Willkommen im Refactored Guide
+# Willkommen
+
+Hier findest du alle Selbstlernaufgaben der Woche.
 
 ## Woche 1
 
