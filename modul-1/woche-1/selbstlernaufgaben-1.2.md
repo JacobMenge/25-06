@@ -19,7 +19,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn
 
 **Formatvorschläge:**  
 - Tabelle, Liste oder Fließtext  
-- PDF, Word-Dokument, Textdatei oder Screenshot
+- Google Docs oder Google Sheets
 
 ---
 
@@ -63,9 +63,8 @@ Du kannst dein Szenario auch als Skizze, Ablaufdiagramm oder Mindmap darstellen.
 
 ## Abgabehinweise
 
-- **Frist:** Freitag, 23:59 Uhr  
-- **Verpflichtend:** Nur die Grundlagenaufgabe  
+- **Frist:** Sonntag, 23:59 Uhr  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
-- **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
+- **Dateiformate:** - Google Docs oder Google Sheets
 
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
