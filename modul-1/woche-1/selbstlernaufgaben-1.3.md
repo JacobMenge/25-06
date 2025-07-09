@@ -1,75 +1,57 @@
 ---
 layout: default
-title: Aufgabe 1.3 – Kommunikationstools & KI
+title: Aufgabe 2.1 – KI als Arbeitsassistent & Prompting
 ---
-
-
-# Selbstlernaufgaben – Kommunikationstools und KI im Arbeitsalltag
-
+# Selbstlernaufgaben – KI als digitaler Arbeitsassistent
 Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
-
 ---
-
-## 1. Grundlagenaufgabe – Begriffe im digitalen Arbeitsalltag  
-
+## 1. Grundlagenaufgabe – KI-Begriffe und Prompting verstehen  
 **Deine Aufgabe:**  
-Erstelle eine Übersicht mit **mindestens sechs wichtigen Begriffen** aus dem heutigen Unterricht – z. B. *Videokonferenz, Screensharing, Kalenderintegration, KI, Prompt, Sprachmodell*.
-
-Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn einem passenden Themenbereich zu (*Kommunikationstools* oder *Künstliche Intelligenz*).
-
+Erstelle eine Übersicht mit **mindestens sechs wichtigen Begriffen** rund um KI als Arbeitsassistent – z. B. *Prompt, KI-Assistent, Large Language Model (LLM), Prompt Engineering, Token, Kontext*.
+Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn einem passenden Themenbereich zu (*Grundlagen KI* oder *Praktische Anwendung*).
 **Beispiel:**  
-- **Screensharing (Kommunikationstools):** Funktion, um den eigenen Bildschirm für andere sichtbar zu machen – z. B. zur Präsentation oder gemeinsamen Bearbeitung von Dokumenten.  
-- **Prompt (KI):** Eine Eingabe oder Frage, mit der ich ChatGPT zu einer bestimmten Aufgabe auffordere.
-
+- **Prompt (Praktische Anwendung):** Eine konkrete Anweisung oder Frage, die ich an eine KI stelle, um eine bestimmte Aufgabe zu lösen oder Information zu erhalten.  
+- **Large Language Model/LLM (Grundlagen KI):** Ein KI-System, das auf riesigen Textmengen trainiert wurde und dadurch menschenähnliche Texte verstehen und generieren kann.
 **Formatvorschläge:**  
 - Liste, Tabelle oder kurze Textabschnitte  
 - PDF, Word-Dokument, Textdatei oder Screenshot
-
 ---
-
-## 2. Weiterführende Selbstlernaufgabe – Toolvergleich mit Praxisbezug  
-
+## 2. Weiterführende Selbstlernaufgabe – Prompt-Qualität testen  
 **Deine Aufgabe:**  
-Vergleiche **zwei Kommunikationstools** (z. B. *Zoom vs. Teams* oder *Google Meet vs. Slack*) anhand folgender Aspekte:
+Vergleiche **zwei unterschiedliche Prompts** für dieselbe Arbeitsaufgabe anhand ihrer Qualität und Ergebnisse:
+- **Schlechter Prompt:** Vage, unspezifisch (z. B. "Schreib eine E-Mail")
+- **Guter Prompt:** Konkret, detailliert mit Kontext (z. B. "Schreibe eine professionelle E-Mail an Kunden, um einen Termin zu verschieben. Ton: höflich und entschuldigend. Grund: Krankheit. Neuer Terminvorschlag: nächste Woche.")
 
-- Benutzerfreundlichkeit  
-- Funktionen für Zusammenarbeit (z. B. Chat, Screensharing, Breakout-Räume)  
-- Typische Einsatzszenarien (z. B. für Team-Meetings, Schulungen oder Kundengespräche)
-
-Beziehe auch deine persönliche Meinung mit ein: *Welches Tool würdest du wann bevorzugen – und warum?*
-
+Teste beide Prompts mit ChatGPT oder einem anderen KI-Tool und vergleiche:
+- Qualität der Antworten  
+- Verwendbarkeit im Arbeitsalltag  
+- Was macht den guten Prompt besser?
 **Wie du es gestalten kannst:**  
-- Tabelle oder Gegenüberstellung  
-- Kurzer Fließtext (ca. 150 Wörter)
-
+- Gegenüberstellung der Prompts und Ergebnisse
+- Kurze Analyse (ca. 100-150 Wörter)
 ---
-
-## 3. Vertiefende Selbstlernaufgabe – Dein KI-Assistent im Büro  
-
+## 3. Vertiefende Selbstlernaufgabe – Dein persönlicher KI-Arbeitsassistent  
 **Deine Aufgabe:**  
-Formuliere **drei eigene Prompts**, mit denen du ChatGPT als digitalen Assistenten im Büroalltag nutzen würdest.
+Entwickle **vier verschiedene Prompts** für typische Büroaufgaben und teste sie praktisch:
+1. **E-Mail-Kommunikation** (z. B. Terminanfrage, Absage, Nachfrage)
+2. **Dokumentenerstellung** (z. B. Meeting-Protokoll, Bericht-Gliederung)  
+3. **Planung & Organisation** (z. B. To-Do-Liste, Zeitplanung)
+4. **Kreative Aufgaben** (z. B. Brainstorming, Präsentationsideen)
 
-Die Prompts sollen sich auf typische Aufgaben beziehen, z. B.:
+**Für jeden Prompt dokumentiere:**
+- Den genauen Wortlaut deines Prompts
+- Das Ergebnis der KI (Screenshot oder Text)
+- Deine Bewertung: War das Ergebnis hilfreich? Was würdest du beim nächsten Mal anders machen?
 
-- Vorschläge für eine Gliederung einer Info-Mail  
-- Ideen für ein Brainstorming-Thema  
-- Formulierung einer Terminabsage
-
-**Wenn dir nichts einfällt, hier ein Beispiel:**  
-> *„Formuliere eine kurze, freundliche E-Mail, in der ich ein geplantes Meeting auf nächste Woche verschieben muss.“*  
-> *„Gib mir eine Liste mit fünf kreativen Themen für eine Team-Besprechung zum Monatsbeginn.“*  
-> *„Hilf mir, eine Gliederung für einen Bericht über digitale Kommunikationstools zu erstellen.“*
+**Beispiel-Prompt:**  
+> *„Erstelle mir eine strukturierte To-Do-Liste für die Vorbereitung einer Teampräsentation über digitale Tools. Die Präsentation soll 15 Minuten dauern, für 8 Personen sein und in 2 Wochen stattfinden. Unterteile die Aufgaben nach Priorität (hoch/mittel/niedrig) und Zeitaufwand."*
 
 **Gestaltung:**  
-Du kannst die Prompts in einer einfachen Liste sammeln. Falls du magst, kannst du zusätzlich die jeweilige Antwort von ChatGPT mit einfügen (z. B. als Screenshot).
-
+- Dokumentiere alle vier Prompts mit Ergebnissen
+- Kurze Reflexion: Welcher Prompt hat am besten funktioniert und warum?
 ---
-
 ## Abgabehinweise
-
 - **Frist:** Sonntag, 23:59 Uhr  
-- **Verpflichtend:** Nur die Grundlagenaufgabe  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
-
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
