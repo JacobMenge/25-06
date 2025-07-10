@@ -58,7 +58,7 @@ Erstelle **dasselbe Projekt** sowohl in Trello (aus Aufgabe 2) als auch in Notio
 **Gestaltung:**  
 - Screenshots beider Tools
 - Vergleichstabelle oder strukturierter Text (ca. 100 Wörter)
-- 
+
 ---
 ## Abgabehinweise
 - **Frist:** Sonntag, 23:59 Uhr  
