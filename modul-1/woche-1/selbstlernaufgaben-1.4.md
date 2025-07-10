@@ -64,4 +64,5 @@ Erstelle **dasselbe Projekt** sowohl in Trello (aus Aufgabe 2) als auch in Notio
 - **Frist:** Sonntag, 23:59 Uhr  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
+
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
