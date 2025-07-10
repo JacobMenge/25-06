@@ -1,69 +1,67 @@
 ---
 layout: default
-title: Aufgabe 1.4 – Projektmanagement-Tools
+title: Aufgabe 1.4 – Digitale Projektorganisation & Kanban
 ---
-
-
-# Selbstlernaufgaben – Projektmanagement-Tools: Trello, Notion, Jira
-
+# Selbstlernaufgaben – Digitale Projektorganisation mit modernen Tools
 Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.
-
 ---
-
-## 1. Grundlagenaufgabe – Begriffe rund ums agile Arbeiten  
-
+## 1. Grundlagenaufgabe – Projektorganisation-Begriffe und Tool-Vergleich  
 **Deine Aufgabe:**  
-Erstelle ein kurzes Glossar mit **mindestens sieben wichtigen Begriffen**, die heute im Zusammenhang mit agiler Arbeit und Projektmanagement-Tools besprochen wurden – z. B. *Kanban, Board, Karte, Workflow, Backlog, Sprint, Tag, Checkliste*.
+Erstelle eine Übersicht mit **mindestens sechs wichtigen Begriffen** aus dem Bereich digitale Projektorganisation – z. B. *Kanban, Board, Liste, Karte, Backlog, Workflow*.
+Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und ordne ihn einem passenden Themenbereich zu (*Kanban-Methode* oder *Tool-Funktionen*).
 
-Beschreibe jeden Begriff in **deinen eigenen Worten** (1–2 Sätze) und gib bei jedem Begriff an, in **welchem Tool** du ihn heute angewendet oder gesehen hast.
+**Zusätzlich:** Erstelle einen kurzen Vergleich der drei Tools (Google Tasks, Trello, Notion) mit je einem Satz zu deren Hauptstärke.
+
+**Beispiel:**  
+- **Kanban (Kanban-Methode):** Eine Methode zur Visualisierung von Arbeitsabläufen, bei der Aufgaben als Karten von links nach rechts durch verschiedene Bearbeitungsstufen wandern.  
+- **Board (Tool-Funktionen):** Die Übersichtsseite eines Projekts, die alle Aufgaben und deren aktuellen Status auf einen Blick zeigt.
 
 **Formatvorschläge:**  
-- Tabelle, Liste oder Kurztext  
+- Liste, Tabelle oder kurze Textabschnitte  
 - PDF, Word-Dokument, Textdatei oder Screenshot
-
 ---
-
-## 2. Weiterführende Selbstlernaufgabe – Tools im Vergleich  
-
+## 2. Weiterführende Selbstlernaufgabe – Praktischer Trello-Einsatz  
 **Deine Aufgabe:**  
-Wähle **zwei Tools** aus dem Unterricht (z. B. *Trello vs. Notion* oder *Jira vs. Trello*) und vergleiche sie in Bezug auf:
+Plane ein **konkretes 2-Wochen-Projekt** mit Trello (z. B. Techstarter-Kurs, Event-Organisation, Umzug, Lernplan für Prüfungen).
 
-- Aufbau und Bedienbarkeit  
-- Funktionen zur Aufgabenverteilung und Priorisierung  
-- Eignung für bestimmte Projektgrößen oder Teams (Einzelarbeit, kleine Teams, große Projekte)
+**Schritt-für-Schritt:**
+1. **Erstelle ein kostenloses Trello-Konto** (trello.com)
+2. **Lege ein neues Board an** mit mindestens 4 Listen (z. B. "Backlog", "To Do", "In Arbeit", "Fertig")
+3. **Füge mindestens 8-10 Aufgaben** als Karten hinzu
+4. **Verwende Trello-Funktionen:** Fälligkeitsdaten, Beschreibungen, Checklisten oder Labels
+5. **Simuliere den Workflow:** Verschiebe einige Karten zwischen den Listen
 
-**Ergänze am Ende deine persönliche Einschätzung:**  
-Welches Tool würdest du wann nutzen – und warum?
+**Dokumentiere:**
+- Screenshot deines fertigen Boards
+- Kurze Beschreibung: Welches Projekt hast du gewählt und warum?
+- Reflexion: Was gefällt dir an Trello? Was findest du schwierig?
 
-**Wie du es gestalten kannst:**  
-- Vergleichstabelle  
-- Bullet Points oder kurzer Text (ca. 150 Wörter)
-
+**Gestaltung:**  
+- Screenshots mit kurzen Erklärungen
+- Reflexionstext (Ein paar Sätze)
 ---
-
-## 3. Vertiefende Selbstlernaufgabe – Plane dein eigenes Mini-Projekt  
-
+## 3. Vertiefende Selbstlernaufgabe – Notion vs. Trello im direkten Vergleich  
 **Deine Aufgabe:**  
-Denke dir ein kleines Beispielprojekt aus (z. B. *Organisation eines Team-Events, Erstellung einer Info-Broschüre, Bewerbungsvorbereitung*) und entwirf dazu eine einfache Projektstruktur in einem der Tools (Trello, Notion oder Jira).
+Erstelle **dasselbe Projekt** sowohl in Trello (aus Aufgabe 2) als auch in Notion und vergleiche beide Tools praktisch.
 
-Erstelle eine Übersicht oder ein Screenshot mit:
+**Für Notion:**
+1. **Erstelle ein kostenloses Notion-Konto** (notion.com)
+2. **Lege eine neue Seite an** mit einer Kanban-Datenbank
+3. **Übertrage dein Trello-Projekt** in Notion (gleiche Aufgaben, ähnliche Struktur)
+4. **Nutze Notion-Features:** Status-Properties, Prioritäten, Datumsfelder, eventuell Kategorien/Tags
 
-- Board-Titeln und Spaltennamen (z. B. „To Do“, „In Bearbeitung“, „Erledigt“)  
-- Aufgabenarten (z. B. Recherchieren, Texten, Designen)  
-- Zuständigkeiten und Tags
+**Vergleiche dann beide Tools anhand dieser Kriterien:**
+- **Benutzerfreundlichkeit:** Welches Tool ist einfacher zu bedienen?
+- **Funktionsumfang:** Welche zusätzlichen Möglichkeiten bietet jedes Tool?
+- **Optik & Übersicht:** Welches gefällt dir visuell besser?
 
-**Falls du keine Idee hast, hier ein Beispiel:**  
-> *Projekt: „Team-Brunch organisieren“ – Aufgaben: Location finden, Teilnehmerliste anlegen, Einladungen verschicken, Buffet planen, Deko einkaufen. Spalten: Idee – In Planung – In Umsetzung – Erledigt.*
-
-**Du kannst deine Projektstruktur als Skizze, Screenshot oder Aufzählung darstellen.**
-
+**Gestaltung:**  
+- Screenshots beider Tools
+- Vergleichstabelle oder strukturierter Text (ca. 100 Wörter)
+- 
 ---
-
 ## Abgabehinweise
-
 - **Frist:** Sonntag, 23:59 Uhr  
-- **Verpflichtend:** Nur die Grundlagenaufgabe  
 - **Abgabe:** direkt über den Google Classroom zur jeweiligen Aufgabe  
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
-
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
