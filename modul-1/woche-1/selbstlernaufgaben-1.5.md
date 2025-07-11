@@ -51,7 +51,7 @@ Erstellt eure Präsentation mit **Google Workspace** (z. B. Google Slides) oder 
 - **Zeit:** Montag ab 9:00 Uhr  
 - **Dauer:** 5-10 Minuten pro Gruppe (maximal 10 Minuten) – lieber kürzer als zu lang  
 - **Format:** Vorstellung eures IT-Themas anhand der erarbeiteten Präsentation  
-- **Teilnahme:** Jedes Teammitglied übernimmt einen Präsentationsteil
+- **Teilnahme:** Jedes Teammitglied übernimmt einen Präsentationsteil (Nur wenn es passt, ich bewerte eure gesamte Leistung und nicht ob ihr präsentiert)
 - **Ziel:** Zeigt, dass ihr die Inhalte der Woche verstanden habt, gut zusammenarbeitet und digitale Tools sicher anwenden könnt
 
 ---
