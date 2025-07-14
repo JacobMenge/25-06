@@ -49,7 +49,7 @@ Teste die drei KI-Tools (ChatGPT, Claude, Gemini) mit einer konkreten Aufgabe un
 **So gehst du vor:**
 1. **Erstelle denselben Prompt** für alle drei Tools
 2. **Teste jeden KI-Assistenten** mit deinem Prompt
-3. **Dokumentiere deine Beobachtungen** in einer einfachen Tabelle:
+3. **Dokumentiere deine Beobachtungen** in einer einfachen Tabelle (nur ein Beispiel):
 
 | Tool | Antwortlänge | Qualität (1-5) | Besonderheiten | Context Window genutzt? |
 |------|--------------|----------------|----------------|------------------------|
