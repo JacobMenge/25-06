@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Aufgabe 1.1 - Einführung in das algorithmische Denken
+title: Aufgabe 3.1 - Einführung in das algorithmische Denken
 ---
 
 # Selbstlernaufgaben - Einführung in das algorithmische Denken
