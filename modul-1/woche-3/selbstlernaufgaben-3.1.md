@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Aufgabe 1.1 - Einführung in das algorithmische Denken
+title: Aufgabe 3.1 - Einführung in das algorithmische Denken
 ---
 
 # Selbstlernaufgaben - Einführung in das algorithmische Denken
@@ -34,8 +34,8 @@ Erstelle ein Flussdiagramm zum Ablauf:
 - "Habe ich heute noch viel vor?"
 - "Ist eine Steckdose in der Nähe?"
 
-Du kannst Diagramme z.B. mit [Draw.io](https://app.diagrams.net/) erstellen.
-Auf Draw.io einfach "Create New Diagram" und dann "Blank Diagram" auswählen.
+Du kannst Diagramme z.B. mit [Draw.io](https://app.diagrams.net/) erstellen.  
+Auf Draw.io einfach "Create New Diagram" und dann "Blank Diagram" auswählen.  
 Das Diagram kannst du dann über "file" -> "export as" -> "png" exportieren.
 
 **Formatvorschläge** 
