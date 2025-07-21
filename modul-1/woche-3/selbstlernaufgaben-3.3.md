@@ -8,7 +8,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 **Deine Aufgabe:**
 
-Werte folgende Ausdrücke aus. Gib für jeden Ausdruck den Wahrheitswert an, also ob das Ergebnis Wahr oder Falsch ist.
+Werte folgende Ausdrücke selbständig (also NICHT in Scratch) aus. Gib für jeden Ausdruck den Wahrheitswert an, also ob das Ergebnis Wahr oder Falsch ist.
 1. Wahr AND Falsch
 2. Wahr OR Falsch
 3. !Wahr (oder: NOT Wahr)
