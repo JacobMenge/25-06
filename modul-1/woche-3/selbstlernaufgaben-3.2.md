@@ -63,9 +63,12 @@ Welchen Datentyp hat die Variable "Schrittweite"?
 
 ---
 
-## 4. Weiterführende Selbstlernaufgabe - Pseudocode für: Namensabfrage
+## 4. Weiterführende Selbstlernaufgabe - Namensabfrage
 
 **Deine Aufgabe:**
+
+In dieser weiterführenden Aufgabe wurde nicht alles in der VL besprochen,
+du musst also etwas in Scratch nachforschen oder dich an den Hinweisen orientieren.
 
 Schreibe ein Programm, in der Scratchy dich nach deinem Namen fragt und dich anschließend mit deinem Namen begrüßt.
 1. Frage den Benutzer: "Wie heißt du?"
@@ -87,7 +90,6 @@ Falls du nicht weiterkommst, kannst du dich hieran orientieren:
 - .sb3-Datei
 
 ---
-
 
 ## 5. Bonus Selbstlernaufgabe - Erkunde Scratch
 
