@@ -57,7 +57,7 @@ Schreibe ein Programm, in der sich Scratchy bewegt. Eine Variable gibt die Schri
 - Ziehe die Variable "Schrittweite" in das Zahlenfeld von dem Bewegungsblock rein
 - Wenn du das Programm startest, sollte sich Scratchy 10 Schritte bewegen
 
-Welchen Datentyp hat die Variable "Schrittweite"?
+Welchen Datentyp hat die Variable "Schrittweite"?  
 **Formatvorschläge**
 - .sb3-Datei
 
