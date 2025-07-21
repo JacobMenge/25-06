@@ -19,6 +19,8 @@ Werte folgende Ausdrücke selbständig (also NICHT in Scratch) aus. Gib für jed
 8. Wahr OR Wahr AND Falsch
 9. 50 > 40 AND 40 == 40
 10. 50 == 40 OR 50 < 40
+11. (Falsch OR Wahr) AND Wahr
+12. (Wahr OR Falsch) AND Falsch
 
 **Formatvorschläge**
 - Textdatei
