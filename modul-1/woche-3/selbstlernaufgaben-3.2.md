@@ -83,8 +83,10 @@ Falls du nicht weiterkommst, kannst du dich hieran orientieren:
 - Gebe den Text "Hallo, dein Name ist also:" aus
 - Gebe in einen weiteren Block die Antwort-Variable aus, sodass dein Name ausgegeben wird
   -> Das könnte bei dir z.B. als Text ausgegeben werden:
-  ```Dein Name ist also:
-  Max```
+  ```
+  Dein Name ist also:
+  Max
+  ```
 
 **Formatvorschläge**
 - .sb3-Datei
