@@ -34,6 +34,10 @@ Erstelle ein Flussdiagramm zum Ablauf:
 - "Habe ich heute noch viel vor?"
 - "Ist eine Steckdose in der Nähe?"
 
+Du kannst Diagramme z.B. mit [Draw.io](https://app.diagrams.net/) erstellen.  
+Auf Draw.io einfach "Create New Diagram" und dann "Blank Diagram" auswählen.  
+Das Diagram kannst du dann über "file" -> "export as" -> "png" exportieren.
+
 **Formatvorschläge** 
 - JPG, PNG
 
