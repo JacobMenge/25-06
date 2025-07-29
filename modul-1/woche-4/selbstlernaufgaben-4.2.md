@@ -8,7 +8,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 **Deine Aufgabe:**
 
-Erstelle in Scratch ein Programm, in dem Scratchy 8-mal vorwärts geht und dabei ein Quadrat läuft.
+Erstelle in Scratch ein Programm, in dem Scratchy 4-mal vorwärts geht und dabei ein Quadrat läuft.
 
 **Programmverhalten:**
 Scratchy soll sich 4-mal bewegen und nach jedem Schritt um 90 Grad drehen, sodass ein Quadrat entsteht. Nach dem Quadrat soll er "Quadrat fertig!" sagen.
