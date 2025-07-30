@@ -17,7 +17,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** – kurz und verständlich (
 
 ---
 
-## 2. Weiterführende Selbstlernaufgabe – Registry Editor praktisch nutzen
+## 2. Grundlagenaufgabe – Registry Editor praktisch nutzen
 
 **Deine Aufgabe:**  
 Führe eine sichere Registry-Exploration durch und dokumentiere deine Erkenntnisse mit detaillierten Screenshots.
