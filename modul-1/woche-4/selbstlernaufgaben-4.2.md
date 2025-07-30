@@ -157,7 +157,7 @@ Der "mod"-Operator gibt den Rest einer Division zurück. Eine Zahl ist gerade, w
 
 **Deine Aufgabe:**
 
-Erstelle in Scratch ein Programm, das ein 4x4 Gitter aus verschiedenen Formen zeichnet. In jeder Reihe soll eine andere Form gezeichnet werden (Reihe 1: Quadrate, Reihe 2: Dreiecke, Reihe 3: Sechsecke, Reihe 4: Kreise mit Stempel).
+Erstelle in Scratch ein Programm, dass ein 4x4 Gitter aus verschiedenen Formen zeichnet. In jeder Reihe soll eine andere Form gezeichnet werden (Reihe 1: Quadrate, Reihe 2: Dreiecke, Reihe 3: Sechsecke, Reihe 4: Kreise mit Stempel).
 
 **Programmverhalten:**
 Das Programm soll ein 4x4 Gitter erstellen. Jede der 4 Reihen soll eine andere geometrische Form enthalten. Die Formen sollen an den richtigen Positionen gezeichnet werden. Am Ende soll gezählt werden, wie viele Formen insgesamt gezeichnet wurden.
