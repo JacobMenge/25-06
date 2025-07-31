@@ -31,7 +31,7 @@ Erkläre jeden Begriff in **deinen eigenen Worten** – kurz und verständlich (
 ### Schritt 1: Event Viewer öffnen und orientieren
 1. **Öffne den Event Viewer:** Windows + R → "eventvwr.msc" → Enter
 2. **Mache einen Screenshot** der Hauptansicht mit der Baumstruktur links
-3. **Erkunde die vier Hauptkategorien:** System, Anwendung, Sicherheit, Setup
+3. **Erkunde die vier Hauptkategorien:** System, Anwendung, Sicherheit, installation
 
 ### Schritt 2: Administrative Events analysieren
 1. **Navigiere zu:** Benutzerdefinierte Ansichten → Administrative Events
