@@ -142,6 +142,5 @@ Erstelle praktische Pipeline-Kombinationen um Dateien auf deinem System zu analy
 - **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
 - **Wichtig:** Bei PowerShell-Aufgaben immer Screenshots der Befehle UND deren Ausgaben zeigen!
 
-**Tipp:** Nutzt `Get-Help` wenn ihr bei Befehlen nicht weiterkommt - das ist genau das, was ihr im echten Arbeitsalltag auch machen würdet!
 
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
