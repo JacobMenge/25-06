@@ -8,7 +8,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 **Deine Aufgabe:**
 
-Erstelle ein persönliches Glossar mit **8 bis 10 Begriffen** aus dem heutigen PowerShell-Unterricht – zum Beispiel: Cmdlet, Pipeline, Parameter, Get-Command, Get-Help, pwd, cd, ls, mkdir, Verb-Nomen-Struktur.
+Erstelle ein persönliches Glossar mit **8 bis 10 Begriffen** aus dem heutigen PowerShell-Unterricht – zum Beispiel: Cmdlet, Pipeline, Parameter, Get-Command, Get-Help, pwd, cd, ls, mkdir .. .
 
 Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze pro Begriff) und ordne ihn einem passenden Themenbereich zu (**Navigation**, **Hilfe-System** oder **Pipeline/Objekte**).
 
@@ -132,57 +132,6 @@ Erstelle praktische Pipeline-Kombinationen um Dateien auf deinem System zu analy
 **Formatvorschläge:**
 - Strukturiertes PDF mit allen vier Aufgaben
 - Word-Dokument mit Code-Blöcken und Screenshots
-
----
-
-## 5. Bonus Selbstlernaufgabe - PowerShell vs. grafische Oberfläche
-
-**Deine Aufgabe:**
-
-Diese Aufgabe ist herausfordernd und nur als Bonus gedacht.
-
-Führe dieselbe Aufgabe einmal mit der grafischen Oberfläche (Maus + Explorer) und einmal mit PowerShell durch. Vergleiche dann Aufwand und Effizienz.
-
-**Die Aufgabe:** Erstelle eine Ordnerstruktur für ein Projekt mit folgender Struktur:
-```
-Projekt-2025/
-├── Dokumentation/
-│   ├── Anforderungen/
-│   ├── Entwürfe/
-│   └── Handbücher/
-├── Entwicklung/
-│   ├── Source-Code/
-│   ├── Tests/
-│   └── Builds/
-└── Verwaltung/
-    ├── Termine/
-    ├── Protokolle/
-    └── Budgets/
-```
-
-**Methode 1: Grafische Oberfläche**
-- Nutze den Windows Explorer
-- Erstelle jeden Ordner einzeln mit Rechtsklick → "Neuer Ordner"
-- Miss die Zeit und zähle die Klicks
-
-**Methode 2: PowerShell**
-- Schreibe eine Reihe von `mkdir` Befehlen
-- Nutze die Pfad-Syntax: `mkdir "Projekt-2025\Dokumentation\Anforderungen"`
-- Miss die Zeit und zähle die Tastenanschläge
-
-**Methode 3: PowerShell mit Array (Bonus)**
-- Recherchiere, wie man mit Arrays und Schleifen alle Ordner auf einmal erstellen kann
-- Tipp: `@("Ordner1", "Ordner2") | ForEach-Object { mkdir $_ }`
-
-**Dokumentiere:**
-- Screenshots beider Methoden
-- Zeitvergleich und Aufwand
-- Vor- und Nachteile jeder Methode
-- Reflexion: Wann würdest du welche Methode bevorzugen?
-
-**Formatvorschläge:**
-- Vergleichstabelle mit Screenshots
-- Kurzer Erfahrungsbericht (ca. 200 Wörter)
 
 ---
 
