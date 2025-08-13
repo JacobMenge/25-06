@@ -71,7 +71,7 @@ Write-Host "Ich heiße $meinName, bin $meinAlter Jahre alt und mag die Farbe $me
 ```
 
 **Formatvorschläge:**
-- PDF mit Screenshots und ausführlichen Antworten
+- PDF oder DOCX mit den Antworten
 - Word-Dokument mit Experimenten und Erklärungen
 
 ---
