@@ -216,7 +216,7 @@ if ($wetter -eq "sonnig") {
 
 ---
 
-## 3. Grundlagenaufgabe - Einfache UND/ODER-Bedingungen
+## 3. Weiterführend - Einfache UND/ODER-Bedingungen
 
 **Dokumentation:** Mache Screenshots von **allen Beispielen** und teste **verschiedene Kombinationen** von Werten.
 
