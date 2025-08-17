@@ -4,7 +4,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 ---
 
-## 1. Grundlagenaufgabe - Mein erster Algorithmus
+## 1. Grundlagenaufgabe - Linux Quiz
 
 **Deine Aufgabe:**
 
