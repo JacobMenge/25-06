@@ -12,43 +12,43 @@ Beantworte folgende Multiple Choice-Fragen. Gucke für die Lösung in den Folien
 
 Aufgabe I: Was ist Linux? (Grundlegend)
 
-Welches der folgenden Aussagen über Linux ist richtig?
-A) Linux ist ein einzelnes Programm.
-B) Linux ist ein Betriebssystemkern, auf dem verschiedene Betriebssysteme basieren.
-C) Linux ist nur für Server nutzbar.
-D) Linux ist ein Computer-Virus.
+Welches der folgenden Aussagen über Linux ist richtig?  
+A) Linux ist ein einzelnes Programm.  
+B) Linux ist ein Betriebssystemkern, auf dem verschiedene Betriebssysteme basieren.  
+C) Linux ist nur für Server nutzbar.  
+D) Linux ist ein Computer-Virus.  
 
 
-Aufgabe II: Linux-Distributionen (Grundlegend)
-Welche der folgenden ist KEINE Linux-Distribution?
-A) Ubuntu
-B) Fedora
-C) Debian
-D) Bird
+Aufgabe II: Linux-Distributionen (Grundlegend)  
+Welche der folgenden ist KEINE Linux-Distribution?  
+A) Ubuntu  
+B) Fedora  
+C) Debian  
+D) Bird  
 
 
-Aufgabe III: VirtualBox & Installation (Grundlegend)
-Warum installiert man Ubuntu oft zuerst in einer virtuellen Maschine (VirtualBox)?
-A) Um das System direkt auf der Festplatte zu überschreiben
-B) Um es gefahrlos auszuprobieren, ohne den eigenen PC zu verändern
-C) Damit Windows automatisch gelöscht wird
-D) Damit es schneller läuft als auf echter Hardware
+Aufgabe III: VirtualBox & Installation (Grundlegend)  
+Warum installiert man Ubuntu oft zuerst in einer virtuellen Maschine (VirtualBox)?  
+A) Um das System direkt auf der Festplatte zu überschreiben  
+B) Um es gefahrlos auszuprobieren, ohne den eigenen PC zu verändern  
+C) Damit Windows automatisch gelöscht wird  
+D) Damit es schneller läuft als auf echter Hardware  
 
 
-Aufgabe IV: Erste Schritte in Ubuntu (Anspruchsvoll)
-Wo findest du in Ubuntu die Möglichkeit, die Sprache oder das Tastaturlayout zu ändern?
-A) In den Systemeinstellungen
-B) Im Papierkorb
-C) Im Browser
-D) Im Terminal
+Aufgabe IV: Erste Schritte in Ubuntu (Anspruchsvoll)  
+Wo findest du in Ubuntu die Möglichkeit, die Sprache oder das Tastaturlayout zu ändern?  
+A) In den Systemeinstellungen  
+B) Im Papierkorb  
+C) Im Browser  
+D) Im Terminal  
 
 
-Aufgabe V: Linux im Alltag (Knifflig)
-Welches Gerät nutzt höchstwahrscheinlich Linux?
-A) Eine PlayStation
-B) Ein Android-Smartphone
-C) Ein Server im Rechenzentrum
-D) Alle oben genannten
+Aufgabe V: Linux im Alltag (Knifflig)  
+Welches Gerät nutzt höchstwahrscheinlich Linux?  
+A) Eine PlayStation  
+B) Ein Android-Smartphone  
+C) Ein Server im Rechenzentrum  
+D) Alle oben genannten  
 
 
 **Formatvorschläge**
