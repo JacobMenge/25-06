@@ -1,5 +1,8 @@
 # Linux Anfänger-Szenario: Einfache Entwicklungsumgebung
 
+Diese Aufgabe ist als Übung für den VOrmittag gedacht, ihr müsst also nichts einreichen!
+
+
 ## Szenario-Beschreibung
 
 Du bist der neue System-Administrator bei der kleinen Firma **TechCorp** und sollst eine einfache Linux-Entwicklungsumgebung für ein kleines Team einrichten. Das Team arbeitet an einem Web-Projekt und benötigt eine grundlegende, sichere Arbeitsumgebung.
