@@ -1,4 +1,4 @@
-# Linux Anfänger-Szenario: Einfache Entwicklungsumgebung
+# Linux Szenario: Einfache Entwicklungsumgebung
 
 Diese Aufgabe ist als Übung für den VOrmittag gedacht, ihr müsst also nichts einreichen!
 
