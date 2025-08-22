@@ -14,7 +14,7 @@ Du bist der neue System-Administrator bei der kleinen Firma **404 Institut** und
 
 ---
 
-## Phase 1: Benutzer und Gruppen erstellen (45 Minuten)
+## Phase 1: Benutzer und Gruppen erstellen
 
 ### Schritt 1.1: Benutzer erstellen
 Erstelle drei Benutzer für das Team:
@@ -54,7 +54,7 @@ Erstelle drei einfache Gruppen:
 
 ---
 
-## Phase 2: Projekt-Verzeichnisse erstellen (30 Minuten)
+## Phase 2: Projekt-Verzeichnisse erstellen 
 
 ### Schritt 2.1: Einfache Verzeichnisstruktur anlegen
 Erstelle eine übersichtliche Struktur unter `/opt/techcorp/`:
@@ -97,7 +97,7 @@ Weise die Verzeichnisse den richtigen Gruppen zu:
 
 ---
 
-## Phase 3: Berechtigungen setzen (45 Minuten)
+## Phase 3: Berechtigungen setzen 
 
 ### Schritt 3.1: Frontend-Berechtigungen
 Anna soll im Frontend-Ordner arbeiten können, aber nicht im Backend-Ordner.
