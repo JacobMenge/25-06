@@ -1,4 +1,4 @@
-# Linux Szenario: Einfache Entwicklungsumgebung
+# Linux Szenario: Einfache Entwicklungsumgebung einrichten
 
 Diese Aufgabe ist als Übung für den VOrmittag gedacht, ihr müsst also nichts einreichen!
 
