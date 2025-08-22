@@ -144,7 +144,7 @@ Alle Teammitglieder sollen im Shared-Ordner arbeiten können.
 
 ---
 
-## Phase 4: Manager-Zugriff, Tests und Abschluss (45 Minuten)
+## Phase 4: Manager-Zugriff, Tests und Abschluss 
 
 ### Schritt 4.1: Manager-Berechtigungen
 Lisa (Manager) soll alle Projekte lesen können, aber nichts ändern.
@@ -273,11 +273,4 @@ Der `grep` Befehl sucht nach Text in Dateien oder Ausgaben. Er filtert nur die Z
 - Mit `exit` aus anderen Benutzern zurückkehren
 - Nie `chmod 777` verwenden (unsicher!)
 
-**🕐 Zeitplan-Empfehlung:**
-- Phase 1: 45 Min (Benutzer & Gruppen)
-- Phase 2: 30 Min (Verzeichnisse)  
-- Phase 3: 45 Min (Berechtigungen)
-- Phase 4: 45 Min (Tests & Final-Check)
-- **Total: 2 Stunden 45 Minuten**
 
-Viel Erfolg! 🚀
