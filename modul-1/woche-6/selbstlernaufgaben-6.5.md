@@ -5,7 +5,7 @@ Diese Aufgabe ist als Übung für den VOrmittag gedacht, ihr müsst also nichts 
 
 ## Szenario-Beschreibung
 
-Du bist der neue System-Administrator bei der kleinen Firma **TechCorp** und sollst eine einfache Linux-Entwicklungsumgebung für ein kleines Team einrichten. Das Team arbeitet an einem Web-Projekt und benötigt eine grundlegende, sichere Arbeitsumgebung.
+Du bist der neue System-Administrator bei der kleinen Firma **404 Institut** und sollst eine einfache Linux-Entwicklungsumgebung für ein kleines Team einrichten. Das Team arbeitet an einem Web-Projekt und benötigt eine grundlegende, sichere Arbeitsumgebung.
 
 **Team-Zusammensetzung:**
 - 1 Frontend-Entwickler
