@@ -32,7 +32,7 @@ Erstelle ein Skript `fruechte_for.sh`, das:
 
 ---
 
-## 3. Grundlagenaufgabe – While-Schleife mit Zähler
+## 3. Weiterführende Aufgabe – While-Schleife mit Zähler
 
 **Deine Aufgabe:**  
 Schreibe ein Skript `zaehler_while.sh`, das:  
@@ -80,5 +80,6 @@ Schreibe ein Skript `zahlenraten.sh`, das:
 **Formatvorschläge**
 - `.sh`-Datei
 - Textdatei
+
 
 
