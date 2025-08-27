@@ -52,7 +52,7 @@ Schreibe ein Skript `zaehler_while.sh`, das:
 **Deine Aufgabe:**  
 Erstelle ein Skript `eingaben_loop.sh`, das:  
 1. Den Benutzer wiederholt nach einer Eingabe fragt.  
-2. Solange weiterläuft, bis der Benutzer ein bestimmtes Wort eingibt (z. B. „stop“).  
+2. Solange weiterläuft, bis der Benutzer ein bestimmtes Wort eingibt (z. B. „ende“).  
 3. Jede Eingabe mit einer passenden Rückmeldung ausgibt.  
 4. Passe mit `chmod` die Rechte an und führe das Skript mindestens einmal aus.
 
@@ -80,4 +80,5 @@ Schreibe ein Skript `zahlenraten.sh`, das:
 **Formatvorschläge**
 - `.sh`-Datei
 - Textdatei
+
 
