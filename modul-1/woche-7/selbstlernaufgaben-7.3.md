@@ -77,8 +77,7 @@ Schreibe ein Skript `zahlenraten.sh`, das:
 4. Das Spiel endet, wenn die richtige Zahl erraten wurde oder die maximale Anzahl an Versuchen erreicht ist.
 5. Passe mit chmod die Rechte an und führe das Skript mindestens einmal aus.
 
-Formatvorschläge
+**Formatvorschläge**
+- `.sh`-Datei
+- Textdatei
 
-.sh-Datei
-
-Textdatei
