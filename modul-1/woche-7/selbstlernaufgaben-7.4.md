@@ -4,7 +4,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 ---
 
-## 1. Grundlagenaufgabe - Kommandozeilenparameter
+## 1. Weiterführende Aufgabe - Kommandozeilenparameter
 
 **Deine Aufgabe:**  
 Schreibe ein Skript `multiply.sh`, das:  
@@ -17,7 +17,7 @@ Schreibe ein Skript `multiply.sh`, das:
 
 ---
 
-## 2. Grundlagenaufgabe - Umgebungsvariable & `export`
+## 2. Weiterführende Aufgabe - Umgebungsvariable & `export`
 
 **Deine Aufgabe:**  
 Erstelle zwei Skripte `parent.sh` und `child.sh`, die zeigen, wie `export` wirkt:  
@@ -31,7 +31,7 @@ Erstelle zwei Skripte `parent.sh` und `child.sh`, die zeigen, wie `export` wirkt
 
 ---
 
-## 3. Grundlagenaufgabe - Arrays
+## 3. Weiterführende Aufgabe - Arrays
 
 **Deine Aufgabe:**  
 Schreibe ein Skript `farben_array.sh`, das:  
@@ -74,3 +74,4 @@ Schreibe ein Skript `liste_array.sh`, das:
 **Formatvorschläge**  
 - `.sh`-Datei  
 - Textdatei  
+
