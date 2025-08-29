@@ -50,20 +50,21 @@ Erstelle ein Skript `eingaben_check.sh`, das:
 Schreibe ein Skript `multiplikation.sh`, das:  
 1. Den Benutzer nach einer Zahl fragt (z. B. im Bereich 1–10).  
 2. Mit einer For-Schleife die Multiplikationstabelle für diese Zahl von 1 bis 10 ausgibt.  
-3. Mit einer if-Abfrage prüft, ob das Produkt durch 5 teilbar ist. Wenn ja, soll hinter der Ausgabe ein `*` erscheinen.  
+3. Mit einer if-Abfrage prüft, ob das Produkt genau durch 5 teilbar ist. Wenn ja, soll hinter der Ausgabe ein `*` erscheinen.  
 
 **Beispiel (für Eingabe 3):**  
 ```
 3 x 1 = 3
 3 x 2 = 6
-3 x 3 = 9*
+3 x 3 = 9
 3 x 4 = 12
+3 x 5 = 15*
 ...
 ```  
 
 **Hinweise:**  
 - Berechne das Produkt mit `p=$(( ... ))`.  
-- Prüfe mit `%`, ob eine Zahl durch 5 teilbar ist.  
+- Prüfe mit `%`, ob eine Zahl genau durch 5 teilbar ist.  
 
 **Formatvorschläge**  
 - `.sh`-Datei  
@@ -114,4 +115,5 @@ done
 **Formatvorschläge**  
 - `.sh`-Datei  
 - Textdatei  
+
 
