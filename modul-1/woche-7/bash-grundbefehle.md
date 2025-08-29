@@ -1,6 +1,6 @@
 # Bash Grundbefehle - Referenztabelle
 
-## Absolute Grundlagen (Diese MÜSSEN Sie kennen!)
+## Absolute Grundlagen
 
 | Befehl | Beschreibung | Beispiel | Erklärung |
 |--------|--------------|----------|-----------|
