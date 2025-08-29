@@ -340,9 +340,9 @@ exit
 
 ```bash
 # Alle Projekt-Ordner: Andere können lesen
-sudo chmod u+rwx,g+rwx,o+r /opt/techcorp/projects/frontend/
-sudo chmod u+rwx,g+rwx,o+r /opt/techcorp/projects/backend/
-sudo chmod u+rwx,g+rwx,o+r /opt/techcorp/projects/shared/
+sudo chmod u+rwx,g+rwx,o+rx /opt/techcorp/projects/frontend/
+sudo chmod u+rwx,g+rwx,o+rx /opt/techcorp/projects/backend/
+sudo chmod u+rwx,g+rwx,o+rx /opt/techcorp/projects/shared/
 ```
 
 ```bash
