@@ -12,9 +12,6 @@ Erstelle ein persönliches Glossar mit **8 bis 10 Begriffen** aus dem heutigen U
 
 Erkläre jeden Begriff in **deinen eigenen Worten** (1–2 Sätze pro Begriff) und ordne ihn einem passenden Themenbereich zu (**Servertypen**, **Hardware/Software** oder **Hosting-Arten**).
 
-**Beispiel:**
-- **Webserver (Servertypen):** Ein Server, der Webseiten an Browser ausliefert, wie ein Kellner im Restaurant, der Bestellungen entgegennimmt und Gerichte serviert.
-- **Cloud (Hosting-Arten):** Server stehen bei externen Anbietern wie Amazon oder Microsoft und werden über das Internet genutzt, ähnlich wie Carsharing.
 
 **Formatvorschläge:**
 - Liste, Tabelle oder kurze Textabschnitte
