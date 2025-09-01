@@ -36,12 +36,6 @@ Beantworte folgende Fragen ausführlich:
    - Was ist der Unterschied zwischen einem physischen und einem virtuellen Server?
    - Nenne jeweils 2 Vor- und 2 Nachteile
 
-3. **Analogien verstehen:**
-   Erkläre in eigenen Worten, warum folgende Vergleiche sinnvoll sind:
-   - Webserver = Kellner im Restaurant
-   - Mailserver = Post
-   - Fileserver = digitaler Aktenschrank
-   - Datenbankserver = ordentlicher Bibliothekar
 
 **Formatvorschläge:**
 - Strukturiertes Word-Dokument oder PDF
