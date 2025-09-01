@@ -130,18 +130,5 @@ Welchen Anbieter würdest du für das Startup-Webshop-Szenario aus Aufgabe 3 emp
 
 ---
 
-## Abgabehinweise
-
-- **Frist:** Sonntag, 23:59 Uhr
-- **Abgabe:** direkt über den Google Classroom zur entsprechenden Aufgabe
-- **Dateiformate:** PDF, DOCX, ODT, PNG, JPG, Textdatei oder Screenshot
-- **Pflichtaufgaben:** Aufgaben 1-3
-- **Bonus:** Aufgaben 4-5 für zusätzliche Punkte
-
-**Bewertungskriterien:**
-- Vollständigkeit der Antworten
-- Eigene Formulierungen (nicht kopiert)
-- Logische Argumentation bei Szenarien
-- Saubere Formatierung und Struktur
 
 Bei Fragen melde dich gerne im Kurs-Slackchannel.
