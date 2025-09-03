@@ -517,7 +517,4 @@ sudo journalctl -u apache2 --no-pager --lines 20
 ---
 
 **Formatvorschläge für deine Dokumentation:**
-- Screenshots der wichtigsten Schritte
-- Kopien der Apache-Log-Einträge
-- Antworten auf alle Reflexionsfragen
-- Liste der erstellten Dateien und Verzeichnisse
+- Screenshots der wichtigsten Schritte zb das was im browser angezeigt wird
