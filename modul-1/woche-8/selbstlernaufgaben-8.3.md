@@ -426,7 +426,7 @@ sudo chmod 644 /var/www/html/geheim.html
 
 ## **Teil F: Reflexion und Dokumentation**
 
-Beantworte diese Fragen nach deinen Experimenten:
+Beantworte diese Fragen nach deinen Experimenten (es reicht auch, wenn du nur darüber nachdenkst und nicht alles dokumentierst):
 
 ### **1. Installation und Setup:**
 - Welches System hast du verwendet? (Linux/Windows)
