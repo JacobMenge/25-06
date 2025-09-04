@@ -605,7 +605,7 @@ Falls Methode 1 nicht funktioniert:
 2. **In der VM - SSH-Ordner erstellen:**
    ```bash
    mkdir -p ~/.ssh
-   chmod 700 ~/.ssh
+   chmod u=rwx,go= ~/.ssh
    ```
 
 3. **authorized_keys-Datei bearbeiten:**
@@ -621,7 +621,7 @@ Falls Methode 1 nicht funktioniert:
 
 5. **Berechtigungen setzen:**
    ```bash
-   chmod 600 ~/.ssh/authorized_keys
+   chmod u=rw,go= ~/.ssh/authorized_keys
    ```
 
 6. **VM verlassen:**
@@ -637,7 +637,7 @@ Falls Methode 1 nicht funktioniert:
 ssh -p 2222 testuser@localhost
 ```
 
-**MAGIE!** 🎩✨ Du solltest OHNE Passwort-Eingabe verbunden sein!
+**MAGIE!** Du solltest OHNE Passwort-Eingabe verbunden sein!
 
 **Falls es nicht funktioniert:**
 - Prüfe ob der öffentliche Schlüssel richtig kopiert wurde
