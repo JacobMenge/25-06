@@ -613,15 +613,8 @@ ssh -vvv -p 2222 testuser@localhost
 - Dateien zwischen Windows und Linux übertragen
 - Probleme selbst lösen
 
-### Was du als nächstes lernen könntest:
-- **SSH-Keys**: Anmeldung ohne Passwort
-- **Erweiterte Linux-Befehle**: grep, find, sed
-- **Webserver installieren**: Apache oder Nginx
-- **Programmierung auf dem Server**: Python, Node.js
-- **Docker**: Container-Technologie
-- **Echte Server**: Digital Ocean, AWS
 
-### Hilfreiche Befehle zum Nachschlagen:
+### Hilfreiche Befehle:
 
 **Navigation:**
 - `pwd` - Wo bin ich?
