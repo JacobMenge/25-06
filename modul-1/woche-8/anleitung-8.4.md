@@ -875,7 +875,7 @@ Host development-server
 
 4. **Berechtigungen korrigieren falls nötig:**
    ```bash
-   ssh -p 2222 testuser@localhost "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
+   ssh -p 2222 testuser@localhost "chmod u=rwx,go= ~/.ssh && chmod u=rw,go= ~/.ssh/authorized_keys"
    ```
 
 ### Problem: "Permission denied (publickey)"
