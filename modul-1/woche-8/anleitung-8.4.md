@@ -115,7 +115,7 @@
 
 ### Schritt 9: Ubuntu Installation (Schritt für Schritt)
 
-**Folge genau diesen Schritten:**
+**Folge diesen Schritten:** (wenn du bei der installation gefragt wirst)
 
 1. **Try or Install Ubuntu Server** → Drücke **Enter**
 2. **Sprache wählen**: Wähle "Deutsch" oder "English" (ich empfehle English, da Fehlermeldungen dann googelbar sind)
