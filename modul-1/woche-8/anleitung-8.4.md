@@ -506,10 +506,10 @@ Du kannst **mehrere Terminal-Fenster öffnen** und dich mehrmals gleichzeitig ve
 **SSH-Keys** sind wie ein **High-Tech Fingerabdruck-Scanner**:
 
 **Vorteile von SSH-Keys:**
-- 🔐 **Viel sicherer** als Passwörter (mathematisch quasi unknackbar)
-- 🚀 **Schneller** - keine Passwort-Eingabe nötig
-- 🤖 **Automatisierung** - Scripts können sich ohne Passwort verbinden
-- 💪 **Professionell** - so arbeiten alle Profis
+- **Viel sicherer** als Passwörter (mathematisch quasi unknackbar)
+-  **Schneller** - keine Passwort-Eingabe nötig
+-  **Automatisierung** - Scripts können sich ohne Passwort verbinden
+-  **Professionell** - so arbeiten alle Profis
 
 **Wie funktionieren SSH-Keys?**
 - Du erstellst ein **Schlüsselpaar**: Einen **privaten** und einen **öffentlichen** Schlüssel
