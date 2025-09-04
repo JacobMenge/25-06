@@ -47,7 +47,7 @@
 2. **Gehe zu**: [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 3. **Klicke auf**: "Download Ubuntu 24.04.3 LTS"
 4. **Warte** bis der Download fertig ist (ca. 1-2 GB, kann 10-30 Minuten dauern)
-5. **Merke dir den Pfad**: Normalerweise `C:\Users\DeinName\Downloads\ubuntu-22.04.x-live-server-amd64.iso`
+5. **Merke dir den Pfad**: Normalerweise `C:\Users\DeinName\Downloads\ubuntu-24.04.x-live-server-amd64.iso`
 
 **Tipp**: Lass das downloaden und mach mit dem nächsten Schritt weiter.
 
