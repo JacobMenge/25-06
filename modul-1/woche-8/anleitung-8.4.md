@@ -262,7 +262,7 @@ testuser@localhost's password:
 
 **Hinweis**: Das Passwort wird beim Tippen NICHT angezeigt (das ist normal und sicher).
 
-### Schritt 19: Erfolgreich verbunden! 🎉
+### Schritt 19: Erfolgreich verbunden! 
 
 Du solltest jetzt das sehen:
 ```
