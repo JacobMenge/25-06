@@ -229,14 +229,14 @@ Du solltest **"active (running)"** in grün sehen. Das bedeutet SSH läuft!
 
 **Tippe genau das ein** (achte auf den Port!):
 ```bash
-ssh -p 2222 testuser@localhost
+ssh -p 2222 testuser@127.0.0.1
 ```
 
 **Befehl erklärt:**
 - `ssh`: Das SSH-Programm (ist in Windows 11 dabei)
 - `-p 2222`: "Nutze Port 2222" (unser weitergeleiteter Port)
 - `testuser`: Der Benutzername in der Ubuntu-VM
-- `@localhost`: "Verbinde zu localhost" (localhost = dein eigener Computer)
+- `@127.0.0.1`: "Verbinde zu localhost" (localhost = dein eigener Computer)
 
 ### Schritt 17: Host-Key akzeptieren
 
