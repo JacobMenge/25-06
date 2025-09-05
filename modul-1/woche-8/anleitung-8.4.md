@@ -577,7 +577,7 @@ SHA256:aBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890abcdef mein-ssh-test
 
 **Zeige deinen öffentlichen Schlüssel:**
 ```bash
-type %USERPROFILE%\.ssh\id_ed25519.pub
+type \.ssh\id_ed25519.pub
 ```
 
 **Du siehst eine Zeile wie:**
