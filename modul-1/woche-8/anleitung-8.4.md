@@ -207,6 +207,19 @@ sudo systemctl status ssh
 
 Du solltest **"active (running)"** in grün sehen. Das bedeutet SSH läuft!
 
+Falls der SSH-Service noch nicht gestartet wurde kannst du das mit foglendem BEfehl tun:
+
+Dienst starten
+Falls er „inactive (dead)“ ist, starte ihn:
+```bash
+sudo systemctl start ssh
+```
+Automatisch beim Booten aktivieren:
+```bash
+sudo systemctl enable ssh
+```
+
+
 ## Teil 5: Erste SSH-Verbindung von Windows
 
 ### Schritt 15: Windows Terminal oder PowerShell öffnen
