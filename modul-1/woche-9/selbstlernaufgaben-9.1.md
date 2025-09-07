@@ -38,7 +38,7 @@ Nenne drei Unterschiede zwischen Ethernet und WLAN und gib für beide ein typisc
 ## 4. Weiterführende Aufgabe – Netzwerktopologien  
 
 **Deine Aufgabe:**  
-Beschreibe mindestens drei Netzwerktopologien (z. B. Stern, Ring, Vermascht) und nenne jeweils Vor- und Nachteile. Erstelle außerdem zu jeder Topologie ein Beispiel-Diagramm (z. B. mit draw.io, PowerPoint oder als Handzeichnung), das die Verbindungen zwischen den Geräten zeigt.  
+Beschreibe mindestens drei Netzwerktopologien (z. B. Stern, Ring, Vermascht) und nenne jeweils Vor- und Nachteile. Erstelle außerdem zu jeder Topologie ein Beispiel-Diagramm (z. B. mit draw.io oder als Handzeichnung), das die Verbindungen zwischen den Geräten zeigt.  
 
 **Formatvorschläge**  
 - Textdatei für die Beschreibungen  
@@ -54,3 +54,4 @@ Stell dir vor, Lisa schreibt eine Nachricht auf WhatsApp an Hannah: Beschreibe i
 **Formatvorschläge**  
 - Textdatei  
 - Fließtext (~1 bis 2 Seite)  
+
