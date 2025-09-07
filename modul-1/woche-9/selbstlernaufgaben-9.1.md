@@ -8,6 +8,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 
 **Deine Aufgabe:**  
 Liste die 7 Schichten des OSI-Modells in der richtigen Reihenfolge auf und schreibe zu jeder einen kurzen Satz zur Aufgabe.  
+Was für Probleme könnten entstehen, wenn die Darstellungsschicht nicht richtig beim Sender einer Datei funktionieren würde?
 
 **Formatvorschläge**  
 - Textdatei  
@@ -19,6 +20,7 @@ Liste die 7 Schichten des OSI-Modells in der richtigen Reihenfolge auf und schre
 
 **Deine Aufgabe:**  
 Ordne die Geräte Hub, Switch und Router den passenden Schichten des OSI-Modells zu und erkläre ihre jeweilige Hauptfunktion in einem Satz.  
+Welcher dieser Geräte verwendest du Zuhause?
 
 **Formatvorschläge**  
 - Textdatei  
@@ -29,6 +31,7 @@ Ordne die Geräte Hub, Switch und Router den passenden Schichten des OSI-Modells
 
 **Deine Aufgabe:**  
 Nenne drei Unterschiede zwischen Ethernet und WLAN und gib für beide ein typisches Einsatzbeispiel an.  
+Wo verwendest du Ethernet oder WLAN im Alltag und warum? (Warum WLAN und nicht Ethernet, oder warum Ethernet und nicht WLAN?)
 
 **Formatvorschläge**  
 - Textdatei  
@@ -54,4 +57,5 @@ Stell dir vor, Lisa schreibt eine Nachricht auf WhatsApp an Hannah: Beschreibe i
 **Formatvorschläge**  
 - Textdatei  
 - Fließtext (~1 bis 2 Seite)  
+
 
