@@ -20,7 +20,7 @@ Was für Probleme könnten entstehen, wenn die Darstellungsschicht nicht richtig
 
 **Deine Aufgabe:**  
 Ordne die Geräte Hub, Switch und Router den passenden Schichten des OSI-Modells zu und erkläre ihre jeweilige Hauptfunktion in einem Satz.  
-Welcher dieser Geräte verwendest du Zuhause?
+Welches dieser Geräte verwendest du Zuhause?
 
 **Formatvorschläge**  
 - Textdatei  
@@ -57,5 +57,6 @@ Stell dir vor, Lisa schreibt eine Nachricht auf WhatsApp an Hannah: Beschreibe i
 **Formatvorschläge**  
 - Textdatei  
 - Fließtext (~1 bis 2 Seite)  
+
 
 
