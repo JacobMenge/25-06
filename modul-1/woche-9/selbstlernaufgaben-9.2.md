@@ -10,6 +10,7 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 Schreibe in 2–3 Sätzen auf, was IPv4 ist und warum es wichtig für das Internet ist.  
 Gib außerdem ein Beispiel für eine gültige IPv4-Adresse **aus einem Heimnetzwerk** (z. B. 192.168.x.x oder 10.x.x.x).  
 
+
 **Formatvorschläge**  
 - Textdatei  
 - Kurzaufsatz (5–6 Sätze)  
@@ -39,7 +40,35 @@ Erkläre dazu, was passiert, wenn du *www.google.com* im Browser eingibst.
 
 ---
 
-## 4. Weiterführende Aufgabe – NAT verstehen  
+## 4. Grundlagenaufgabe – Binärzahlen umwandeln
+
+**Deine Aufgabe:**  
+Wandle die folgenden Binärzahlen in Dezimalzahlen um:  
+- 1011
+- 110010 
+- 100000 
+- 011101 
+- 10101010  
+
+**Bonus:** Schreibe 29 und 64 in Binär.
+
+**Formatvorschläge**  
+- Textdatei  
+- Tabelle mit zwei Spalten (Binär → Dezimal)  
+- Kurze Rechenschritte je Zahl (optional)
+
+**Zusätzliche Ressourcen**  
+- [Binärzahlen in Dezimalzahlen umwandeln](https://www.matheretter.de/wiki/binar-dezimal)
+- [BINÄRSYSTEM in Dezimalsystem umwandeln – Dualsystem einfach erklärt, Informatik](https://www.youtube.com/watch?v=NPqYmPLU-Bo)
+- [Binärsystem - Dualsystem - ganz einfach erklärt (+ typische Aufgaben in der Mathearbeit)](https://www.youtube.com/watch?v=I3-cmqbVF0Y)
+- [Binärsystem einfach erklärt - Warum verwenden Computer 1en und 0en?](https://www.youtube.com/watch?v=NJ4-QhC6oZ8)
+- [Zahlensysteme einfach erklärt! (Dezimal, Binär, Hexadezimal)](https://www.youtube.com/watch?v=Y_NhZm_kQ7U)
+
+
+---
+
+
+## 5. Weiterführende Aufgabe – NAT verstehen  
 
 **Deine Aufgabe:**  
 Erkläre Schritt für Schritt, was passiert, wenn dein Laptop mit der privaten IP `192.168.0.10` und dem **Source-Port 50000** eine Webseite aufruft.  
@@ -63,3 +92,4 @@ Erkläre außerdem, warum Subnetze in großen Netzwerken praktisch sind.
 **Formatvorschläge**  
 - Textdatei mit Tabelle  
 - Handzeichnung (Foto/Scan)  
+
