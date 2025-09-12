@@ -24,7 +24,6 @@ Erstelle drei Beispiel-Passwörter und erkläre jeweils, warum du sie für unsic
 **Deine Aufgabe:**  
 Beschreibe in eigenen Worten, was 2FA ist und warum es sicherer ist als ein Passwort allein.  
 Nenne anschließend zwei Beispiele aus deinem Alltag, bei denen 2FA genutzt wird oder genutzt werden könnte.  
-**Wichtig:** Verwende keine Beispiele, die bereits in der Vorlesung vorgestellt wurden.  
 
 **Formatvorschläge**  
 - Textdatei  
@@ -73,3 +72,4 @@ Schreibe das Ergebnis auf und notiere zusätzlich in ein paar Sätzen, wie die C
 **Formatvorschläge**  
 - Textdatei  
 - Kurze Tabelle (Original → Verschlüsselt)  
+
