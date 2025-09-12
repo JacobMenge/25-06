@@ -153,7 +153,7 @@ Screenshot (am Ende der Aufgabe): Deine `curl -I` Ausgabe und `ls -lh test.html`
 
 ---
 
-# Weiterführende Aufgabe 1: Offene Ports finden (`nmap`)
+# Weiterführende Aufgabe 3: Offene Ports finden (`nmap`)
 
 ### Lernziele
 - Du scannst nur deinen eigenen Rechner (legal & sicher).
@@ -207,7 +207,7 @@ Interpretieren: `open`, `closed`, `filtered`.
 
 ---
 
-# Weiterführende Aufgabe 3: Chatten im Terminal (`netcat`)
+# Weiterführende Aufgabe 4: Chatten im Terminal (`netcat`)
 
 ### Lernziele
 - Du baust eine einfache Verbindung zwischen zwei Terminals auf.
@@ -247,7 +247,7 @@ Interpretieren: `open`, `closed`, `filtered`.
 
 ---
 
-# Weiterführende Aufgabe 4: Mini-Integration – Webserver testen
+# Weiterführende Aufgabe 5: Mini-Integration – Webserver testen
 
 ### Lernziele
 - Du startest einen kleinen lokalen Webserver.
