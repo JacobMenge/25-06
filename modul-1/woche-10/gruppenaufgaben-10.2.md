@@ -220,9 +220,10 @@ Active: active (running)
 
 
 powershell:
+[Benutzer auf dem server] = Tragt hier den Benutzer eures Servers ein
 ```powershell
 # Test: Verbindung zu uns selbst
-ssh -p 2222 $(whoami)@localhost
+ssh [benutzer auf dem server]@localhost
 
 # Bei Erfolg seht ihr euren Prompt nochmal
 # Trennen mit: exit
