@@ -1,4 +1,4 @@
-# Mission: Sichere Verbindung aufbauen
+# Challenge: Sichere Verbindung aufbauen
 ## Linux & SSH mit WSL
 
 ---
