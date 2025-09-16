@@ -28,7 +28,7 @@ Wir nutzen WSL, damit wir trotz unseres Windows-Systems mit Linux arbeiten könn
 - **Bildet 4-6er Gruppen** für die praktische Durchführung
 - Jede Person arbeitet an ihrem eigenen Windows 11 PC
 - Ihr unterstützt euch gegenseitig bei Problemen
-- **Wichtig:** Trotz Gruppenarbeit gibt jeder eine **individuelle Dokumentation** ab
+- **Wichtig:** ihr gebt pro Gruppe mindestens eine dokumentation ab
 
 **Tragt in eurer Abgabe eure Gruppenmitglieder ein:**
 - Person 1: ________________
@@ -138,7 +138,7 @@ ping PERSON2-WINDOWS-IP
 
 ### Troubleshooting: Falls Ping nicht funktioniert
 
-**Problem:** Router verhindert Kommunikation zwischen Geräten (häufig in Schul-WLANs)
+**Problem:** Router verhindert Kommunikation zwischen Geräten
 
 **Lösung - Hotspot erstellen:**
 1. Eine Person: Windows-Einstellungen → Netzwerk → Mobiler Hotspot
@@ -192,7 +192,7 @@ sudo nano /etc/ssh/sshd_config
 # PermitRootLogin no         →    PermitRootLogin no
 ```
 
-**Warum Port 2222?** Port 22 ist oft in Firmen-/Schulnetzwerken blockiert.
+**Warum Port 2222?** Port 22 ist oft in Netzwerken blockiert.
 
 **Speichern:** `Strg + O` → Enter → `Strg + X`
 
