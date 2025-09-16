@@ -1,11 +1,13 @@
 # Challenge: Sichere Verbindung aufbauen
-## Linux & SSH mit WSL
+## Linux & SSH mit WSL - Verteilte Teams Edition
 
 ---
 
 ## Die Ausgangssituation
 
 Ihr arbeitet als IT-Team in einem modernen Unternehmen. Eure Aufgabe: Aufbau eines sicheren Kommunikationsnetzwerks zwischen verschiedenen Arbeitsplätzen. 
+
+**Besonderheit:** Ihr arbeitet alle von verschiedenen Standorten (zuhause) und müsst euch über das Internet verbinden!
 
 ### Warum nutzen wir WSL?
 
@@ -14,11 +16,11 @@ Wir nutzen WSL, damit wir trotz unseres Windows-Systems mit Linux arbeiten könn
 ### Was ist SSH und warum ist es wichtig?
 
 **SSH (Secure Shell)** ist das wichtigste Tool für System-Administratoren:
-- **Sicherer Remote-Zugriff:** Verschlüsselte Verbindungen zu anderen Computern
+- **Sicherer Remote-Zugriff:** Verschlüsselte Verbindungen zu anderen Computern über das Internet
 - **Dateiübertragung:** Sichere Übertragung von Dateien zwischen Systemen
 - **Automatisierung:** Scripts und Befehle remote ausführen
 
-**Euer Ziel:** Bis zum Ende könnt ihr euch sicher zu jedem Computer in eurer Gruppe verbinden!
+**Euer Ziel:** Bis zum Ende könnt ihr euch sicher zu jedem Computer in eurer Gruppe verbinden - egal wo auf der Welt ihr seid!
 
 ---
 
@@ -26,9 +28,11 @@ Wir nutzen WSL, damit wir trotz unseres Windows-Systems mit Linux arbeiten könn
 
 ### Arbeitsgruppen bilden
 - **Bildet 4-6er Gruppen** für die praktische Durchführung
-- Jede Person arbeitet an ihrem eigenen Windows 11 PC
-- Ihr unterstützt euch gegenseitig bei Problemen
-- **Wichtig:** ihr gebt pro Gruppe mindestens eine dokumentation ab
+- Jede Person arbeitet von ihrem eigenen Standort aus
+- Ihr unterstützt euch gegenseitig über Chat/Video bei Problemen
+- **Wichtig:** Ihr gebt pro Gruppe mindestens eine Dokumentation ab
+
+**⚠️ Hinweis:** Ihr werdet Router-Einstellungen für das IT-Projekt ändern müssen. Diese Konfigurationen sind sicher und werden nach der Übung wieder rückgängig gemacht.
 
 **Tragt in eurer Abgabe eure Gruppenmitglieder ein:**
 - Person 1: ________________
@@ -89,20 +93,20 @@ Das dauert 2-3 Minuten - perfekte Zeit für Fragen!
 
 ---
 
-# Phase 2: Netzwerk verstehen und testen
-*"Bevor wir bauen, schauen wir uns das Fundament an"*
+# Phase 2: Netzwerk verstehen - Lokal vs. Global
+*"Zwei Welten: Zuhause-Netzwerk und Internet"*
 
-## Schritt 2.1: IP-Adressen ermitteln
+## Schritt 2.1: Lokale IP-Adressen ermitteln
 
-**Was ist eine IP-Adresse?** Wie eine Hausadresse - ohne sie findet euch niemand im Netzwerk.
+**Was ist eine lokale IP-Adresse?** Wie eine interne Adresse in eurem lokalen Netzwerk - nur in eurem WLAN/LAN gültig.
 
 ```powershell
 # Windows PowerShell (neues Fenster):
 ipconfig | findstr "IPv4"
 ```
 
-**Notiert eure Windows-IP (z.B. 192.168.1.100):**
-- Meine Windows-IP: ________________
+**Notiert eure lokale Windows-IP (z.B. 192.168.1.100):**
+- Meine lokale Windows-IP: ________________
 
 ```bash
 # In WSL:
@@ -112,47 +116,39 @@ hostname -I
 **Notiert eure WSL-IP (z.B. 172.20.10.2):**
 - Meine WSL-IP: ________________
 
-**Warum zwei verschiedene IPs?** Windows und WSL sind wie zwei getrennte Computer - jeder braucht seine eigene Adresse.
+## Schritt 2.2: Öffentliche IP-Adresse ermitteln
 
-## Schritt 2.2: Gruppenmitglieder-IPs sammeln
-
-**Tauscht eure Windows-IPs aus:**
-- Person 1 Windows-IP: ________________
-- Person 2 Windows-IP: ________________
-- Person 3 Windows-IP: ________________
-- Person 4 Windows-IP: ________________
-
-## Schritt 2.3: Netzwerk-Test (WICHTIG!)
-
-**Warum testen wir das?** Ohne funktionierende Grundverbindung wird SSH nicht funktionieren.
+**Was ist eine öffentliche IP?** Wie eure Adresse im Internet - damit findet euch die ganze Welt!
 
 ```powershell
-# Windows PowerShell - testet zu euren Gruppenmitgliedern:
-ping PERSON1-WINDOWS-IP
-ping PERSON2-WINDOWS-IP
+# Windows PowerShell - eure "Internet-Adresse" finden:
+curl ifconfig.me
+```
+
+**Notiert eure öffentliche IP (z.B. 89.247.123.45):**
+- Meine öffentliche IP: ________________
+
+**Tauscht eure öffentlichen IPs in der Gruppe aus:**
+- Person 1 öffentliche IP: ________________
+- Person 2 öffentliche IP: ________________
+- Person 3 öffentliche IP: ________________
+- Person 4 öffentliche IP: ________________
+
+## Schritt 2.3: Internet-Verbindungstest
+
+**Warum testen?** Ohne funktionierende Internet-Verbindung wird SSH nicht funktionieren.
+
+```powershell
+# Teste Internet-Verbindung
+ping google.de
+
+# Teste zu euren Gruppenmitgliedern (öffentliche IPs!)
+ping PERSON1-ÖFFENTLICHE-IP
 ```
 
 **Was bedeuten die Ergebnisse?**
-- **"Antwort von..."** = Perfekt! Das Netzwerk funktioniert
-- **"Zeitüberschreitung"** = Problem! Seht Troubleshooting unten
-
-### Troubleshooting: Falls Ping nicht funktioniert
-
-**Problem:** Router verhindert Kommunikation zwischen Geräten
-
-**Lösung - Hotspot erstellen:**
-1. Eine Person: Windows-Einstellungen → Netzwerk → Mobiler Hotspot
-2. Hotspot aktivieren, Name und Passwort festlegen
-3. Alle anderen verbinden sich mit diesem Hotspot
-4. Neue IPs ermitteln und Ping-Test wiederholen
-
-**Dokumentiert euer Ergebnis:**
-```
-Netzwerk-Test:
-- Ping zu Person 1: ✅ / ❌
-- Ping zu Person 2: ✅ / ❌
-- Hotspot verwendet: Ja / Nein
-```
+- **"Antwort von..."** = Internet funktioniert!
+- **"Zeitüberschreitung"** = Internet-Problem oder die andere Person ist offline
 
 ---
 
@@ -161,7 +157,7 @@ Netzwerk-Test:
 
 ## Schritt 3.1: SSH-Server installieren
 
-**Was ist ein SSH-Server?** Ein Programm, das sichere Verbindungen von anderen Computern annimmt.
+**Was ist ein SSH-Server?** Ein Programm, das sichere Verbindungen aus dem Internet annimmt.
 
 ```bash
 # SSH-Server installieren
@@ -175,7 +171,7 @@ dpkg -l | grep openssh-server
 
 ## Schritt 3.2: SSH konfigurieren
 
-**Warum konfigurieren?** Standardeinstellungen sind nicht optimal für unsere Übung.
+**Warum konfigurieren?** Standardeinstellungen sind nicht optimal für Internet-Verbindungen.
 
 ```bash
 # Backup der Original-Konfiguration (Sicherheit!)
@@ -190,9 +186,14 @@ sudo nano /etc/ssh/sshd_config
 # Port 22                    →    Port 2222
 # PasswordAuthentication yes →    PasswordAuthentication yes
 # PermitRootLogin no         →    PermitRootLogin no
+# MaxAuthTries 6             →    MaxAuthTries 3
+# ClientAliveInterval 0      →    ClientAliveInterval 60
 ```
 
-**Warum Port 2222?** Port 22 ist oft in Netzwerken blockiert.
+**Warum diese Änderungen?**
+- **Port 2222:** Port 22 ist oft von Internet-Providern blockiert
+- **MaxAuthTries 3:** Weniger Angriffs-Versuche erlaubt
+- **ClientAliveInterval:** Verbindung bleibt stabil bei schlechtem Internet
 
 **Speichern:** `Strg + O` → Enter → `Strg + X`
 
@@ -215,7 +216,7 @@ Active: active (running)
 
 ## Schritt 3.4: Lokaler Test
 
-**Warum zu uns selbst verbinden?** Bevor wir andere erreichen, testen wir ob SSH grundsätzlich funktioniert.
+**Warum zu uns selbst verbinden?** Bevor wir das Internet nutzen, testen wir ob SSH grundsätzlich funktioniert.
 
 ```bash
 # Test: Verbindung zu uns selbst
@@ -227,66 +228,128 @@ ssh -p 2222 $(whoami)@localhost
 
 ---
 
-# Phase 4: Windows für SSH öffnen
-*"Windows muss lernen, Gäste reinzulassen"*
+# Phase 4: Router für Internet-Zugriff konfigurieren
+*"Das Tor zur Welt öffnen - Port-Forwarding einrichten"*
 
-## Schritt 4.1: Windows Firewall konfigurieren
+## Schritt 4.1: Router-Interface öffnen
 
-**Warum?** Windows blockiert standardmäßig alle eingehenden Verbindungen für Sicherheit.
+**Wichtig:** Stellt sicher, dass ihr Administratorrechte für euren Router habt!
+
+```powershell
+# Eure Router-IP finden (Gateway)
+ipconfig | findstr "Standard"
+```
+
+**Typische Router-Adressen im Browser öffnen:**
+- `192.168.1.1` (häufigste)
+- `192.168.0.1` 
+- `10.0.0.1`
+- `fritz.box` (bei Fritzboxen)
+- `speedport.ip` (bei Telekom)
+
+## Schritt 4.2: Router-Login
+
+**Login-Daten finden:**
+- Aufkleber am Router
+- Handbuch des Routers
+- Standard-Kombinationen: `admin/admin`, `admin/password`, `admin/(leer)`
+
+**Router-Typ dokumentieren:**
+- Mein Router-Typ: ________________ (z.B. Fritzbox 7590)
+
+## Schritt 4.3: Port-Forwarding einrichten
+
+**Sucht nach diesen Menü-Punkten:**
+- "Port-Forwarding" / "Port-Weiterleitung"
+- "Virtuelle Server" / "Virtual Server"
+- "NAT" / "Portfreigabe"
+- "Firewall" → "Portfreigabe"
+
+### Für Fritzbox:
+```
+Internet → Freigaben → Portfreigabe → Gerät für Freigaben hinzufügen
+- Gerät: [Euer PC auswählen]  
+- Neue Freigabe: Andere Anwendung
+- Bezeichnung: SSH-Server
+- Protokoll: TCP
+- Von Port: 2222
+- Bis Port: 2222
+- An Computer: [Eure lokale Windows-IP]
+```
+
+### Für andere Router:
+```
+Port-Forwarding Regel erstellen:
+- Service Name: SSH-Server
+- External Port: 2222
+- Internal Port: 2222
+- Internal IP: [Eure lokale Windows-IP]
+- Protocol: TCP
+- Enable: ✅
+```
+
+## Schritt 4.4: Windows Firewall konfigurieren
 
 ```powershell
 # PowerShell ALS ADMINISTRATOR:
-netsh advfirewall firewall add rule name="WSL SSH" dir=in action=allow protocol=TCP localport=2222
+netsh advfirewall firewall add rule name="SSH Server Internet" dir=in action=allow protocol=TCP localport=2222
 
 # Prüfen ob Regel erstellt wurde
-netsh advfirewall firewall show rule name="WSL SSH"
+netsh advfirewall firewall show rule name="SSH Server Internet"
 ```
 
-## Schritt 4.2: Port-Weiterleitung einrichten
-
-**Das Problem:** WSL läuft "versteckt" hinter Windows. Andere Computer sehen nur Windows, nicht WSL.
-
-**Die Lösung:** Eine "Brücke" von Windows zu WSL bauen.
+## Schritt 4.5: Port-Weiterleitung von Windows zu WSL
 
 ```powershell
-# Eure WSL-IP herausfinden (merkt sie euch!)
+# Eure WSL-IP nochmal prüfen
 wsl hostname -I
 
-# Port-Weiterleitung einrichten (ersetzt WSL-IP durch eure echte IP!)
+# Port-Weiterleitung einrichten (ersetzt durch eure WSL-IP!)
 netsh interface portproxy add v4tov4 listenport=2222 listenaddress=0.0.0.0 connectport=2222 connectaddress=EURE-WSL-IP
 
 # Beispiel:
 # netsh interface portproxy add v4tov4 listenport=2222 listenaddress=0.0.0.0 connectport=2222 connectaddress=172.20.10.2
-```
 
-**Prüfen ob es funktioniert:**
-```powershell
+# Prüfen ob aktiv
 netsh interface portproxy show all
 ```
 
-**Ihr solltet sehen:** `2222` → `eure-wsl-ip:2222`
+## Schritt 4.6: Konfiguration testen
+
+```powershell
+# Test von außen mit Online-Tool (im Browser):
+# https://www.canyouseeme.org
+# Port: 2222
+# IP wird automatisch erkannt
+
+# Oder mit eigenem Tool:
+telnet EURE-ÖFFENTLICHE-IP 2222
+```
+
+**Erfolgreich wenn:** "SSH-2.0-OpenSSH" erscheint oder Verbindung wird hergestellt.
 
 ---
 
-# Phase 5: Erste Verbindungen
-*"Der magische Moment - Verbindung zu anderen Computern!"*
+# Phase 5: Internet-SSH-Verbindungen
+*"Der magische Moment - Verbindung über das Internet!"*
 
-## Schritt 5.1: Erste SSH-Verbindung
+## Schritt 5.1: Erste Internet-SSH-Verbindung
 
-**Der Moment der Wahrheit:** Verbindung zu einem Gruppenmitglied.
+**Der Moment der Wahrheit:** Verbindung zu einem Gruppenmitglied über das Internet.
 
 ```bash
-# Verbindung zu einem Gruppenmitglied (verwendet WINDOWS-IP!)
-ssh -p 2222 gruppenmitglied-benutzername@GRUPPENMITGLIED-WINDOWS-IP
+# Verbindung zu einem Gruppenmitglied (ÖFFENTLICHE IP verwenden!)
+ssh -p 2222 gruppenmitglied-benutzername@GRUPPENMITGLIED-ÖFFENTLICHE-IP
 
 # Beispiel:
-# ssh -p 2222 anna@192.168.1.101
+# ssh -p 2222 anna@89.247.123.45
 ```
 
 **Was passiert Schritt für Schritt:**
-1. **Sicherheitswarnung:** "The authenticity of host... are you sure?" → `yes` eingeben
-2. **Passwort-Abfrage:** Das Linux-Passwort eures Gruppenmitglieds eingeben
-3. **Erfolg:** Neuer Prompt zeigt euch, dass ihr "drüben" seid!
+1. **Verbindungs-Aufbau:** "Connecting to..." (kann 5-10 Sekunden dauern)
+2. **Sicherheitswarnung:** "The authenticity of host... are you sure?" → `yes` eingeben
+3. **Passwort-Abfrage:** Das Linux-Passwort eures Gruppenmitglieds eingeben
+4. **Erfolg:** Neuer Prompt zeigt euch, dass ihr "im Internet beim anderen" seid!
 
 ## Schritt 5.2: "Wo bin ich?"-Beweis
 
@@ -296,387 +359,519 @@ ssh -p 2222 gruppenmitglied-benutzername@GRUPPENMITGLIED-WINDOWS-IP
 # Computername anzeigen
 hostname
 
+# Internet-IP des Partners prüfen
+curl ifconfig.me
+
 # Aktueller Benutzer
 whoami
 
-# Welches System?
-uname -a
+# Welches System und wo?
+uname -a && date
 
 # Zurück zum eigenen Computer
 exit
 ```
 
-## Schritt 5.3: Alle Verbindungen testen
+## Schritt 5.3: Alle Internet-Verbindungen testen
 
 **Testet systematisch zu allen Gruppenmitgliedern:**
 
 ```bash
 # Schnelltest zu Person 1
-ssh -p 2222 person1@PERSON1-IP "hostname && whoami" && echo "Verbindung erfolgreich!"
+ssh -p 2222 person1@PERSON1-ÖFFENTLICHE-IP "hostname && curl -s ifconfig.me && echo ' <- Das bin ich!'" && echo "Internet-Verbindung erfolgreich!"
 
 # Das gleiche für alle anderen...
 ```
 
-### Problemlösung (falls etwas nicht funktioniert)
+### Internet-Problemlösung
 
-**"Connection refused":**
-- Partner prüft: `sudo service ssh status`
-- Partner startet SSH: `sudo service ssh start`
-
-**"Connection timeout":**
-- Ping-Test wiederholen: `ping PARTNER-IP`
-- Falls Ping nicht geht: Zurück zu Phase 2 (Hotspot)
+**"Connection refused" oder "Connection timeout":**
+1. **Partner prüft Router-Konfiguration:** Port 2222 wirklich weitergeleitet?
+2. **Partner prüft SSH-Status:** `sudo service ssh status`
+3. **Partner prüft Firewall:** Windows-Regel aktiviert?
+4. **Online Port-Check:** https://www.canyouseeme.org
 
 **"Permission denied":**
-- Richtigen Benutzernamen beim Partner erfragen
-- Passwort korrekt eingeben
+- Richtigen Linux-Benutzernamen beim Partner erfragen
+- Passwort korrekt eingeben (Vorsicht: anderes Tastatur-Layout?)
 
-**Dokumentiert eure Tests:**
+**"Host key verification failed":**
+```bash
+# Host-Key zurücksetzen und neu akzeptieren
+ssh-keygen -R PARTNER-ÖFFENTLICHE-IP
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP
 ```
-Verbindungstest-Matrix:
-- Zu Person 1: ✅ / ❌
-- Zu Person 2: ✅ / ❌  
-- Zu Person 3: ✅ / ❌
-- Zu Person 4: ✅ / ❌
+
+**Dokumentiert eure Internet-Tests:**
+```
+Internet-SSH-Verbindungstest:
+- Zu Person 1 (IP: ___.___.___.__): ✅ / ❌
+- Zu Person 2 (IP: ___.___.___.__): ✅ / ❌  
+- Zu Person 3 (IP: ___.___.___.__): ✅ / ❌
+- Zu Person 4 (IP: ___.___.___.__): ✅ / ❌
 ```
 
 ---
 
-# Phase 6: Kommunikation wie Profis
-*"Echte Administratoren kommunizieren über das Terminal"*
+# Phase 6: Internet-Kommunikation wie Profis
+*"Echte Administratoren kommunizieren über SSH durchs Internet"*
 
-## Schritt 6.1: Nachrichten senden
+## Schritt 6.1: Nachrichten über das Internet senden
 
-**Warum über Terminal kommunizieren?** In Server-Umgebungen gibt es oft keine grafische Oberfläche.
+**Warum über Internet-Terminal kommunizieren?** Server stehen oft in anderen Ländern/Kontinenten.
 
 ```bash
 # Verbindung zu einem Gruppenmitglied
-ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-IP
+ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-ÖFFENTLICHE-IP
 
-# Nachricht an alle Benutzer senden
-echo "Hallo von $(whoami) - Verbindungstest erfolgreich!" | wall
+# Nachricht mit Standort-Info senden
+echo "Grüße aus $(curl -s ipinfo.io/city) von $(whoami) - Internet-SSH funktioniert!" | wall
+
+# IP und Ort anzeigen
+echo "Ich bin gerade eingeloggt auf einem Computer in $(curl -s ipinfo.io/city), $(curl -s ipinfo.io/country)"
 
 # Verbindung trennen
 exit
 ```
 
-**Was macht `wall`?** "Write to all" - sendet Nachrichten an alle angemeldeten Benutzer.
-
-## Schritt 6.2: Professionelle Nachrichten
+## Schritt 6.2: Geografische Internet-Analyse
 
 ```bash
-# Tool für schöne ASCII-Art installieren
-sudo apt install figlet -y
+# Verbindung zu Partnern und deren Standort anzeigen
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP "curl -s ipinfo.io"
 
-# Beeindruckende Nachricht erstellen
-ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-IP
-figlet "System OK" | wall
+# Zeitzonen-Vergleich
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP "date" && echo "Meine Zeit: $(date)"
+```
+
+## Schritt 6.3: Professionelle Internet-Nachrichten
+
+```bash
+# Tool für schöne Nachrichten installieren
+sudo apt install figlet curl -y
+
+# Internet-Erfolg-Nachricht senden
+ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-ÖFFENTLICHE-IP
+figlet "Connected!" && echo "Internet-SSH von $(curl -s ipinfo.io/ip) erfolgreich!" | wall
 exit
 ```
 
 ---
 
-# Phase 7: Dateien sicher übertragen
-*"SCP - Das Werkzeug für sicheren Dateiaustausch"*
+# Phase 7: Dateien sicher über das Internet übertragen
+*"SCP - Datenaustausch zwischen verschiedenen Standorten"*
 
-## Schritt 7.1: Erste Datei erstellen
-
-**Was ist SCP?** Secure Copy Protocol - kopiert Dateien sicher über SSH.
+## Schritt 7.1: Internet-Systeminfo-Datei erstellen
 
 ```bash
-# Wichtige "Konfigurationsdatei" erstellen
-echo "# System-Konfiguration
-Hostname: $(hostname)
-IP-Adresse: $(hostname -I)
-SSH-Port: 2222
-Status: Aktiv
-Administrator: $(whoami)
-Erstellt: $(date)" > system_config.txt
+# Detaillierte System- und Internet-Info erstellen
+echo "# Internet-SSH-System-Report
+=================================
+Lokale Informationen:
+- Hostname: $(hostname)
+- Lokale IP: $(hostname -I)
+- SSH-Port: 2222
+- Linux-User: $(whoami)
+
+Internet-Informationen:
+- Öffentliche IP: $(curl -s ifconfig.me)
+- Standort: $(curl -s ipinfo.io/city), $(curl -s ipinfo.io/region)
+- Provider: $(curl -s ipinfo.io/org)
+- Land: $(curl -s ipinfo.io/country)
+
+System-Details:
+- Betriebssystem: $(uname -a)
+- Erstellt: $(date)
+- Uptime: $(uptime -p)
+=================================
+Internet-SSH-Mission erfolgreich!
+$(figlet 'CONNECTED')" > internet_system_report.txt
 
 # Inhalt anzeigen
-cat system_config.txt
+cat internet_system_report.txt
 ```
 
-## Schritt 7.2: Datei übertragen
+## Schritt 7.2: Datei über das Internet übertragen
 
 ```bash
-# Datei sicher zu einem Gruppenmitglied senden
-scp -P 2222 system_config.txt gruppenmitglied@GRUPPENMITGLIED-IP:/tmp/
+# Datei sicher über das Internet zu einem Gruppenmitglied senden
+scp -P 2222 internet_system_report.txt gruppenmitglied@GRUPPENMITGLIED-ÖFFENTLICHE-IP:/tmp/
 
-# Prüfen ob angekommen
-ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-IP "ls -la /tmp/system_config.txt"
+# Prüfen ob über Internet angekommen
+ssh -p 2222 gruppenmitglied@GRUPPENMITGLIED-ÖFFENTLICHE-IP "ls -la /tmp/internet_system_report.txt && echo '--- INHALT ---' && cat /tmp/internet_system_report.txt"
 ```
 
-**Warum funktioniert das?** SCP nutzt SSH - da SSH funktioniert, funktioniert auch SCP!
-
-## Schritt 7.3: Dateien sammeln
+## Schritt 7.3: Internet-Daten von allen sammeln
 
 ```bash
-# Konfigurationen von allen Gruppenmitgliedern holen
-scp -P 2222 person1@PERSON1-IP:/tmp/system_config.txt ./config_person1.txt
-scp -P 2222 person2@PERSON2-IP:/tmp/system_config.txt ./config_person2.txt
+# Reports von allen Gruppenmitgliedern über Internet holen
+scp -P 2222 person1@PERSON1-ÖFFENTLICHE-IP:/tmp/internet_system_report.txt ./report_person1.txt
+scp -P 2222 person2@PERSON2-ÖFFENTLICHE-IP:/tmp/internet_system_report.txt ./report_person2.txt
 
-# Alle Konfigurationen vergleichen
-echo "=== MEINE KONFIGURATION ==="
-cat system_config.txt
-echo -e "\n=== PERSON 1 KONFIGURATION ==="
-cat config_person1.txt
+# Weltweite Gruppen-Übersicht erstellen
+echo "===== GRUPPEN-INTERNET-ÜBERSICHT ====="
+echo "Gesammelt am: $(date)"
+echo
+for file in report_*.txt; do
+    echo "=== $(basename $file .txt | cut -d_ -f2) ==="
+    grep -A5 "Internet-Informationen:" "$file"
+    echo
+done
 ```
 
 ---
 
-# Phase 8: Remote-Administration
-*"Systeme aus der Ferne überwachen und verwalten"*
+# Phase 8: Remote-Internet-Administration
+*"Systeme weltweit überwachen und verwalten"*
 
-## Schritt 8.1: System-Monitoring
-
-**Was machen echte Administratoren?** Sie überwachen viele Server gleichzeitig von ihrem Arbeitsplatz aus.
+## Schritt 8.1: Weltweites System-Monitoring
 
 ```bash
-# Lokales System checken
-echo "=== MEIN SYSTEM ==="
-free -h && df -h | head -3 && uptime
+# Eigenes System checken
+echo "=== MEIN SYSTEM ($(curl -s ipinfo.io/city)) ==="
+free -h && df -h | head -3 && echo "Öffentliche IP: $(curl -s ifconfig.me)"
 
-# Remote-System checken
-echo -e "\n=== PARTNER-SYSTEM ==="
-ssh -p 2222 partner@PARTNER-IP 'free -h && df -h | head -3 && uptime'
+# Internet-Partner-System checken
+echo -e "\n=== PARTNER-SYSTEM ÜBER INTERNET ==="
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP 'echo "Standort: $(curl -s ipinfo.io/city)" && free -h && df -h | head -3 && echo "Öffentliche IP: $(curl -s ifconfig.me)"'
 ```
 
-## Schritt 8.2: Monitoring-Tools installieren
+## Schritt 8.2: Internet-Monitoring-Dashboard
 
 ```bash
-# Professionelle Tools installieren
-sudo apt install htop neofetch -y
+# Professionelle Tools für Internet-Admin installieren
+sudo apt install htop neofetch speedtest-cli -y
 
-# Schöne Systemanzeige
+# Internet-Geschwindigkeit testen
+speedtest-cli --simple
+
+# Schöne System-Übersicht mit Internet-Info
 neofetch
 
-# Beim Partner remote ausführen
-ssh -p 2222 partner@PARTNER-IP neofetch
+# Bei Partnern über Internet ausführen
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP 'neofetch && echo "Internet-Speed:" && speedtest-cli --simple'
 ```
 
-## Schritt 8.3: Live-Monitoring
+## Schritt 8.3: Live Internet-Monitoring
 
 ```bash
-# Live-Prozess-Monitor beim Partner
-ssh -p 2222 partner@PARTNER-IP htop
+# Live-Internet-Monitoring beim Partner
+ssh -p 2222 partner@PARTNER-ÖFFENTLICHE-IP htop
 
-# Navigation: Pfeiltasten bewegen, 'q' für beenden
+# Internet-Latenz kontinuierlich messen
+ping -c 10 PARTNER-ÖFFENTLICHE-IP
 ```
 
 ---
 
-# Phase 9: Sicherheit erhöhen mit SSH-Keys
-*"Keine Passwörter mehr - wir nutzen Kryptographie!"*
+# Phase 9: Maximale Sicherheit mit SSH-Keys über Internet
+*"Keine Passwörter über das Internet - Kryptographie für Profis!"*
 
-## Schritt 9.1: SSH-Keys verstehen
+## Schritt 9.1: Internet-SSH-Keys verstehen
 
-**Warum SSH-Keys statt Passwörter?**
-- **Sicherer:** 4096-Bit-Verschlüsselung vs. 8-stelliges Passwort
-- **Praktischer:** Kein Passwort-Tippen mehr
-- **Professioneller:** Standard in der IT-Industrie
+**Warum SSH-Keys bei Internet-Verbindungen kritisch sind:**
+- **Internet-Sicherheit:** Passwörter können abgefangen werden
+- **Automatisierung:** Scripts ohne Passwort-Eingabe möglich
+- **Compliance:** Viele Unternehmen verlangen schlüsselbasierte Authentifizierung
 
-**Wie funktioniert es?**
-- **Private Key:** Bleibt geheim bei euch (wie euer Hausschlüssel)
-- **Public Key:** Wird zu anderen übertragen (wie ein Türschloss)
-
-## Schritt 9.2: Key-Paar generieren
+## Schritt 9.2: Hochsichere Key-Paare generieren
 
 ```bash
-# RSA-Schlüsselpaar erstellen
-ssh-keygen -t rsa -b 4096 -C "admin-$(whoami)"
+# Hochsicheres RSA-4096-Schlüsselpaar für Internet-Nutzung
+ssh-keygen -t rsa -b 4096 -C "internet-admin-$(whoami)@$(hostname)-$(date +%Y%m%d)"
 
-# Bei allen Fragen einfach Enter drücken (Standardwerte)
+# Sicheren Speicherort wählen (Enter für Standard)
+# Passphrase für Extra-Sicherheit (optional, aber empfohlen für Internet)
 ```
 
-**Was passiert?** Zwei Dateien werden erstellt:
-- `~/.ssh/id_rsa` → Private Key (GEHEIM!)
-- `~/.ssh/id_rsa.pub` → Public Key (darf geteilt werden)
-
-## Schritt 9.3: Public Key übertragen
+## Schritt 9.3: Public Keys über Internet übertragen
 
 ```bash
-# Automatische Übertragung zu einem Gruppenmitglied
-ssh-copy-id -p 2222 person1@PERSON1-IP
+# Automatische Übertragung zu einem Internet-Partner
+ssh-copy-id -p 2222 person1@PERSON1-ÖFFENTLICHE-IP
 
-# Test: Jetzt ohne Passwort einloggen!
-ssh -p 2222 person1@PERSON1-IP
+# Manuelle Übertragung (falls automatisch nicht funktioniert):
+scp -P 2222 ~/.ssh/id_rsa.pub person1@PERSON1-ÖFFENTLICHE-IP:/tmp/
+ssh -p 2222 person1@PERSON1-ÖFFENTLICHE-IP
+mkdir -p ~/.ssh
+cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+exit
 ```
 
-**Magie!** Keine Passwort-Abfrage mehr - ihr seid direkt drin!
-
-## Schritt 9.4: Komfortable SSH-Konfiguration
+## Schritt 9.4: Passwortlose Internet-Verbindungen testen
 
 ```bash
-# SSH-Config für einfache Verbindungen erstellen
+# Test: Jetzt ohne Passwort über Internet einloggen!
+ssh -p 2222 person1@PERSON1-ÖFFENTLICHE-IP
+
+# Magie! Keine Passwort-Abfrage mehr - direkt über Internet verbunden!
+hostname && curl -s ifconfig.me
+exit
+```
+
+## Schritt 9.5: Internet-SSH-Konfiguration optimieren
+
+```bash
+# SSH-Config für komfortable Internet-Verbindungen
 nano ~/.ssh/config
 ```
 
-**Inhalt:**
+**Inhalt für Internet-Verbindungen:**
 ```bash
-Host person1
-    HostName PERSON1-WINDOWS-IP
+Host person1-internet
+    HostName PERSON1-ÖFFENTLICHE-IP
     User person1-benutzername
     Port 2222
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    TCPKeepAlive yes
 
-Host person2
-    HostName PERSON2-WINDOWS-IP
+Host person2-internet
+    HostName PERSON2-ÖFFENTLICHE-IP
     User person2-benutzername
     Port 2222
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    TCPKeepAlive yes
 ```
 
-**Jetzt super einfach:**
+**Jetzt super einfach über Internet:**
 ```bash
-# Statt: ssh -p 2222 person1@192.168.1.101
-# Einfach: 
-ssh person1
+# Statt: ssh -p 2222 person1@89.247.123.45
+# Einfach:
+ssh person1-internet
 ```
 
 ---
 
-# Phase 10: Abschluss-Challenge
-*"Zeigt was ihr gelernt habt!"*
+# Phase 10: Internet-Abschluss-Challenge
+*"Zeigt was ihr über Internet-Administration gelernt habt!"*
 
-## Challenge: Gruppen-Monitoring-System
-
-**Entwickelt gemeinsam ein Monitoring-Script:**
+## Challenge: Weltweites Gruppen-Monitoring-System
 
 ```bash
-# Script erstellen
-nano ~/group_monitor.sh
+# Internet-Monitoring-Script erstellen
+nano ~/internet_group_monitor.sh
 ```
 
 **Script-Inhalt:**
 ```bash
 #!/bin/bash
-echo "===== GRUPPEN-NETZWERK-MONITOR ====="
+echo "===== INTERNET-GRUPPEN-NETZWERK-MONITOR ====="
 echo "Gestartet: $(date)"
+echo "Von: $(curl -s ipinfo.io/city), $(curl -s ipinfo.io/country)"
 echo
 
 echo "LOKALES SYSTEM:"
 echo "- Hostname: $(hostname)"
+echo "- Öffentliche IP: $(curl -s ifconfig.me)"
+echo "- Standort: $(curl -s ipinfo.io/city)"
 echo "- Speicher frei: $(free -h | grep Mem | awk '{print $7}')"
-echo "- Uptime: $(uptime -p)"
+echo "- Internet-Speed: $(speedtest-cli --simple | grep Download)"
 echo
 
 if [ "$1" ]; then
-    echo "REMOTE-SYSTEM: $1"
+    echo "INTERNET-REMOTE-SYSTEM: $1"
+    start_time=$(date +%s)
     ssh "$1" "
-        echo '- Hostname:' $(hostname)
-        echo '- Speicher frei:' $(free -h | grep Mem | awk '{print $7}')
-        echo '- Uptime:' $(uptime -p)
+        echo '- Hostname:' \$(hostname)
+        echo '- Öffentliche IP:' \$(curl -s ifconfig.me)
+        echo '- Standort:' \$(curl -s ipinfo.io/city), \$(curl -s ipinfo.io/country)
+        echo '- Speicher frei:' \$(free -h | grep Mem | awk '{print \$7}')
+        echo '- Lokale Zeit:' \$(date)
     "
+    end_time=$(date +%s)
+    latency=$((end_time - start_time))
+    echo "- Verbindungszeit: ${latency} Sekunden"
 fi
 
-echo "===== MONITORING ABGESCHLOSSEN ====="
+echo
+echo "Internet-Ping-Tests:"
+ping -c 3 google.de | tail -1
+echo "===== INTERNET-MONITORING ABGESCHLOSSEN ====="
 ```
 
 ```bash
-# Script ausführbar machen
-chmod +x ~/group_monitor.sh
+# Script ausführbar machen und testen
+chmod +x ~/internet_group_monitor.sh
 
-# Testen
-./group_monitor.sh person1
+# Mit Internet-Partner testen
+./internet_group_monitor.sh person1-internet
 ```
 
 ---
 
-# Individuelle Dokumentation erstellen
+# Abschlussdokumentation
 
-## Abschlussbericht
-
-**Erstellt euren persönlichen Bericht:**
+## Internet-SSH-Mission-Report (Vorschlag)
 
 ```bash
-nano ~/abschlussbericht_$(whoami).txt
+# Euren Internet-Abschlussbericht erstellen
+nano ~/internet_ssh_mission_report.txt
 ```
 
 **Template:**
 ```
 ===============================================
-    SSH-NETZWERK MISSION - ABSCHLUSSBERICHT
+ INTERNET-SSH-NETZWERK MISSION - ABSCHLUSSBERICHT
 ===============================================
 
 NAME: [Euer Name]
 DATUM: $(date)
+STANDORT: $(curl -s ipinfo.io/city), $(curl -s ipinfo.io/country)
 GRUPPE: [Gruppenmitglieder auflisten]
 
-TECHNISCHE DATEN:
-- Meine Windows-IP: ____________
-- Meine WSL-IP: ____________
+TECHNISCHE INTERNET-DATEN:
+- Meine lokale Windows-IP: ____________
+- Meine WSL-IP: ____________  
+- Meine öffentliche IP: ____________
 - SSH-Port verwendet: 2222
+- Router-Typ: ____________
+- Internet-Provider: $(curl -s ipinfo.io/org)
 
-ERFOLGREICHE VERBINDUNGEN:
-[ ] Zu Person 1: Name _____, IP _____
-[ ] Zu Person 2: Name _____, IP _____
-[ ] Zu Person 3: Name _____, IP _____
-[ ] Zu Person 4: Name _____, IP _____
+ERFOLGREICHE INTERNET-VERBINDUNGEN:
+[ ] Zu Person 1: Name _____, Öffentliche IP _____, Standort _____
+[ ] Zu Person 2: Name _____, Öffentliche IP _____, Standort _____
+[ ] Zu Person 3: Name _____, Öffentliche IP _____, Standort _____
+[ ] Zu Person 4: Name _____, Öffentliche IP _____, Standort _____
 
-DURCHGEFÜHRTE AUFGABEN:
+DURCHGEFÜHRTE INTERNET-AUFGABEN:
 [ ] WSL eingerichtet
-[ ] SSH-Server konfiguriert
-[ ] Windows Firewall geöffnet
-[ ] Port-Forwarding eingerichtet
-[ ] SSH-Verbindungen getestet
-[ ] Nachrichten ausgetauscht
-[ ] Dateien übertragen (SCP)
-[ ] SSH-Keys verwendet
-[ ] Remote-Monitoring durchgeführt
-[ ] Monitoring-Script entwickelt
+[ ] SSH-Server für Internet konfiguriert
+[ ] Router Port-Forwarding eingerichtet
+[ ] Windows Firewall für Internet geöffnet
+[ ] Internet-SSH-Verbindungen getestet
+[ ] Nachrichten über Internet ausgetauscht
+[ ] Dateien über Internet übertragen (SCP)
+[ ] SSH-Keys für Internet-Sicherheit verwendet
+[ ] Internet-Remote-Monitoring durchgeführt
+[ ] Internet-Monitoring-Script entwickelt
 
-NEUE SKILLS GELERNT:
-1. Linux-Befehle:
-   - ssh: [Erklärung]
-   - scp: [Erklärung]
-   - sudo: [Erklärung]
+NEUE INTERNET-SKILLS GELERNT:
+1. Netzwerk-Konzepte:
+   - Lokale vs. öffentliche IP-Adressen
+   - Port-Forwarding im Router
+   - NAT-Traversal
+   - Internet-SSH-Sicherheit
 
-2. Netzwerk-Konzepte:
-   - IP-Adressen: [Erklärung]
-   - SSH-Protokoll: [Erklärung]
-   - Port-Forwarding: [Erklärung]
+2. Router-Administration:
+   - Router-Interface bedienen
+   - Port-Weiterleitungen konfigurieren
+   - Firewall-Regeln erstellen
 
-PROBLEME UND LÖSUNGEN:
-- Problem 1: [Beschreibung] → Lösung: [Beschreibung]
-- Problem 2: [Beschreibung] → Lösung: [Beschreibung]
+3. Linux-Internet-Tools:
+   - ssh über Internet
+   - scp für Internet-Dateitransfer
+   - curl für IP/Standort-Abfragen
+   - speedtest-cli für Internet-Geschwindigkeit
 
-PRAKTISCHE ANWENDUNGEN:
-Wo könnte ich SSH verwenden?
-- Im Studium: [Beispiele]
-- Im Beruf: [Beispiele]
-- Hobby-Projekte: [Beispiele]
+INTERNET-PROBLEME UND LÖSUNGEN:
+- Problem 1: [Router-Konfiguration] → Lösung: [Port-Forwarding richtig eingestellt]
+- Problem 2: [Firewall blockiert] → Lösung: [Windows-Regel hinzugefügt]
+- Problem 3: [Verbindungs-Timeout] → Lösung: [SSH-Konfiguration optimiert]
+
+PRAKTISCHE INTERNET-ANWENDUNGEN:
+- Homelab-Server von unterwegs verwalten
+- Raspberry Pi-Projekte remote steuern
+- Website-Server administrieren
+- IoT-Geräte überwachen
+- Cloud-Server-Management
+- Backup-Systeme kontrollieren
+
+SICHERHEITS-ERKENNTNISSE:
+- Router-Sicherheit ist kritisch
+- SSH-Keys sind sicherer als Passwörter
+- Firewall-Konfiguration essentiell
+- Monitoring für Angriffs-Erkennung
 
 BEWERTUNG (1-10):
-- Schwierigkeit: ___
-- Interesse: ___
+- Technische Schwierigkeit: ___
+- Internet-Komplexität: ___
+- Interesse/Spaßfaktor: ___
 - Praktischer Nutzen: ___
+- Sicherheits-Bewusstsein: ___
 
 FAZIT:
-[Freie Bewertung der Mission]
+[Freie Bewertung der Internet-SSH-Mission - was habt ihr gelernt?
+Wie fühlt es sich an, Computer über das Internet zu verwalten?]
 
 ===============================================
 ```
 
 ---
 
-# Anhang: Wichtige Hinweise
+# Anhang: Wichtige Hinweise für Internet-SSH
 
-## Nach PC-Neustart
+## Nach PC-/Router-Neustart
 
-**Falls euer PC neu startet, müsst ihr diese Schritte wiederholen:**
+**Router-Neustart checken:**
+```bash
+# Öffentliche IP prüfen (ändert sich manchmal)
+curl ifconfig.me
 
-1. **WSL:** SSH-Service starten: `sudo service ssh start`
-2. **Windows:** Port-Forwarding neu einrichten (WSL-IP ändert sich!)
-3. **Test:** SSH-Verbindungen erneut testen
+# Port-Forwarding im Router prüfen
+# (Browser → Router-Interface → Port-Weiterleitungen)
+```
 
-## Spickzettel für die Zukunft
+**PC-Neustart wiederholen:**
+```bash
+# WSL: SSH-Service starten
+sudo service ssh start
+
+# Windows: Port-Forwarding neu einrichten (WSL-IP ändert sich!)
+wsl hostname -I
+netsh interface portproxy show all
+# Falls leer: netsh interface portproxy add... (siehe Phase 4.5)
+```
+
+## Internet-SSH Sicherheitstipps
+
+**⚠️ Wichtige Sicherheitsregeln:**
+- SSH-Port nach der Übung wieder schließen (Router-Konfiguration entfernen)
+- Starke Passwörter verwenden
+- SSH-Keys mit Passphrase schützen
+- Regelmäßig SSH-Logs checken: `sudo journalctl -u ssh`
+- Nur vertrauenswürdigen Personen Zugang gewähren
+
+**Port-Forwarding nach Übung rückgängig machen:**
+```
+Router-Interface → Port-Weiterleitungen → SSH-Regel löschen
+```
+
+## Internet-SSH Spickzettel
 
 ```bash
-# Wichtigste SSH-Befehle
-ssh -p 2222 user@host              # Verbindung aufbauen
-scp -P 2222 file.txt user@host:/   # Datei übertragen
-ssh user@host "command"            # Remote-Befehl ausführen
-ssh-keygen -t rsa -b 4096          # SSH-Keys generieren
-ssh-copy-id user@host              # Public Key übertragen
+# Wichtigste Internet-SSH-Befehle
+ssh -p 2222 user@öffentliche-ip          # Internet-Verbindung
+scp -P 2222 file.txt user@ip:/path/      # Internet-Dateitransfer
+ssh user@ip "command"                     # Internet-Remote-Befehl
+curl ifconfig.me                         # Öffentliche IP anzeigen
+curl ipinfo.io                           # Standort-Info abrufen
+speedtest-cli                            # Internet-Geschwindigkeit
+
+# Router-Konfiguration
+192.168.1.1                              # Router-Interface
+Port-Forwarding: extern 2222 → intern 2222
+
+# Troubleshooting
+ping öffentliche-ip                      # Erreichbarkeit testen
+telnet öffentliche-ip 2222              # Port-Test
+nmap -p 2222 öffentliche-ip             # Port-Scan
 ```
 
 ---
+
+Ihr habt erfolgreich ein sicheres SSH-Netzwerk über das Internet aufgebaut. Ihr könnt jetzt:
+- Computer weltweit sicher verwalten
+- Dateien verschlüsselt über Internet übertragen  
+- Router professionell konfigurieren
+- Netzwerk-Sicherheit einschätzen
+- Wie echte System-Administratoren arbeiten
+
+**Das ist der Grundstein für:**
+- Server-Administration
+- Cloud-Computing
+- DevOps-Engineering  
+- Cybersecurity
+- Network-Engineering
