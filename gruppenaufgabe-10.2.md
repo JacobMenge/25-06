@@ -1,5 +1,5 @@
 # Mission: Sichere Verbindung aufbauen
-## Linux & SSH mit WSL - Praktikum
+## Linux & SSH mit WSL
 
 ---
 
