@@ -120,8 +120,8 @@ hostname -I
 
 **Was ist eine öffentliche IP?** Wie eure Adresse im Internet - damit findet euch die ganze Welt!
 
-```powershell
-# Windows PowerShell - eure "Internet-Adresse" finden:
+```bash
+# Linux - eure "Internet-Adresse" finden:
 curl ifconfig.me
 ```
 
