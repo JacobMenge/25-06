@@ -218,7 +218,9 @@ Active: active (running)
 
 **Warum zu uns selbst verbinden?** Bevor wir das Internet nutzen, testen wir ob SSH grundsätzlich funktioniert.
 
-```bash
+
+powershell:
+```powershell
 # Test: Verbindung zu uns selbst
 ssh -p 2222 $(whoami)@localhost
 
