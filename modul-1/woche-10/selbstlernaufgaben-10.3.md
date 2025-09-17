@@ -270,7 +270,7 @@ EOF
 1. **Zeilenanfang und -ende - Struktur verstehen:**
 ```bash
 grep "^Max" kontakte.txt        # Nur Zeilen die mit "Max" beginnen
-grep "\.de$" kontakte.txt       # Nur Zeilen die mit ".de" enden (Backslash wichtig!)
+grep "\.de" kontakte.txt       # Nur Zeilen mit ".de" (Backslash wichtig!)
 grep "^Betrag:" bestellungen.txt # Nur Betrag-Zeilen finden
 ```
 
