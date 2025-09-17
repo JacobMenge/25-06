@@ -320,7 +320,7 @@ grep "ORD" bestellungen.txt | grep -E "(001|003)" # Nur bestimmte Bestellnummern
 4. Warum brauchst du `-E` für `{4}` aber nicht für `^` oder `$`?
 
 **Screenshot-Aufgabe 2:**
-Screenshot von: `grep -E "\.de$|\.com$" kontakte.txt` und `grep "^Betrag:" bestellungen.txt`
+Screenshot von: `grep -E "\.de|\.com" kontakte.txt` und `grep "^Betrag:" bestellungen.txt`
 
 ---
 
