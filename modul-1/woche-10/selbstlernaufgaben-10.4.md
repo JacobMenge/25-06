@@ -20,7 +20,7 @@ In dieser Challenge lernst du zwei der mächtigsten Werkzeuge für die automatis
 
 **Aufbau der Challenge:**
 1. **Teil 1:** sed - Stream Editor verstehen und anwenden (Grundlagenaufgabe/Verpflichtend)
-2. **Teil 2:** awk - Strukturierte Datenverarbeitung meistern (Grundlagenaufgabe/Verpflichtend)
+2. **Teil 2:** awk - Strukturierte Datenverarbeitung meistern 
 3. **Teil 3:** Beide Tools kombinieren für realistische Szenarien
 
 **Lernpfad:**
