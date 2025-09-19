@@ -478,7 +478,7 @@ echo "=== FORMATIERTE NAMENSLISTE ==="
 awk -F, 'NR > 1 { printf "%-15s %-20s\n", $1, $2 }' mitarbeiter.csv
 
 echo -e "\n=== GEHALTSLISTE FORMATIERT ==="
-awk -F, 'NR > 1 { printf "%-15s %8s EUR\n", $1, $4 }' mitarbeiter.csv
+awk -F, 'NR > 1 { printf "%-15s %8s EUR\n", $1, $5 }' mitarbeiter.csv
 ```
 
 **printf verstehen:**
@@ -545,10 +545,10 @@ END {
 **Fragen zur Aufgabe 3:**
 1. **NR verstehen:** Warum verwenden wir `NR > 1` bei CSV-Dateien und was würde ohne passieren?
 2. **Field Separator:** Was passiert, wenn du `-F,` weglässt bei der CSV-Verarbeitung?
-3. **printf vs print:** Erkläre den Unterschied zwischen `print $1, $4` und `printf "%-15s %8s\n", $1, $4`
+3. **printf vs print:** Erkläre den Unterschied zwischen `print $1, $5` und `printf "%-15s %8s\n", $1, $5`
 
 **Screenshot-Aufgabe 3:**
-Screenshot von: `awk -F, 'NR > 1 { printf "%-15s %8s EUR\n", $1, $4 }' mitarbeiter.csv`
+Screenshot von: `awk -F, 'NR > 1 { printf "%-15s %8s EUR\n", $1, $5 }' mitarbeiter.csv`
 
 ---
 
