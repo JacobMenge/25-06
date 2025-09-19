@@ -423,7 +423,7 @@ awk 'BEGIN { print "Start" } { print $1 } END { print "Ende" }' datei.txt
 
 ```bash
 cat > mitarbeiter.csv << 'EOF'
-Name,Position,Abteilung,Gehalt,Startdatum
+Nachname,Name,Position,Abteilung,Gehalt,Startdatum
 Mueller,Max,Software Engineer,IT,75000,2023-01-15
 Schmidt,Anna,Product Manager,Marketing,82000,2022-08-22
 Weber,Peter,DevOps Engineer,IT,78000,2023-03-10
