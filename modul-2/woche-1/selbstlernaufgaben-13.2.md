@@ -72,3 +72,36 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 **Deine Aufgabe:**  
 Angenommen, du hast folgende Ordnerstruktur in deinem Home-Verzeichnis:  
 
+```
+~/uebung
+├── projekte
+│   ├── website
+│   │   └── assets
+│   │       └── css
+│   └── app
+│       └── src
+│           └── tests
+└── docs
+    ├── notizen
+    │   └── archiv
+    └── bilder
+        └── urlaub
+```
+
+In dieser Struktur ist z.B. css ein Unterordner von assets, dieser wiederum liegt im Ordner website, der Teil von projekte ist.
+Jeder eingerückte Ordner gehört immer zum Ordner darüber.
+
+Bestimme die Bash-Befehle (jeweils **absoluter Pfad** und **relativer Pfad**) für folgende Szenarien:  
+
+1. Wechsle von **css** nach **tests**.  
+2. Wechsle von **archiv** nach **urlaub**.  
+3. Wechsle von **app** nach **notizen**.  
+4. Wechsle von **uebung** nach **website**.  
+
+Notiere die Befehle für beide Varianten.  
+
+**Formatvorschläge**  
+- `.sh`-Datei  
+- Textdatei  
+
+
