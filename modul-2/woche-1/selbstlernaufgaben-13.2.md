@@ -1,6 +1,5 @@
 # Übung – Linux Dateisystem & Navigation
 
-Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.  
 
 ---
 
@@ -19,9 +18,6 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 5. Ein ausführbares Programm wie `ls`  
 6. Temporäre Datei, die beim nächsten Neustart gelöscht wird  
 
-**Formatvorschläge**  
-- Textdatei mit Antworten  
-- Tabelle  
 
 ---
 
@@ -31,11 +27,6 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 1. Wechsle in ein beliebiges Verzeichnis außerhalb deines Home-Verzeichnisses (z. B. `/etc` oder `/bin`).  
 2. Kehre mit einem einzigen Befehl in dein Home-Verzeichnis zurück.  
 3. Finde mit `ls -a` heraus, welche **versteckten Dateien** dort vorhanden sind.  
-4. Notiere mindestens drei versteckte Dateien oder Ordner mit ihrem vollständigen Namen.  
-
-**Formatvorschläge**  
-- Textdatei mit Befehlen und Ergebnissen  
-- Screenshot  
 
 ---
 
@@ -45,11 +36,6 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 1. Navigiere in dein Home-Verzeichnis.  
 2. Wechsle von dort direkt in das Verzeichnis `/var/log` (ohne Zwischenschritte).  
 3. Gehe dann mit einem **relativen Pfad** zurück nach `/var`.  
-4. Dokumentiere deine Befehle.  
-
-**Formatvorschläge**  
-- `.sh`-Datei  
-- Textdatei  
 
 ---
 
@@ -58,12 +44,8 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 **Deine Aufgabe:**  
 1. Navigiere nach `/etc`.  
 2. Nutze eine Wildcard, um nur Dateien anzuzeigen, die mit `hos` beginnen.  
-3. Nutze eine Wildcard, um nur Dateien anzuzeigen, die auf `conf` enden.  
-4. Dokumentiere die Befehle und Ergebnisse.  
+3. Nutze eine Wildcard, um nur Dateien anzuzeigen, die auf `conf` enden.   
 
-**Formatvorschläge**  
-- `.sh`-Datei  
-- Textdatei  
 
 ---
 
@@ -98,11 +80,8 @@ Bestimme die Bash-Befehle (jeweils **absoluter Pfad** und **relativer Pfad**) f�
 3. Wechsle von **app** nach **notizen**.  
 4. Wechsle von **uebung** nach **website**.  
 
-Notiere die Befehle für beide Varianten.  
 
-**Formatvorschläge**  
-- `.sh`-Datei  
-- Textdatei  
+
 
 
 
