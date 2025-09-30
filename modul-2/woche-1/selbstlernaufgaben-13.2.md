@@ -1,10 +1,10 @@
-# Selbstlernaufgaben – Linux Dateisystem & Navigation
+# Übung – Linux Dateisystem & Navigation
 
 Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.  
 
 ---
 
-## 1. Grundlagenaufgabe – FHS-Zuordnung
+## 1. Übung – FHS-Zuordnung
 
 **Deine Aufgabe:**  
 Ordne die folgenden Dateien oder Dateitypen dem richtigen Verzeichnis nach dem Filesystem Hierarchy Standard (FHS) zu.  
@@ -25,7 +25,7 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 
 ---
 
-## 2. Grundlagenaufgabe – Navigation ins Home-Verzeichnis
+## 2. Übung – Navigation ins Home-Verzeichnis
 
 **Deine Aufgabe:**  
 1. Wechsle in ein beliebiges Verzeichnis außerhalb deines Home-Verzeichnisses (z. B. `/etc` oder `/bin`).  
@@ -39,7 +39,7 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 
 ---
 
-## 3. Weiterführende Aufgabe – Springen mit Pfaden
+## 3. Weiterführende Übung – Springen mit Pfaden
 
 **Deine Aufgabe:**  
 1. Navigiere in dein Home-Verzeichnis.  
@@ -53,7 +53,7 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 
 ---
 
-## 4. Weiterführende Aufgabe – Dateien mit Wildcards finden
+## 4. Weiterführende Übung – Dateien mit Wildcards finden
 
 **Deine Aufgabe:**  
 1. Navigiere nach `/etc`.  
@@ -67,7 +67,7 @@ Gib jeweils nur den **Ordner** an, von dem du denkst, dass er der richtige ist.
 
 ---
 
-## 5. Bonusaufgabe (schwer) – Absolute und relative Pfade
+## 5. Bonusübung (schwer) – Absolute und relative Pfade
 
 **Deine Aufgabe:**  
 Angenommen, du hast folgende Ordnerstruktur in deinem Home-Verzeichnis:  
@@ -103,5 +103,6 @@ Notiere die Befehle für beide Varianten.
 **Formatvorschläge**  
 - `.sh`-Datei  
 - Textdatei  
+
 
 
