@@ -1,4 +1,4 @@
-# Selbstlernübung – Linux Texte & Streams
+# Übung – Linux Texte & Streams
 
 
 ---
@@ -66,6 +66,7 @@ Entwirf jeweils einen endlichen Automaten (als Skizze oder Zustandsdiagramm) fü
 
 3. `[a-z]{3,}@(gmail|outlook|yahoo)\.com`  
    → Erkennt einfache E-Mail-Adressen mit mindestens drei Kleinbuchstaben vor dem @ und einer der drei Domains.  
+
 
 
 
