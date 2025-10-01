@@ -1,10 +1,9 @@
-# Selbstlernaufgaben – Linux Texte & Streams
+# Selbstlernübung – Linux Texte & Streams
 
-Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Classroom** zur entsprechenden Aufgabe hoch.  
 
 ---
 
-## 1. Grundlagenaufgabe – Reguläre Ausdrücke testen (mit „1000 Wörter“)  
+## 1. Grundlagenübung – Reguläre Ausdrücke testen (mit „1000 Wörter“)  
 
 **Deine Aufgabe:**  
 1. Kopiere den Text von **„1000 Wörter“** in eine Datei `story.txt`.  
@@ -12,9 +11,6 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 3. Suche mit `grep` alle Zeilen, die auf einem Ausrufezeichen enden.  
 4. Suche mit `grep` alle Zeilen, die mindestens einmal die Buchstabenfolge „ab“ enthalten.  
 
-**Formatvorschläge**  
-- Textdatei mit Befehlen und Ergebnissen  
-- Screenshot  
 
 ---
 
@@ -23,16 +19,12 @@ Bitte lade deine Ergebnisse bis spätestens **Sonntag um 23:59 Uhr im Google Cla
 **Deine Aufgabe:**  
 1. Verwende dieselbe Datei `story.txt` aus Aufgabe 1.  
 2. Finde mit `grep` alle Wörter, die mit einem Großbuchstaben „M“ oder „S“ beginnen.  
-3. Finde mit `grep` alle Wörter, die auf „er“ enden.  
-4. Dokumentiere die Befehle und die Treffer.  
+3. Finde mit `grep` alle Wörter, die auf „er“ enden.   
 
-**Formatvorschläge**  
-- `.sh`-Datei  
-- Textdatei  
 
 ---
 
-## 3. Grundlagenaufgabe – Pipes anwenden  
+## 3. Grundlagenübung – Pipes anwenden  
 
 **Deine Aufgabe:**  
 Alle folgenden Schritte sollen in **einer einzigen Zeile Code mit Pipes** erledigt werden.  
@@ -40,14 +32,11 @@ Alle folgenden Schritte sollen in **einer einzigen Zeile Code mit Pipes** erledi
 1. Verwende `cat /etc/passwd`, um den Inhalt der Datei anzuzeigen.  
 2. Filtere die Ausgabe mit grep so, dass nur Zeilen mit dem Wort „bin“ erscheinen.  
 3. Zähle, wie viele Treffer es gibt. (**Hinweis:** nutze dazu `wc -l`)  
-
-**Formatvorschläge**  
-- Textdatei mit allen Befehlen und Ausgaben  
-- Screenshot  
+ 
 
 ---
 
-## 4. Grundlagenaufgabe – Endliche Automaten entwerfen  
+## 4. Weiterführende Übnung – Endliche Automaten entwerfen  
 
 **Deine Aufgabe:**  
 Entwirf jeweils einen endlichen Automaten (als Skizze oder Zustandsdiagramm) für die folgenden regulären Ausdrücke und füge einen kurzen Erklärungssatz hinzu:  
@@ -60,15 +49,11 @@ Entwirf jeweils einen endlichen Automaten (als Skizze oder Zustandsdiagramm) fü
 
 3. `a+b`  
    → Erkennt eine oder mehrere Wiederholungen von „a“, gefolgt von genau einem „b“.  
-
-**Formatvorschläge**  
-- Handgezeichnetes Zustandsdiagramm (Foto hochladen)  
-- Digitale Skizze (z. B. mit draw.io, Excalidraw)  
-- Textbeschreibung mit ASCII-Zustandsdiagrammen  
+ 
 
 ---
 
-## 5. Bonusaufgabe (schwer) – Weitere Automaten  
+## 5. Bonusübung (schwer) – Weitere Automaten  
 
 **Deine Aufgabe:**  
 Entwirf jeweils einen endlichen Automaten (als Skizze oder Zustandsdiagramm) für die folgenden regulären Ausdrücke und füge einen kurzen Erklärungssatz hinzu:  
@@ -82,7 +67,5 @@ Entwirf jeweils einen endlichen Automaten (als Skizze oder Zustandsdiagramm) fü
 3. `[a-z]{3,}@(gmail|outlook|yahoo)\.com`  
    → Erkennt einfache E-Mail-Adressen mit mindestens drei Kleinbuchstaben vor dem @ und einer der drei Domains.  
 
-**Formatvorschläge**  
-- Handgezeichnetes Zustandsdiagramm (Foto hochladen)  
-- Digitale Skizze (z. B. mit draw.io, Excalidraw)  
-- Textbeschreibung mit ASCII-Zustandsdiagrammen  
+
+
