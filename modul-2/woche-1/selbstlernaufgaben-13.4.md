@@ -1,10 +1,8 @@
-# Selbstlernaufgaben – Linux Benutzer & Rechteverwaltung (Erweitert)
-
-Bitte lade deine Ergebnisse bis spätestens Sonntag um 23:59 Uhr im Google Classroom zur entsprechenden Aufgabe hoch.  
+# Übung – Linux Benutzer & Rechteverwaltung (Erweitert)
 
 ---
 
-## 1. Grundlagenaufgabe – Dateirechte analysieren  
+## 1. Grundlagenübung – Dateirechte analysieren  
 
 **Deine Aufgabe:**  
 Analysiere die folgenden Dateirechte. Schreibe jeweils auf, welche Rechte **Besitzer**, **Gruppe** und **Andere** haben.  
@@ -24,14 +22,12 @@ Analysiere die folgenden Dateirechte. Schreibe jeweils auf, welche Rechte **Besi
 10. `640`  
 
 **Zusatz:**  
-Erkläre in 1–2 Sätzen, warum eine sehr großzügige Rechtevergabe (z. B. `777`) in der Praxis ein Sicherheitsrisiko darstellt.  
+Erkläre dir, warum eine sehr großzügige Rechtevergabe (z. B. `777`) in der Praxis ein Sicherheitsrisiko darstellt.  
 
-**Formatvorschläge:**  
-- Textdatei mit Tabelle oder Stichpunkten  
 
 ---
 
-## 2. Grundlagenaufgabe – Rechte in Schreibweisen umwandeln  
+## 2. Grundlagenübung – Rechte in Schreibweisen umwandeln  
 
 **Deine Aufgabe:**  
 Hier sind 5 Beispiele von Dateiberechtigungen in natürlicher Sprache beschrieben.  
@@ -43,12 +39,11 @@ Schreibe für jedes Beispiel die **symbolische Schreibweise** (z. B. `-rw-r--r--
 4. Besitzer darf nur schreiben, Gruppe darf nur lesen, andere dürfen nichts.  
 5. Besitzer darf alles, Gruppe darf lesen und ausführen, andere dürfen nur lesen.  
 
-**Formatvorschläge:**  
-- Textdatei mit Tabelle oder Stichpunkten  
+ 
 
 ---
 
-## 3. Grundlagenaufgabe – Rechte mit chmod (Symbolisch und Oktal)  
+## 3. Grundlagenübung – Rechte mit chmod (Symbolisch und Oktal)  
 
 **Deine Aufgabe:**  
 - Erstelle zwei Dateien:  
@@ -62,12 +57,10 @@ Schreibe für jedes Beispiel die **symbolische Schreibweise** (z. B. `-rw-r--r--
 - Schreibe **alle verwendeten Befehle** in deine Lösung auf (einschließlich Kontrollausgaben mit `ls -l`).  
 - Erkläre außerdem, wie du die verwendete Oktalzahl berechnet hast.  
 
-**Formatvorschläge:**  
-- Textdatei mit den Befehlen, Screenshots (optional) und kurzer Erklärung  
 
 ---
 
-## 4. Weiterführende Aufgabe – chown und Zusammenarbeit simulieren  
+## 4. Weiterführende Übung – chown und Zusammenarbeit simulieren  
 
 **Deine Aufgabe:**  
 - Lege die Benutzer `dev1` und `dev2` an.  
@@ -76,12 +69,9 @@ Schreibe für jedes Beispiel die **symbolische Schreibweise** (z. B. `-rw-r--r--
 - Füge `dev2` der Gruppe `entwicklung` hinzu.  
 - Teste, ob `dev2` Schreibrechte hat. Falls nicht: Welche zusätzlichen Befehle (Stichwort: `chmod`) sind notwendig?  
 
-**Formatvorschläge:**  
-- Textdatei mit Befehlen und kurzer Begründung, warum Gruppen hier sinnvoll sind  
-
 ---
 
-## 5. Bonus-Aufgabe – Sicherheits-Szenario mit Gruppen, Besitzern & Dateien  
+## 5. Bonus-Übung – Sicherheits-Szenario mit Gruppen, Besitzern & Dateien  
 
 **Deine Aufgabe:**  
 Stelle dir vor, du bist Admin eines Uni-Rechners. Folgende Personen sollen arbeiten:  
@@ -122,5 +112,4 @@ Erstelle folgende Dateien und setze **Besitzer**, **Gruppe** und **Berechtigunge
 - Erkläre in 3–4 Sätzen, warum es sinnvoll ist, **Besitzer** und **Gruppe** gezielt zu setzen, anstatt sich auf Standardwerte zu verlassen.  
 - Welche Sicherheitsprobleme könnten entstehen, wenn der Besitzer nicht korrekt gesetzt ist?  
 
-**Formatvorschläge:**  
-- Textdatei mit den verwendeten Befehlen (`adduser`, `addgroup`, `usermod`, `chown`, `chmod`, `ls -l`) und deiner Reflexion  
+
