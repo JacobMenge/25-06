@@ -100,7 +100,7 @@ main {
 
 ## Schritt 2: Bei AWS anmelden
 
-1. Öffne [https://console.aws.amazon.com](https://console.aws.amazon.com)
+1. Öffne https://sandboxes.techstarter.de/
 2. Melde dich mit deinen AWS Sandbox-Zugangsdaten an
 3. Stelle sicher, dass du in der richtigen Region bist (oben rechts, z.B. "EU-Central-1 - Frankfurt")
 
