@@ -127,7 +127,10 @@ Um die AWS CLI zu nutzen, brauchst du deine Zugangsdaten.
 2. Melde dich mit deinen Zugangsdaten an
 3. Klicke auf deine aktive Sandbox
 4. Suche den Bereich **"AWS CLI Access"** oder **"Credentials"**
-5. Kopiere folgende Informationen:
+
+<img width="1523" height="557" alt="image" src="https://github.com/user-attachments/assets/dad3a46f-856c-432e-b862-301bd4af7553" />
+
+6. Kopiere folgende Informationen:
    - **AWS Access Key ID** (fängt an mit `ASIA...`)
    - **AWS Secret Access Key** (langer verschlüsselter Text)
    - **AWS Session Token** (sehr langer Text)
