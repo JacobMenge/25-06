@@ -859,10 +859,7 @@ STAMP="$(date +%Y-%m-%d)"
 
 # 1) Tagesarchiv erzeugen (inkl. aller aktuellen & rotierten Apache-Logs)
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting log archive creation..."
-tar -czf "${ARCHIVE_DIR}/apache-logs-${STAMP}.tar.gz" \
-  -C "${SRC_DIR}" . \
-  --exclude='*.gz' \
-  --exclude='*.old'
+tar -czf "${ARCHIVE_DIR}/apache-logs-${STAMP}.tar.gz" -C "${SRC_DIR}" .
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Archive created: apache-logs-${STAMP}.tar.gz"
 
 # 2) Nach S3 synchronisieren
