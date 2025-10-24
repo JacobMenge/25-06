@@ -682,12 +682,12 @@ Führe folgende Befehle auf der EC2-Instanz aus (du bist per SSH verbunden):
 
 1. System-Pakete aktualisieren:
 ```bash
-sudo apt update
+sudo apt update && sudo apt upgrade -y
 ```
 
 2. Apache und AWS CLI installieren:
 ```bash
-sudo apt install -y apache2 awscli
+sudo apt install -y apache2 unzip curl
 ```
 
 3. Apache-Status überprüfen:
@@ -704,24 +704,39 @@ Drücke `q` um den Status zu verlassen.
 apache2 -v
 ```
 
-5. AWS CLI Version anzeigen:
+5. AWS-CLI Installationspaket herunterladen:
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+```
+
+6. Archiv entpacken:
+```bash
+unzip awscliv2.zip
+```
+
+7. Installation starten:
+```bash
+sudo ./aws/install
+```
+
+8. AWS CLI Version anzeigen:
 ```bash
 aws --version
 ```
 
-6. Test: Apache Webserver aufrufen (vom EC2 selbst):
+9. Test: Apache Webserver aufrufen (vom EC2 selbst):
 ```bash
 curl http://localhost
 ```
 
 Du solltest HTML-Code sehen, der mit `<!DOCTYPE html>` beginnt.
 
-7. Test: Apache Webserver von außen aufrufen
+10. Test: Apache Webserver von außen aufrufen
 - Öffne einen Browser auf deinem Windows-PC
 - Gehe zu: `http://<PUBLIC-IP-DEINER-EC2>`
 - Du solltest die Standard-Ubuntu-Apache-Seite sehen
 
-8. Logdateien überprüfen:
+11. Logdateien überprüfen:
 ```bash
 ls -lh /var/log/apache2/
 ```
@@ -730,12 +745,12 @@ Du solltest mindestens diese Dateien sehen:
 - `access.log` (Zugriffslogs)
 - `error.log` (Fehlerlogs)
 
-9. Ein paar Zugriffe erzeugen (damit wir Logs haben):
+12. Ein paar Zugriffe erzeugen (damit wir Logs haben):
 ```bash
 for i in {1..20}; do curl -s http://localhost > /dev/null; done
 ```
 
-10. Logs anschauen:
+13. Logs anschauen:
 ```bash
 sudo tail -n 10 /var/log/apache2/access.log
 ```
