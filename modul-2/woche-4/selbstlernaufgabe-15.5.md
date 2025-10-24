@@ -221,17 +221,6 @@ Wenn der Server kompromittiert wird, kann der Angreifer **nur** Dateien in diese
 
 ### Anleitung
 
-1. Suche in der AWS Console nach **IAM** und klicke darauf
-2. Klicke im linken Menü auf **Roles**
-3. Klicke auf **Create role**
-
-### Rolle konfigurieren
-
-**Schritt 1: Select trusted entity**
-- Trusted entity type: **AWS service**
-- Use case: **EC2**
-- Klicke **Next**
-
 **Schritt 2: Add permissions**
 - Hier erstellen wir eine eigene Policy
 - Klicke oben auf **Create policy** (öffnet sich in neuem Tab)
@@ -303,6 +292,17 @@ und
 6. Description: `Allows EC2 to upload logs to S3 bucket`
 7. Klicke **Create policy**
 8. Schließe diesen Tab und gehe zurück zum Tab "Create role"
+
+1. Suche in der AWS Console nach **IAM** und klicke darauf
+2. Klicke im linken Menü auf **Roles**
+3. Klicke auf **Create role**
+
+### Rolle konfigurieren
+
+**Schritt 1: Select trusted entity**
+- Trusted entity type: **AWS service**
+- Use case: **EC2**
+- Klicke **Next**
 
 ### Rolle fertigstellen
 
