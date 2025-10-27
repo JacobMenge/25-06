@@ -111,8 +111,6 @@ Nach der Installation der Extension musst du einmal festlegen, welchen Python-In
 ### 3.4 Empfohlene zusätzliche Extensions (optional)
 
 - **Pylance**: Für bessere Code-Vervollständigung (wird automatisch mit Python-Extension installiert)
-- **Python Indent**: Für automatische Einrückungen
-- **autoDocstring**: Für automatische Dokumentation
 
 ---
 
