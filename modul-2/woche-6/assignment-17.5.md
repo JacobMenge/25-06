@@ -73,9 +73,9 @@ Die Bewertung erfolgt nach folgenden Kriterien mit insgesamt 100 möglichen Punk
 
 **Funktionen (20 Punkte):** Du musst mindestens zwei eigene Funktionen definieren. Diese sollten Parameter entgegennehmen und einen Rückgabewert liefern. Die Funktionen sollten eine klare Aufgabe erfüllen und wiederverwendbar sein.
 
-**Bedingte Anweisungen (10 Punkte):** If-, elif- und else-Konstrukte müssen logisch korrekt eingesetzt werden. Die Bedingungen sollten sinnvoll formuliert sein und das gewünschte Verhalten herbeiführen.
+**Bedingte Anweisungen (10 Punkte):** If-, elif- und else-Konstrukte müssen logisch korrekt eingesetzt werden. Die Bedingungen sollten sinnvoll formuliert sein und das gewünschte Verhalten herbeiführen. (mindestens eine Bedingung)
 
-**Schleifen (10 Punkte):** For- oder while-Schleifen müssen korrekt verwendet werden. Die Schleifen sollten über geeignete Datenstrukturen iterieren und keine Endlosschleifen produzieren.
+**Schleifen (10 Punkte):** For- oder while-Schleifen müssen korrekt verwendet werden. Die Schleifen sollten über geeignete Datenstrukturen iterieren und keine Endlosschleifen produzieren. (mindestens eine Schleife)
 
 **Listen (10 Punkte):** Listen müssen sinnvoll erstellt, befüllt und genutzt werden. Du solltest zeigen, dass du Elemente hinzufügen, durchlaufen und verarbeiten kannst.
 
