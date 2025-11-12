@@ -16,29 +16,24 @@ In dieser Übung lernst du:
 **Dauer: ~10-15 Minuten**
 
 **Aufgabe**
-
 1. **Erstelle die Basisklasse Tier**
-- Füge einen Konstruktor __init__(self, name, alter) hinzu.
-- Füge die Methode essen(self) hinzu, die ausgibt: "{self.name} isst...".
+- Füge einen Konstruktor `__init__(self, name, alter)` hinzu.
+- Füge die Methode `essen(self)` hinzu, die ausgibt: "{self.name} isst...".
 
 2. **Erstelle die abgeleitete Klasse Hund**
 - Lass Hund von Tier erben.
-- Füge einen Konstruktor __init__(self, name, alter, rasse) hinzu.
-- Rufe den Konstruktor der Basisklasse (Tier) mithilfe von super() auf, um name und alter zu initialisieren. Initialisiere rasse separat.
-- Füge die Methode bellen(self) hinzu, die ausgibt: "{self.name} bellt: Wuff, wuff!".
+- Füge einen Konstruktor `__init__(self, name, alter, rasse)` hinzu.
+- Rufe den Konstruktor der Basisklasse (Tier) mithilfe von `super()` auf, um name und alter zu initialisieren. Initialisiere `rasse` separat.
+- Füge die Methode `bellen(self)` hinzu, die ausgibt: "{self.name} bellt: Wuff, wuff!".
 
 ***Teste die Vererbung***
-
 1. Erstelle eine Instanz von der Klasse Tier.
+- Erstelle eine Instanz: `kitty = Tier("Kitty", 3)`. 
+- Rufe die Methode `essen()` auf.
 
-Erstelle eine Instanz: kitty = Tier("Kitty", 3). 
-Rufe die Methode essen() auf.
-
-2. Erstelle ein Objekt: bello = Hund("Bello", 5, "Golden Retriever").
-
-Rufe die geerbte Methode essen() auf.
-
-Rufe die spezifische Methode bellen() auf.
+2. Erstelle ein Objekt: `bello = Hund("Bello", 5, "Golden Retriever")`.
+- Rufe die geerbte Methode `essen()` auf.
+- Rufe die spezifische Methode `bellen()` auf.
 
 
 <details> <summary>Schritt-für-Schritt Lösung anzeigen</summary>
@@ -114,11 +109,12 @@ Erklärungen:
    - Spezifische Attribute (`rasse`) müssen separat mit `self.rasse = rasse` initialisiert werden (Spezialisierung).
    
 Was wir gelernt haben:
-
+```
 (OK) Klassen können von anderen Klassen erben (`class Child(Parent):`)
 (OK) Child-Klassen erben Methoden und Attribute der Basisklasse
 (OK) `super().__init__()` wird verwendet, um geerbte Attribute zu initialisieren
 (OK) `super()` ruft Methoden der Elternklasse auf
+```
 </details>
 
 
@@ -133,26 +129,24 @@ Was wir gelernt haben:
 1. **Erstelle die Basisklasse Fahrzeug**
    
 Die Klasse hat:
-- Konstruktor __init__(self, marke, geschwindigkeit)
-- Methode info(self): Gibt "{self.marke} fährt mit {self.geschwindigkeit} km/h." aus
+- Konstruktor `__init__(self, marke, geschwindigkeit)`
+- Methode `info(self):`: Gibt "{self.marke} fährt mit {self.geschwindigkeit} km/h." aus
 
 2. **Erstelle die abgeleitete Klasse Auto**
 - Lass Auto von Fahrzeug erben.
-- Konstruktor der Klasse Auto: __init__(self, marke, geschwindigkeit, ps)
-- Im Konstruktor rufe super().__init__ auf
+- Konstruktor der Klasse Auto: `__init__(self, marke, geschwindigkeit, ps)`
+- Im Konstruktor rufe `super().__init__` auf
 
 3. **Überschreibe die Methode info()**
-Implementiere in der Klasse Auto die Methode info(self) neu.
+Implementiere in der Klasse Auto die Methode `info(self)` neu.
 Die neue Methode soll:
-- Die ursprüngliche Ausgabe der Elternklasse (über super().info()) ausgeben.
+- Die ursprüngliche Ausgabe der Elternklasse (über `super().info()`) ausgeben.
 - Zusätzlich ausgeben: "(Hat {self.ps} PS)".
 
 4. **Teste das Überschreiben**
-
 - Erstelle eine Instanz für ein Fahrzeug
 - Erstelle eine Instanz für ein Auto
-
-- Rufe jeweils die Methode fahren() einmal für das Fahrzeug und einmal für das Auto auf. Vergleiche die Ausgabe.
+- Rufe jeweils die Methode `fahren()` einmal für das Fahrzeug und einmal für das Auto auf. Vergleiche die Ausgabe.
 
 <details> <summary>Schritt-für-Schritt Lösung anzeigen</summary>
 
@@ -216,10 +210,11 @@ Erklärungen:
    
 
 Was wir gelernt haben:
-
+```
 (OK) Methodenüberschreiben ersetzt die Funktionalität der Basisklasse für die Child-Klasse
 (OK) `super().methode()` ruft die überschriebene Methode der Elternklasse auf
 (OK) Man kann Basis-Funktionalität mit spezifischer Logik in der Child-Klasse kombinieren (Erweiterung)
+```
 </details>
 
 
@@ -229,23 +224,22 @@ Was wir gelernt haben:
 **Dauer: ~30-40 Minuten**
 
 **Aufgabe**
-
 Im Folgenden finden ihr zwei Klassen, Angestellter und Manager, die viele redundante Attribute enthalten. Das Ziel ist es, diese Klassen zu generalisieren.
 
 1. **Analysiere die Redundanz**
-- Betrachte die Klassen Angestellter und Manager.
+- Betrachte die Klassen `Angestellter` und `Manager`.
 
 2. **Erstelle die Basisklasse Mitarbeiter (Generalisierung)**
 - Definiere die gemeinsamen Attribute in einem Konstruktor.
-- Füge die gemeinsame Methode info(self) hinzu, die Name und Gehalt ausgibt.
+- Füge die gemeinsame Methode `info(self)` hinzu, die Name und Gehalt ausgibt.
 
 3. **Passe die Child-Klassen an (Spezialisierung)**
 - Lasse Angestellter und Manager von Mitarbeiter erben.
-- Passe ihre Konstruktoren an, indem du super() für die gemeinsamen Attribute verwendest.
+- Passe ihre Konstruktoren an, indem du `super()` für die gemeinsamen Attribute verwendest.
 - Füge die spezifischen Attribute hinzu.
 
 4. **Überschreibe die info()-Methode in Manager**
-- Die Manager.info()-Methode soll die allgemeine Mitarbeiter.info()-Ausgabe verwenden (super().info()) und den spezifischen Bonus ergänzen.
+- Die Manager.info()-Methode soll die allgemeine Mitarbeiter.info()-Ausgabe verwenden (`super().info()`) und den spezifischen Bonus ergänzen.
 
 ```python
 class Angestellter:
@@ -372,17 +366,18 @@ Erklärungen:
    - Im letzten Test durchläuft die Schleife Objekte unterschiedlichen Typs (`Angestellter` und `Manager`), ruft aber die gleichnamige Methode `info()` auf.
    - Python ruft automatisch die **korrekte, spezialisierte Version** der Methode für das jeweilige Objekt auf. Das ist Polymorphie.
 Was wir gelernt haben:
-
+```
 (OK) Generalisierung führt zu Code-Wiederverwendung und besserer Struktur
 (OK) Spezialisierung fügt einzigartige Attribute und überschriebene Methoden hinzu
 (OK) `super()` ist essentiell, um die Vererbungsbeziehung beim Konstruieren und in Methoden zu erhalten
 (OK) Polymorphie ermöglicht es, spezialisierte Objekte in einer gemeinsamen Liste zu verwalten und auf die richtige Methode zuzugreifen
+```
 </details>
 
 ### Selbstcheck: OOP Vertiefung
 1. Was ist der Unterschied zwischen Generalisierung und Spezialisierung bei der Vererbung?
 
-2. Warum ist es in einer Child-Klasse, die einen eigenen __init__ hat, wichtig, super().__init__(...) aufzurufen?
+2. Warum ist es in einer Child-Klasse, die einen eigenen `__init__ hat`, wichtig, `super().__init__(...)` aufzurufen?
 
 3. Wie kann man verhindern, dass beim Überschreiben einer Methode die ursprüngliche Funktionalität der Basisklasse verloren geht?
 
@@ -392,9 +387,9 @@ Geben Sie die Python-Syntax für Vererbung an, bei der LKW von Fahrzeug erbt.
 
 1. Generalisierung ist der Prozess, gemeinsame Eigenschaften in eine neue, allgemeinere Basisklasse zu verschieben (Hierarchie nach oben). Spezialisierung ist das Hinzufügen spezifischer Attribute oder das Überschreiben von Methoden in einer abgeleiteten Child-Klasse (Hierarchie nach unten).
 
-2. Weil der __init__ der Child-Klasse den der Basisklasse ersetzt. Ohne den Aufruf von super().__init__(...) würden die geerbten Attribute (z.B. name, alter) nicht initialisiert.
+2. Weil der `__init__` der Child-Klasse den der Basisklasse ersetzt. Ohne den Aufruf von `super().__init__(...)` würden die geerbten Attribute (z.B. `name`, `alter`) nicht initialisiert.
 
-3. Indem man innerhalb der überschriebenen Methode die ursprüngliche Methode über super().methode_name(...) aufruft und die Rückgabe oder den Effekt zur eigenen Logik hinzufügt.
+3. Indem man innerhalb der überschriebenen Methode die ursprüngliche Methode über `super().methode_name(...)` aufruft und die Rückgabe oder den Effekt zur eigenen Logik hinzufügt.
 
 
 
