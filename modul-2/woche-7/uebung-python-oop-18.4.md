@@ -201,8 +201,8 @@ Erklärungen:
 
 ## Übung 3: Lückentext
 
-**Schwierigkeitsgrad: Einfach**
-**Dauer: 15 Minuten**
+**Schwierigkeitsgrad: GRUNDLAGEN**  
+**Dauer: ~10-15 Minuten**
 
 **Aufgabe** 
 Fülle die zehn Lücken (BLANK_1 bis BLANK_10) im Code aus, um eine korrekte Hierarchie von Tier über Reptil zu Schlange zu erstellen und die Methoden korrekt zu überschreiben.
