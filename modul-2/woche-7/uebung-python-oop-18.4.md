@@ -199,7 +199,119 @@ Erklärungen:
    - `self.hoehe = hoehe` und `self.breite = breite` sorgt dafür, dass die spezifischen Rechteck-Attribute gesetzt werden
 </details>
 
-## Übung 3: Methoden überschreiben
+## Übung 3: Lückentext
+
+**Schwierigkeitsgrad: Einfach**
+**Dauer: 15 Minuten**
+
+**Aufgabe** 
+Fülle die zehn Lücken (BLANK_1 bis BLANK_10) im Code aus, um eine korrekte Hierarchie von Tier über Reptil zu Schlange zu erstellen und die Methoden korrekt zu überschreiben.
+
+**BASISKLASSE 1 (Tier)**
+```python
+class Tier:
+    def __init__(self, name):
+        self.name = name
+        
+    def bewegen(self):
+        return f"{self.name} bewegt sich."
+```
+        
+**BASISKLASSE 2 (Reptil)**
+```python
+
+class Reptil(BLANK_1): # Vererbung 1
+    def __init__(self, name, temperatur):
+        # 1. Basis-Initialisierung (Tier)
+        BLANK_2(name)
+        # Initalisierung der Attribute
+        BLANK_3.temperatur = temperatur
+    
+    def bewegen(self):
+        return f"{tier_bewegung} durch Kriechen."
+```
+
+**CHILD-KLASSE (Schlange)**
+```python
+class Schlange(BLANK_4): # Mehrstufige Vererbung
+    
+    def __init__(self, name, temperatur, laenge, istGiftig):
+        # 1. Basis-Initialisierung (Reptil)
+        BLANK_5(name, temperatur)
+        self.laenge = laenge
+        
+        # Spezifisches Attribut hinzufügen (Spezialisierung)
+        self.ist_giftig = BLANK_6
+        
+    def bewegen(self):
+        # Methode komplett überschreiben
+        return f"Die Schlange {BLANK_7} gleitet über den Boden."
+        
+    def info(self):
+        # Methode, die es nur in Schlange gibt
+        return f"Die giftige Schlange {self.name} ist {BLANK_8} Meter lang und hat eine Temperatur von {BLANK_9} Grad."
+
+# Test
+s1 = Schlange("Viper", 30, 2.5)
+
+print(f"Name: {s1.name}")
+print(s1.bewegen()) 
+print(BLANK_10) # Ruft die Info-Methode auf
+
+```
+
+<details> <summary>Lösung</summary>
+
+```python
+# BASISKLASSE 1 (Tier)
+class Tier:
+    def __init__(self, name):
+        self.name = name
+        
+    def bewegen(self):
+        return f"{self.name} bewegt sich."
+
+        
+# BASISKLASSE 2 (Reptil)
+class Reptil(Tier): # BLANK_1
+    def __init__(self, name, temperatur):
+        # 1. Basis-Initialisierung (Tier)
+        super().__init__(name) # BLANK_2
+        self.temperatur = temperatur #BLANK_3
+    
+    def bewegen(self):
+        return f"{tier_bewegung} durch Kriechen."
+
+
+# CHILD-KLASSE (Schlange)
+class Schlange(Reptil): # BLANK_4
+    
+    def __init__(self, name, temperatur, laenge, istGiftig):
+        # 1. Basis-Initialisierung (Reptil)
+        super().__init__(name, temperatur) # BLANK_5
+        self.laenge = laenge
+        
+        # Spezifisches Attribut hinzufügen (Spezialisierung)
+        self.ist_giftig = istGiftig # BLANK_6 
+        
+    def bewegen(self):
+        # Methode komplett überschreiben
+        return f"Die Schlange {self.name} gleitet über den Boden." # BLANK_7
+        
+    def info(self):
+        # Methode, die es nur in Schlange gibt
+        return f"Die giftige Schlange {self.name} ist {self.laenge} Meter lang und hat eine Temperatur von {self.temperatur} Grad." # BLANK_8, BLANK_9
+
+# Test
+s1 = Schlange("Viper", 30, 2.5)
+
+print(f"Name: {s1.name}")
+print(s1.bewegen()) 
+print(s1.info()) # BLANK_10
+```
+</details>
+
+## Übung 4: Methoden überschreiben
 
 **Schwierigkeitsgrad: Mittel**  
 **Dauer: ~20-25 Minuten**
@@ -298,7 +410,7 @@ Was wir gelernt haben:
 </details>
 
 
-## Übung 4: Mitarbeiter-System (Generalisierung)
+## Übung 5: Mitarbeiter-System (Generalisierung)
 
 **Schwierigkeitsgrad: Fortgeschritten**  
 **Dauer: ~30-40 Minuten**
