@@ -117,9 +117,89 @@ Was wir gelernt haben:
 ```
 </details>
 
+## Übung 2: Vererbungssyntax und Basis-Konstruktor
 
+**Schwierigkeitsgrad: GRUNDLAGEN**  
+**Dauer: ~10-15 Minuten**
 
-## Übung 2: Methoden überschreiben
+**Aufgabe**
+Im folgenden Code-Snippet soll die Klasse Rechteck von der Basisklasse Form erben, um das Attribut farbe zu übernehmen. Vervollständige die Definition der Klasse Rechteck an den markierten Stellen.
+1. Füge die korrekte Vererbungssyntax in die Klassendefinition von Rechteck ein.
+2. Rufe den `__init__` der Basisklasse (Form) in Rechteck korrekt mithilfe von `super()` auf, um `farbe` zu initialisieren.
+3. Initialisiere `breite` und `hoehe` in Rechteck.
+
+Vorgegebener Code:
+```python
+
+class Form:
+    def __init__(self, farbe):
+        self.farbe = farbe
+        print(f"Form erstellt mit Farbe: {self.farbe}")
+        
+    def info(self):
+        return f"Dies ist eine {self.farbe}e Form."
+
+class Rechteck(  # Hier Vererbungssyntax ergänzen
+    def __init__(self, farbe, breite, hoehe):
+        # Hier den Code ergänzen
+        
+        # Hier Attribute initialisieren
+
+# Test
+f = Form("blau")
+r = Rechteck("rot", 10, 5)
+
+print("\n--- Test-Ergebnisse ---")
+print(r.info()) # Sollte die geerbte Methode aufrufen
+print("Breite des Rechtecks: {r.breite}")
+```
+
+<details> <summary>Schritt-für-Schritt Lösung anzeigen</summary>
+
+```python
+
+class Form:
+    def __init__(self, farbe):
+        self.farbe = farbe
+        print(f"Form erstellt mit Farbe: {self.farbe}")
+        
+    def info(self):
+        return f"Dies ist eine {self.farbe}e Form."
+
+class Rechteck(Form): # LÖSUNG 1: Vererbung von Form
+    def __init__(self, farbe, breite, hoehe):
+        
+        # LÖSUNG 2: Aufruf des Basis-Konstruktors
+        super().__init__(farbe) 
+
+        # Lösung 3: Initialisierung der Attribute
+        self.breite = breite
+        self.hoehe = hoehe
+
+# Test
+f = Form("blau")
+r = Rechteck("rot", 10, 5)
+
+print("\n--- Test-Ergebnisse ---")
+# Ausgabe: Dies ist eine rote Form.
+print(r.info()) 
+# Ausgabe: Breite des Rechtecks: 10
+print(f"Breite des Rechtecks: {r.breite}")
+```
+
+Erklärungen:
+
+1. VERERBUNGSSYNTAX:
+   - Die Syntax `class Rechteck(Form):` stellt die direkte Vererbung her: Ein Rechteck *ist* eine Form.
+   
+2. KONSTRUKTOR-AUFRUF:
+   - `super().__init__(farbe)` sorgt dafür, dass die logische Initialisierung von `self.farbe` in der Basisklasse `Form` ausgeführt wird, bevor die `Rechteck`-spezifischen Attribute gesetzt werden.
+  
+3. ATTRIBUTE-INITIALISIEREN:
+   - `self.hoehe = hoehe` und `self.breite = breite` sorgt dafür, dass die spezifischen Rechteck-Attribute gesetzt werden
+</details>
+
+## Übung 3: Methoden überschreiben
 
 **Schwierigkeitsgrad: Mittel**  
 **Dauer: ~20-25 Minuten**
@@ -218,7 +298,7 @@ Was wir gelernt haben:
 </details>
 
 
-## Übung 2: Mitarbeiter-System (Generalisierung)
+## Übung 4: Mitarbeiter-System (Generalisierung)
 
 **Schwierigkeitsgrad: Fortgeschritten**  
 **Dauer: ~30-40 Minuten**
@@ -341,15 +421,7 @@ if __name__ == "__main__":
     # Ruft die überschriebene und erweiterte Manager.info() auf
     print(m1.info()) 
 
-    print("\n--- Typ-Check (Polymorphie-Basis) ---")
-    alle_mitarbeiter = [a1, m1]
     
-    for ma in alle_mitarbeiter:
-        # Hier wird jeweils die korrekte, spezialisierte info()-Methode aufgerufen!
-        print(f"[{ma.__class__.__name__}]: {ma.info()}")
-        
-        # Prüfung auf die Basisklasse
-        print(f"Ist Mitarbeiter? {isinstance(ma, Mitarbeiter)}")
 ```
 
 Erklärungen:
@@ -362,15 +434,11 @@ Erklärungen:
    - Jede Child-Klasse (`Angestellter`, `Manager`) fügt ihre **einzigartigen** Attribute hinzu (`arbeitsstunden`, `bonus`, `abteilung`).
    - Die `info()`-Methode des `Manager` wird überschrieben und um die Bonus-Berechnung spezialisiert.
    
-3. POLYMORPHIE (Grundlage):
-   - Im letzten Test durchläuft die Schleife Objekte unterschiedlichen Typs (`Angestellter` und `Manager`), ruft aber die gleichnamige Methode `info()` auf.
-   - Python ruft automatisch die **korrekte, spezialisierte Version** der Methode für das jeweilige Objekt auf. Das ist Polymorphie.
 Was wir gelernt haben:
 ```
 (OK) Generalisierung führt zu Code-Wiederverwendung und besserer Struktur
 (OK) Spezialisierung fügt einzigartige Attribute und überschriebene Methoden hinzu
 (OK) `super()` ist essentiell, um die Vererbungsbeziehung beim Konstruieren und in Methoden zu erhalten
-(OK) Polymorphie ermöglicht es, spezialisierte Objekte in einer gemeinsamen Liste zu verwalten und auf die richtige Methode zuzugreifen
 ```
 </details>
 
