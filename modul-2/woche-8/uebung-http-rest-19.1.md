@@ -24,6 +24,7 @@ Dauer: ~5 Minuten
 Schwierigkeitsgrad: Grundlegend  
 Dauer: ~5 Minuten
 ​
+
 **Aufgabenstellung:** Ordne jeder HTTP-Methode den korrekten Hauptzweck (Lesen, Erstellen, Aktualisieren, Löschen) zu und geben Sie die deutsche Übersetzung der Methode an.
 ​
 1. **GET**
@@ -45,6 +46,7 @@ Dauer: ~5 Minuten
 Schwierigkeitsgrad: Grundlegend  
 Dauer: ~5 Minuten
 ​
+
 **Aufgabenstellung:** Ordne die folgenden HTTP-Statuscodes der entsprechenden Code-Klasse (1xx, 2xx, 3xx, 4xx oder 5xx) zu und gib ein Beispiel an in welcher Situation dieser Code auftreten kann.
 ​
 | **Statuscode**                | **Bedeutung der Code-Klasse** | **Wann kann dieser Statsucode auftreten?** |
@@ -62,6 +64,7 @@ Dauer: ~5 Minuten
 Schwierigkeitsgrad: Mittel  
 Dauer: ~10 Minuten
 ​
+
 **Aufgabenstellung:** Erstelle ein gültiges JSON-Objekt, das Informationen über ein Buch speichert.
 ​
 1. Das JSON-Objekt muss mindestens die folgenden Schlüssel-Wert-Paare enthalten:
@@ -80,6 +83,7 @@ Dauer: ~10 Minuten
 Schwierigkeitsgrad: Fortgeschritten  
 Dauer: ~15 Minuten
 ​
+
 **Aufgabenstellung:** Beschreibe und vergleiche die HTTP-Methoden `POST` und `PUT` anhand ihrer Eigenschaften und Anwendungsfälle.
 ​
 1. Definieren Sie kurz den Zweck von `POST` und `PUT`.
