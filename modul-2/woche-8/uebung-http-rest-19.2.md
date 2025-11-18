@@ -1,6 +1,8 @@
 ## 1. Grundlagen API und API-Call
 
-Schwierigkeitsgrad: **Grundlegend** Dauer: **~10 Minuten**
+Schwierigkeitsgrad: **Grundlegend** 
+
+Dauer: **~10 Minuten**
 
 Aufgabenstellung: Beantworte die folgenden Fragen, um die Konzepte von API, API-Call und deren Struktur zu definieren.
 
@@ -15,7 +17,9 @@ Aufgabenstellung: Beantworte die folgenden Fragen, um die Konzepte von API, API-
 
 ## 2. API-Bereitstellung und Parameter
 
-Schwierigkeitsgrad: **Grundlegend** Dauer: **~15 Minuten**
+Schwierigkeitsgrad: **Grundlegend** 
+
+Dauer: **~15 Minuten**
 
 Aufgabenstellung: Beantworte die Fragen zur Bereitstellung und den Regeln der API-Nutzung.
 
@@ -32,7 +36,9 @@ Aufgabenstellung: Beantworte die Fragen zur Bereitstellung und den Regeln der AP
 
 ## 3. Postman-Analyse und Statusprüfung
 
-Schwierigkeitsgrad: **Mittel** Dauer: **~15 Minuten**
+Schwierigkeitsgrad: **Mittel** 
+
+Dauer: **~15 Minuten**
 
 Aufgabenstellung: Postman wird zum Testen von API-Anfragen verwendet. Führe einen Call durch und analysiere das Ergebnis.
 
@@ -49,7 +55,9 @@ Aufgabenstellung: Postman wird zum Testen von API-Anfragen verwendet. Führe ein
 
 ## 4. Das REST-Prinzip und `requests`-Statusprüfung
 
-Schwierigkeitsgrad: **Mittel** Dauer: **~20 Minuten**
+Schwierigkeitsgrad: **Mittel** 
+
+Dauer: **~20 Minuten**
 
 Aufgabenstellung: Das REST-Prinzip und die Statuscode-Prüfung sind Kernbestandteile der Web-API-Kommunikation.
 
@@ -64,7 +72,9 @@ Aufgabenstellung: Das REST-Prinzip und die Statuscode-Prüfung sind Kernbestandt
 
 ## 5. Implementierung eines API-Calls mit Python
 
-Schwierigkeitsgrad: **Fortgeschritten** Dauer: **~50 Minuten**
+Schwierigkeitsgrad: **Fortgeschritten** 
+
+Dauer: **~50 Minuten**
 
 Aufgabenstellung: Implementiere ein vollständiges Python-Skript, das einen API-Call mit der `requests`-Bibliothek durchführt und das Ergebnis basierend auf dem Statuscode analysiert.
 
