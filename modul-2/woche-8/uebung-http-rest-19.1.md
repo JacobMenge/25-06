@@ -10,6 +10,7 @@ In dieser Übung lernst du die grundlegenden Konzepte des Hypertext Transfer Pro
 ​
 Schwierigkeitsgrad: Grundlegend  
 Dauer: ~5 Minuten
+
 ​
 **Aufgabenstellung:** Beantworte die folgenden Fragen zu HTTP:
 ​
