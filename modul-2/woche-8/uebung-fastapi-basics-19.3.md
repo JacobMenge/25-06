@@ -1,6 +1,7 @@
 ## 1. Der erste statische GET-Endpunkt
 
 Schwierigkeitsgrad: **Grundlegend** 
+
 Dauer: **~20 Minuten**
 
 Aufgabenstellung: Schreibe den minimalen Code, um eine FastAPI-Anwendung zu erstellen und einen einfachen, statischen Endpunkt zu definieren.
@@ -19,6 +20,7 @@ Aufgabenstellung: Schreibe den minimalen Code, um eine FastAPI-Anwendung zu erst
 ## 2. Path Operation Decorator und Datenrückgabe
 
 Schwierigkeitsgrad: **Mittel** 
+
 Dauer: **~25 Minuten**
 
 Aufgabenstellung: Erkläre die Funktion des Decorators und demonstriere die Rückgabe einer komplexeren Datenstruktur (Liste von Objekten).
@@ -36,6 +38,7 @@ Aufgabenstellung: Erkläre die Funktion des Decorators und demonstriere die Rüc
 ## 3. Interaktive Dokumentation und API-Test
 
 Schwierigkeitsgrad: **Mittel** 
+
 Dauer: **~30 Minuten**
 
 Aufgabenstellung: Nutze die automatisch generierte Dokumentation, um deinen Service zu testen und seine Vorteile zu verstehen.
@@ -54,6 +57,7 @@ Aufgabenstellung: Nutze die automatisch generierte Dokumentation, um deinen Serv
 ## 4. GET-Endpunkt mit Pfad-Parametern und Typisierung
 
 Schwierigkeitsgrad: **Fortgeschritten** 
+
 Dauer: **~30 Minuten**
 
 Aufgabenstellung: Definiere einen Endpunkt, der dynamische Daten über den Pfad entgegennimmt, und erzwinge den Datentyp zur Validierung.
