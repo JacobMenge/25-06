@@ -17,8 +17,6 @@ In dieser Übung lernst du:
 
 ## Lernziele
 
-Nach diesem Kurs kannst du:
-
 **HAUPTZIEL: Eigene Datenbanken erstellen**
 - Neue Datenbanken anlegen
 - Tabellen mit sinnvoller Struktur erstellen
