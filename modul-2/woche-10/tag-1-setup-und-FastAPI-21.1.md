@@ -533,7 +533,7 @@ Morgen werden wir:
 - **CRUD-Operationen** komplett umsetzen (Create, Read, Update, Delete)
 - **Path Parameters** kennenlernen (z.B. `/notes/{note_id}`)
 
-**Deine Daten werden endlich gespeichert bleiben - auch nach Neustart!** 🎉
+**Deine Daten werden endlich gespeichert bleiben, auch nach Neustart!** 
 
 ---
 
@@ -633,4 +633,4 @@ def get_first_note():
         )
 ```
 
-**Wenn ihr Fragen habt, meldet euch bei Patrick oder mir. Viel Erfolg und bis morgen! **
+** Wenn ihr Fragen habt, meldet euch bei Patrick oder mir. Viel Erfolg und bis morgen! **
