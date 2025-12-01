@@ -49,8 +49,11 @@ git init
 
 # Virtual Environment erstellen
 python -m venv venv
+```
 
-# Virtual Environment aktivieren
+**Jetzt Virtual Environment aktivieren - WICHTIG: Nur den für dein System passenden Befehl ausführen!**
+
+```bash
 # Linux/Mac:
 source venv/bin/activate
 
@@ -59,7 +62,15 @@ venv\Scripts\activate
 
 # Windows PowerShell:
 .\venv\Scripts\Activate.ps1
+```
 
+**PowerShell-Hinweis:** Falls beim Aktivieren ein Fehler wegen der Execution Policy erscheint, kannst du diese für deinen Benutzer anpassen:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+**Achtung:** In Firmenumgebungen kann dies durch Gruppenrichtlinien blockiert sein - nutze dann stattdessen die Windows CMD.
+
+```bash
 # FastAPI installieren (empfohlen: mit [standard])
 pip install "fastapi[standard]"
 
@@ -76,9 +87,8 @@ pip freeze > requirements.txt
 2. **`git init`**: Initialisiert ein Git-Repository - damit können wir später alle Änderungen nachverfolgen
 3. **`python -m venv venv`**: Erstellt ein "Virtual Environment" - eine isolierte Python-Umgebung nur für dieses Projekt
    - **Warum?** Damit sich die Pakete verschiedener Projekte nicht gegenseitig stören
-4. **Virtual Environment aktivieren**: Je nach System unterschiedliche Befehle
+4. **Virtual Environment aktivieren**: Je nach System unterschiedliche Befehle - **führe nur den für dein System passenden Befehl aus!**
    - Nach der Aktivierung siehst du `(venv)` vor deinem Terminal-Prompt
-   - **Windows PowerShell-Tipp:** Falls ein Fehler wegen Execution Policy kommt: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 5. **`pip install "fastapi[standard]"`**: 
    - **fastapi[standard]**: Installiert FastAPI zusammen mit uvicorn und empfohlenen Extras
    - **uvicorn**: Der ASGI-Server, der unsere FastAPI-Anwendung ausführt (vergleichbar mit einem Webserver wie Apache)
@@ -114,8 +124,8 @@ app = FastAPI(title="Mini Notes API")
 
 # Dummy-Daten (später: echte Datenbank)
 notes = [
-    {"id": 1, "text": "Erste Notiz", "created_at": "2024-12-01T10:00:00"},
-    {"id": 2, "text": "Zweite Notiz", "created_at": "2024-12-01T14:30:00"},
+    {"id": 1, "text": "Erste Notiz", "created_at": "2025-12-01T10:00:00"},
+    {"id": 2, "text": "Zweite Notiz", "created_at": "2025-12-01T14:30:00"},
 ]
 
 @app.get("/health")
@@ -169,7 +179,9 @@ uvicorn main:app --reload
 - **`--reload`**: Auto-Restart bei Code-Änderungen
   - **Sehr praktisch während der Entwicklung!**
   - Sobald du `main.py` speicherst, startet der Server automatisch neu
-  - **Achtung:** Nur für Development! In Production niemals verwenden, da es zusätzliche Ressourcen verbraucht und Sicherheitsrisiken birgt.
+  - **Achtung:** Nur für Development! Verbraucht mehr Ressourcen und kann instabiler sein - niemals in Production verwenden!
+
+**Alternative (moderner):** Ab FastAPI 0.111.0 kannst du auch `fastapi dev main.py` nutzen - das macht dasselbe wie `uvicorn --reload`, aber einfacher. Wir bleiben hier bei `uvicorn`, damit du genau verstehst, was passiert.
 
 **Was siehst du im Terminal?**
 ```
@@ -311,14 +323,14 @@ def health_check():
 **Erklärung:**
 - Zuerst importieren wir `datetime` ganz oben in der Datei
 - `datetime.now()` gibt das aktuelle Datum und die Uhrzeit zurück
-- `.isoformat()` wandelt es in einen String im ISO-Format um (z.B. "2024-12-01T10:30:00")
+- `.isoformat()` wandelt es in einen String im ISO-Format um (z.B. "2025-12-01T10:30:00")
 - Das ist wichtig, weil JSON keine datetime-Objekte direkt unterstützt
 
 **Beispiel-Antwort:**
 ```json
 {
   "status": "ok",
-  "timestamp": "2024-12-01T10:30:00.123456"
+  "timestamp": "2025-12-01T10:30:00.123456"
 }
 ```
 
@@ -332,7 +344,7 @@ Erstelle einen neuen Endpoint `GET /notes/count`, der die Anzahl der gespeichert
 
 **Tipp:** Die Python-Funktion `len()` gibt die Länge einer Liste zurück.
 
-**Wichtiger Hinweis für später:** Fixe Pfade wie `/notes/count` müssen **vor** dynamischen Pfaden wie `/notes/{note_id}` definiert werden, sonst wird "count" als ID interpretiert!
+**Wichtiger Hinweis für später:** Fixe Pfade wie `/notes/count` müssen **vor** dynamischen Pfaden wie `/notes/{note_id}` definiert werden, sonst wird "count" als ID interpretiert - vor allem, wenn `{note_id}` als `str` definiert ist!
 
 <details>
 <summary>💡 Lösung anzeigen</summary>
@@ -403,7 +415,7 @@ def get_first_note():
 {
   "id": 1,
   "text": "Erste Notiz",
-  "created_at": "2024-12-01T10:00:00"
+  "created_at": "2025-12-01T10:00:00"
 }
 ```
 
@@ -521,7 +533,7 @@ Morgen werden wir:
 - **CRUD-Operationen** komplett umsetzen (Create, Read, Update, Delete)
 - **Path Parameters** kennenlernen (z.B. `/notes/{note_id}`)
 
-**Deine Daten werden endlich gespeichert bleiben - auch nach Neustart!** 
+**Deine Daten werden endlich gespeichert bleiben - auch nach Neustart!** 🎉
 
 ---
 
@@ -552,8 +564,8 @@ app = FastAPI(
 # Dummy-Daten (werden bei Neustart zurückgesetzt!)
 # Das ist nur temporär - morgen kommt SQLite!
 notes = [
-    {"id": 1, "text": "Erste Notiz", "created_at": "2024-12-01T10:00:00"},
-    {"id": 2, "text": "Zweite Notiz", "created_at": "2024-12-01T14:30:00"},
+    {"id": 1, "text": "Erste Notiz", "created_at": "2025-12-01T10:00:00"},
+    {"id": 2, "text": "Zweite Notiz", "created_at": "2025-12-01T14:30:00"},
 ]
 
 @app.get("/")
@@ -621,4 +633,4 @@ def get_first_note():
         )
 ```
 
-**Bei Fragen meldet euch gerne bei mir oder Patrick. Viel Erfolg und bis morgen! **
+**Wenn ihr Fragen habt, meldet euch bei Patrick oder mir. Viel Erfolg und bis morgen! **
