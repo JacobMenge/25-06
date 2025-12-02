@@ -392,7 +392,7 @@ def create_note(note: NoteCreate):
 
 **NIEMALS so:**
 ```python
-#  GEFÄHRLICH - SQL-Injection möglich!
+# GEFÄHRLICH - SQL-Injection möglich!
 cursor.execute(f"INSERT INTO notes (text) VALUES ('{note.text}')")
 ```
 
@@ -405,7 +405,7 @@ Das würde die gesamte Tabelle löschen!
 
 **IMMER so:**
 ```python
-#  SICHER - Parameter-Binding
+# SICHER - Parameter-Binding
 cursor.execute("INSERT INTO notes (text) VALUES (?)", (note.text,))
 ```
 
@@ -701,8 +701,8 @@ def search_notes(q: str):
   - `%test`: Findet Strings, die mit "test" enden
 - **`f"%{q}%"`**: Packt den Suchbegriff zwischen Wildcards
   - **Wichtig:** Der f-String ist hier OK, weil wir das Ergebnis dann als Parameter übergeben!
-  - Niemals: `cursor.execute(f"... LIKE '%{q}%'")` 
-  - Immer: `cursor.execute("... LIKE ?", (f"%{q}%",))` 
+  - Niemals: `cursor.execute(f"... LIKE '%{q}%'")` ❌
+  - Immer: `cursor.execute("... LIKE ?", (f"%{q}%",))` ✅
 
 **Beispiel-Requests:**
 - `/notes/search?q=Einkauf`
@@ -764,7 +764,7 @@ def init_db():
     """)
     conn.commit()
     conn.close()
-    print(" Datenbank initialisiert!")
+    print("Datenbank initialisiert!")
 
 def get_all_notes() -> list:
     """Gibt alle Notizen zurück."""
@@ -945,97 +945,6 @@ mini-api/
 
 ---
 
-### Übung 4: Error Handling verbessern
-
-Füge besseres Error Handling für Datenbank-Fehler hinzu.
-
-**Anforderungen:**
-- Fange alle möglichen Datenbank-Fehler ab
-- Gib sprechende Fehlermeldungen zurück
-- Nutze Try-Except-Blöcke
-
-<details>
-<summary>💡 Lösung anzeigen</summary>
-
-```python
-from fastapi import FastAPI, HTTPException, status
-
-@app.post("/notes", status_code=status.HTTP_201_CREATED)
-def create_note(note: NoteCreate):
-    """
-    Neue Notiz erstellen (mit verbessertem Error Handling)
-    """
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        
-        cursor.execute(
-            "INSERT INTO notes (text) VALUES (?)",
-            (note.text,)
-        )
-        
-        new_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
-        
-        return {
-            "id": new_id,
-            "text": note.text,
-            "message": "Notiz erfolgreich erstellt"
-        }
-        
-    except sqlite3.IntegrityError as e:
-        # Constraint-Verletzung (z.B. NOT NULL)
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Datenbank-Constraint verletzt: {str(e)}"
-        )
-    
-    except sqlite3.OperationalError as e:
-        # Datenbank-Fehler (z.B. Tabelle existiert nicht)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Datenbank-Fehler: {str(e)}"
-        )
-    
-    except Exception as e:
-        # Unerwarteter Fehler
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Unerwarteter Fehler: {str(e)}"
-        )
-```
-
-**Erklärung:**
-- **`try-except`**: Fängt Fehler ab, bevor sie die API crashen
-- **Spezifische Exceptions zuerst**: Von spezifisch zu allgemein
-- **HTTP-Statuscodes aus `fastapi.status`**: Lesbare Namen statt nackten Zahlen
-- **`finally:`** könnte genutzt werden, um `conn.close()` zu garantieren:
-
-```python
-conn = None
-try:
-    conn = sqlite3.connect(DATABASE)
-    # ... Code ...
-except Exception as e:
-    raise HTTPException(...)
-finally:
-    if conn:
-        conn.close()
-```
-
-**Wichtige HTTP-Statuscodes:**
-- **200 OK**: Erfolgreiche Anfrage
-- **201 Created**: Ressource wurde erstellt
-- **400 Bad Request**: Ungültige Anfrage
-- **404 Not Found**: Ressource nicht gefunden
-- **422 Unprocessable Entity**: Validierungsfehler
-- **500 Internal Server Error**: Serverfehler
-
-</details>
-
----
-
 ## Zusammenfassung Tag 2
 
 **Was haben wir gelernt?**
@@ -1061,6 +970,7 @@ finally:
 - Pydantic Models für Validierung
 - HTTP-Statuscodes korrekt nutzen
 - HTTPException für Fehlerbehandlung
+
  **Persistenz:**
 - Daten bleiben nach Neustart erhalten!
 - `notes.db`-Datei enthält alle Daten
@@ -1071,14 +981,14 @@ finally:
 ## Ausblick auf Tag 3
 
 Morgen werden wir:
+- **Error Handling** richtig implementieren (try-except, bessere Fehlerbehandlung)
 - **SQLAlchemy** einführen (ORM = Object-Relational Mapping)
 - **Async/Await** nutzen für bessere Performance
-- **Beziehungen zwischen Tabellen** (1:n, m:n)
-- **Fortgeschrittene Queries** (Joins, Aggregationen)
+- **Beziehungen zwischen Tabellen** verstehen (1:n, m:n)
 - **Context Manager** für automatisches Connection-Handling
-- **Dependency Injection** in FastAPI
+- **Dependency Injection** in FastAPI kennenlernen
 
-**Mit SQLAlchemy wird der Code noch sauberer und wartbarer!**
+**Unser Code wird noch professioneller und wartbarer!**
 
 ---
 
@@ -1310,35 +1220,23 @@ def create_note(note: NoteCreate):
     Erstellt eine neue Notiz in der Datenbank und gibt sie zurück.
     Der HTTP-Statuscode 201 signalisiert erfolgreiche Erstellung.
     """
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        
-        cursor.execute(
-            "INSERT INTO notes (text) VALUES (?)",
-            (note.text,)
-        )
-        
-        new_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
-        
-        return {
-            "id": new_id,
-            "text": note.text,
-            "message": "Notiz erfolgreich erstellt"
-        }
-        
-    except sqlite3.IntegrityError as e:
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Datenbank-Constraint verletzt: {str(e)}"
-        )
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Fehler beim Erstellen der Notiz: {str(e)}"
-        )
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "INSERT INTO notes (text) VALUES (?)",
+        (note.text,)
+    )
+    
+    new_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    
+    return {
+        "id": new_id,
+        "text": note.text,
+        "message": "Notiz erfolgreich erstellt"
+    }
 
 @app.put("/notes/{note_id}")
 def update_note(note_id: int, note: NoteUpdate):
@@ -1447,24 +1345,5 @@ Thumbs.db
 
 ---
 
-## Checkliste Tag 2
-
-Hast du alles geschafft? 
-
-- [ ] SQLite verstanden und `notes.db` erstellt
-- [ ] `init_db()` implementiert und getestet
-- [ ] GET /notes aus Datenbank liest
-- [ ] POST /notes in Datenbank schreibt
-- [ ] GET /notes/{id} einzelne Notiz zurückgibt
-- [ ] DELETE /notes/{id} implementiert (Mini-Aufgabe)
-- [ ] PUT /notes/{id} implementiert (Übung 1)
-- [ ] GET /notes/search mit Query-Parameter (Übung 2)
-- [ ] API neu gestartet und Daten sind noch da!
-- [ ] Swagger UI getestet: http://localhost:8000/docs
-- [ ] Code committed mit Git
-
----
-
-**Glückwunsch! Du hast jetzt eine voll funktionsfähige CRUD-API mit persistenter Datenspeicherung!** 
 
 **Bei Fragen meldet euch bei Patrick oder mir. Viel Erfolg und bis morgen!**
