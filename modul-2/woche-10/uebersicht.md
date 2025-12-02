@@ -1,6 +1,6 @@
-# Mini-API Kurs: Wochenübersicht
+# Mini-API: Wochenübersicht
 
-## Kursziel
+## Wochenziele
 
 Am Ende der Woche haben wir:
 - Eine FastAPI-Anwendung mit SQLite-Datenbank

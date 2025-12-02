@@ -1,11 +1,10 @@
 # Tag 2: SQLite anbinden + CRUD-Operationen
 
 ## Lernziele
-* SQLite verstehen und als persistente Datenspeicherung einrichten
-* Datenbank-Tabellen erstellen und verstehen
+* SQLite als persistente Datenspeicherung einrichten
+* Datenbank-Tabellen erstellen
 * CRUD-Operationen implementieren (Create, Read, Update, Delete)
 * Mit SQL-Abfragen arbeiten und SQL-Injection vermeiden
-* POST-, PUT- und DELETE-Requests in FastAPI nutzen
 * Daten bleiben nach Neustart der API erhalten!
 
 ---
@@ -14,42 +13,23 @@
 
 ### Was ist eine Datenbank?
 
-Stell dir eine Datenbank wie einen **digitalen Aktenschrank** vor:
-- **In-Memory-Daten (Tag 1)** = Post-it-Zettel auf deinem Schreibtisch → weg, wenn du aufräumst
-- **SQLite-Datenbank** = Ordner im Aktenschrank → bleiben für immer, bis du sie löschst
+**In-Memory-Daten (Tag 1)** = Post-it-Zettel → weg, wenn du aufräumst  
+**SQLite-Datenbank** = Ordner im Aktenschrank → bleiben für immer
 
 Eine Datenbank speichert strukturierte Daten dauerhaft auf der Festplatte.
 
 ### Warum SQLite?
 
-**SQLite ist perfekt für:**
-* **Einfache bis mittlere Projekte** (bis zu Hunderttausenden von Einträgen)
-* **Prototypen und MVPs** (Minimum Viable Products)
-* **Desktop-Anwendungen** (z.B. Browser nutzen SQLite!)
-* **Embedded Systems** und IoT-Geräte
-* **Entwicklung und Testing** (bevor man zu größeren DBs wie PostgreSQL wechselt)
-
-**Vorteile von SQLite:**
-* **Serverlos**: Keine separate Datenbank-Installation nötig
+**Vorteile:**
+* **Serverlos**: Keine separate Installation nötig
 * **Eine Datei = komplette Datenbank**: `notes.db` enthält alles
-* **In Python eingebaut**: `import sqlite3` - keine Installation nötig!
-* **Schnell**: Optimal für Read-Heavy-Workloads
-* **Zuverlässig**: Wird in Milliarden von Geräten weltweit genutzt
-* **ACID-konform**: Garantiert Datenkonsistenz
-
-**Einschränkungen von SQLite:**
-* **Nicht für viele gleichzeitige Schreibzugriffe** (Writes sind seriell)
-* **Keine User-Management-Features** (für Production oft PostgreSQL/MySQL besser)
-* **Begrenzte Größe** (theoretisch 281 TB, praktisch aber besser unter 1 GB)
-
-### Vergleich zu Tag 1
+* **In Python eingebaut**: `import sqlite3` - fertig!
+* **Perfekt für kleine bis mittlere Projekte**
 
 | Aspekt | In-Memory (Tag 1) | SQLite (heute) |
 |--------|------------------|----------------|
 | **Speicherort** | RAM (flüchtig) | Festplatte (persistent) |
-| **Nach Neustart** | Daten weg | Daten bleiben erhalten |
-| **Performance** | Sehr schnell | Etwas langsamer, aber immer noch schnell |
-| **Skalierbar** | Nein | Ja (bis zu einem gewissen Grad) |
+| **Nach Neustart** | Daten weg | Daten bleiben |
 | **Einsatzgebiet** | Tests, Demos | Produktiv einsetzbar |
 
 ---
@@ -96,37 +76,21 @@ Jetzt erweitern wir unsere `main.py` um Datenbank-Funktionalität. Öffne `main.
 ```python
 """
 Mini Notes API - Tag 2: SQLite Version
-=======================================
-Jetzt mit persistenter Datenspeicherung!
-Alle Daten bleiben nach Neustart erhalten.
 """
 import sqlite3
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
-from datetime import datetime
+from pydantic import BaseModel
 
 # FastAPI-App erstellen
-app = FastAPI(
-    title="Mini Notes API",
-    description="Eine API zum Speichern von Notizen mit SQLite-Datenbank",
-    version="2.0.0"
-)
+app = FastAPI(title="Mini Notes API", version="2.0.0")
 
 # Datenbank-Dateiname
 DATABASE = "notes.db"
 
 def init_db():
-    """
-    Initialisiert die Datenbank und erstellt die Tabelle.
-    
-    Wird beim Start/Import der API ausgeführt.
-    Mit uvicorn --reload kann dies mehrfach passieren (bei Code-Änderungen),
-    ist aber dank IF NOT EXISTS unkritisch.
-    """
+    """Datenbank initialisieren und Tabelle erstellen."""
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
-    
-    # Tabelle erstellen (IF NOT EXISTS = sicher, kann mehrfach aufgerufen werden)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS notes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -134,158 +98,70 @@ def init_db():
             created_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
     """)
-    
     conn.commit()
     conn.close()
-    print("Datenbank initialisiert!")
 
-# Datenbank beim Start der API initialisieren
+# Datenbank beim Start initialisieren
 init_db()
 ```
 
-**Code-Erklärung Zeile für Zeile:**
+**Was passiert hier?**
 
-1. **`import sqlite3`**: Python's eingebautes SQLite-Modul
-2. **`DATABASE = "notes.db"`**: Name unserer Datenbank-Datei
-   - Diese Datei wird automatisch erstellt, wenn sie nicht existiert
-   - Sie liegt im selben Ordner wie `main.py`
-3. **`def init_db():`**: Funktion zur Datenbank-Initialisierung
-4. **`sqlite3.connect(DATABASE)`**: Öffnet eine Verbindung zur Datenbank
-   - Wenn die Datei nicht existiert, wird sie erstellt
-   - Diese Verbindung muss später mit `.close()` geschlossen werden!
-5. **`cursor = conn.cursor()`**: Erstellt einen Cursor
-   - Der Cursor führt SQL-Befehle aus (wie ein Zeiger in der DB)
-6. **SQL-Befehl `CREATE TABLE IF NOT EXISTS`**:
-   - **`CREATE TABLE`**: Erstellt eine neue Tabelle
-   - **`IF NOT EXISTS`**: Nur erstellen, wenn sie noch nicht da ist (wichtig!)
-   - **`id INTEGER PRIMARY KEY AUTOINCREMENT`**: 
-     - `INTEGER`: Ganzzahl
-     - `PRIMARY KEY`: Eindeutiger Identifikator (jede Zeile hat eine einzigartige ID)
-     - `AUTOINCREMENT`: ID wird automatisch hochgezählt (1, 2, 3, ...)
-   - **`text TEXT NOT NULL`**:
-     - `TEXT`: String/Text
-     - `NOT NULL`: Darf nicht leer sein
-   - **`created_at TEXT DEFAULT CURRENT_TIMESTAMP`**:
-     - `TEXT`: Wir speichern das Datum als Text
-     - `DEFAULT CURRENT_TIMESTAMP`: Wird automatisch auf die aktuelle Zeit gesetzt
-     - SQLite liefert das Format `YYYY-MM-DD HH:MM:SS` in UTC (z.B. "2025-12-01 10:30:00")
-7. **`conn.commit()`**: Speichert die Änderungen in der Datenbank
-   - **Wichtig:** Ohne `commit()` gehen Änderungen verloren!
-8. **`conn.close()`**: Schließt die Verbindung
-   - **Wichtig:** Immer die Verbindung schließen, sonst können Probleme entstehen!
+1. **`sqlite3.connect(DATABASE)`**: Öffnet/erstellt die Datenbankdatei
+2. **`cursor = conn.cursor()`**: Erstellt einen Cursor zum Ausführen von SQL-Befehlen
+3. **`CREATE TABLE IF NOT EXISTS`**: Erstellt die Tabelle nur, wenn sie noch nicht existiert
+   - `id`: Eindeutige ID (automatisch hochgezählt)
+   - `text`: Der Notiztext (darf nicht leer sein)
+   - `created_at`: Zeitstempel (wird automatisch gesetzt)
+4. **`conn.commit()`**: Speichert die Änderungen
+5. **`conn.close()`**: Schließt die Verbindung
 
-**Was ist der Unterschied zwischen `cursor` und `connection`?**
-- **Connection**: Die Verbindung zur Datenbank-Datei (wie eine Telefonleitung)
-- **Cursor**: Das Werkzeug, um SQL-Befehle auszuführen (wie ein Telefonhörer)
+**Wichtig:** Mit `uvicorn --reload` kann `init_db()` mehrfach aufgerufen werden - das ist dank `IF NOT EXISTS` aber unkritisch.
 
 ---
 
-### 3. Root- und Health-Endpoints beibehalten
+### 3. Root-Endpoint
 
-Füge jetzt die Basic-Endpoints hinzu (diese bleiben fast unverändert):
+Füge den Root-Endpoint hinzu:
 
 ```python
 @app.get("/")
 def root():
-    """
-    API-Übersicht
-    
-    Gibt grundlegende Informationen über die API zurück.
-    """
+    """API-Übersicht"""
     return {
         "name": "Mini Notes API",
-        "description": "Eine API zum Speichern von Notizen mit SQLite-Datenbank",
         "version": "2.0.0",
-        "database": "SQLite (persistent)",
-        "endpoints": ["/health", "/notes", "/notes/{id}"],
-        "docs": "/docs"
-    }
-
-@app.get("/health")
-def health_check():
-    """
-    Health-Check Endpoint mit DB-Status
-    
-    Prüft, ob die API UND die Datenbank erreichbar sind.
-    """
-    # Datenbank-Verbindung testen
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM notes")
-        count = cursor.fetchone()[0]
-        conn.close()
-        db_status = "ok"
-    except Exception as e:
-        db_status = f"error: {str(e)}"
-        count = None
-    
-    return {
-        "status": "ok",
-        "timestamp": datetime.now().isoformat(),
-        "database": db_status,
-        "notes_count": count
+        "database": "SQLite",
+        "endpoints": ["/notes", "/notes/{id}"]
     }
 ```
 
-**Neu im Health-Check:**
-- Wir testen jetzt auch die Datenbank-Verbindung
-- Zeigt die Anzahl der Notizen an
-- Falls die DB nicht erreichbar ist, wird ein Fehler angezeigt
-
 ---
 
-### 4. GET /notes - Alle Notizen aus der Datenbank lesen
-
-Jetzt kommt der erste "richtige" Datenbank-Endpoint:
+### 4. GET /notes - Alle Notizen aus der Datenbank
 
 ```python
 @app.get("/notes")
 def get_all_notes():
-    """
-    Alle Notizen abrufen
-    
-    Liest alle Notizen aus der SQLite-Datenbank und gibt sie zurück.
-    """
+    """Alle Notizen abrufen"""
     conn = sqlite3.connect(DATABASE)
-    
-    # row_factory ermöglicht Dict-Zugriff auf Zeilen
-    conn.row_factory = sqlite3.Row
-    
+    conn.row_factory = sqlite3.Row  # Ermöglicht Dict-Zugriff
     cursor = conn.cursor()
+    
     cursor.execute("SELECT * FROM notes ORDER BY id DESC")
     rows = cursor.fetchall()
     conn.close()
     
-    # Konvertiere Row-Objekte zu Dictionaries
     return [dict(row) for row in rows]
 ```
 
-**Code-Erklärung:**
+**Was passiert hier?**
 
-1. **`conn.row_factory = sqlite3.Row`**: 
-   - Ohne diese Zeile bekommen wir nur Tupel zurück: `(1, "Text", "2025-12-01")`
-   - Mit dieser Zeile bekommen wir Dict-ähnliche Objekte: `{"id": 1, "text": "Text", ...}`
-   - Das macht die Arbeit viel einfacher!
-2. **`SELECT * FROM notes ORDER BY id DESC`**:
-   - `SELECT *`: Wähle alle Spalten aus
-   - `FROM notes`: Aus der Tabelle "notes"
-   - `ORDER BY id DESC`: Sortiere nach ID, neueste zuerst (DESC = descending)
-3. **`cursor.fetchall()`**: Holt alle Ergebnisse auf einmal
-   - Gibt eine Liste von Row-Objekten zurück
-   - Alternative: `fetchone()` für nur ein Ergebnis
-4. **`[dict(row) for row in rows]`**: List Comprehension
-   - Wandelt jedes Row-Objekt in ein normales Dictionary um
-   - FastAPI wandelt das dann automatisch in JSON um
-
-**Wichtige SQL-Basics:**
-
-| SQL-Befehl | Bedeutung | Beispiel |
-|------------|-----------|----------|
-| `SELECT` | Daten abrufen | `SELECT * FROM notes` |
-| `INSERT` | Daten einfügen | `INSERT INTO notes (text) VALUES (?)` |
-| `UPDATE` | Daten ändern | `UPDATE notes SET text = ? WHERE id = ?` |
-| `DELETE` | Daten löschen | `DELETE FROM notes WHERE id = ?` |
+1. **`conn.row_factory = sqlite3.Row`**: Zeilen werden als Dict-ähnliche Objekte zurückgegeben (statt Tupel)
+2. **`SELECT * FROM notes`**: Wähle alle Spalten aus der `notes`-Tabelle
+3. **`ORDER BY id DESC`**: Sortiere nach ID, neueste zuerst
+4. **`fetchall()`**: Holt alle Ergebnisse auf einmal
+5. **`[dict(row) for row in rows]`**: Wandelt Rows in normale Dictionaries um
 
 ---
 
@@ -294,118 +170,58 @@ def get_all_notes():
 Bevor wir POST implementieren, brauchen wir ein Datenmodell:
 
 ```python
-from pydantic import BaseModel, Field
-
 class NoteCreate(BaseModel):
-    """
-    Schema für das Erstellen einer neuen Notiz.
-    
-    Pydantic validiert automatisch:
-    - Feld 'text' ist vorhanden
-    - Typ ist String
-    - Mindestlänge ist 1 Zeichen (darf nicht leer sein)
-    """
-    text: str = Field(min_length=1, examples=["Einkaufen gehen: Milch, Brot, Eier"])
-    
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Einkaufen gehen: Milch, Brot, Eier"
-            }
-        }
-    }
+    """Schema für das Erstellen einer Notiz."""
+    text: str
 ```
 
 **Was ist Pydantic?**
-- Pydantic ist eine **Datenvalidierungs-Bibliothek**
-- Sie prüft automatisch, ob die empfangenen Daten das richtige Format haben
-- Wenn ein Feld fehlt oder falsch ist, gibt FastAPI automatisch einen Fehler zurück
-- Die `Config`-Klasse fügt ein Beispiel zur Swagger-Dokumentation hinzu
-
-**Warum ist das wichtig?**
-Ohne Pydantic müsstest du manuell prüfen:
-```python
-if "text" not in data:
-    return {"error": "text is required"}
-if not isinstance(data["text"], str):
-    return {"error": "text must be a string"}
-if len(data["text"]) == 0:
-    return {"error": "text cannot be empty"}
-```
-
-Mit Pydantic: `note: NoteCreate` - FastAPI validiert automatisch Typ, Vorhandensein und Mindestlänge! 
+- Pydantic prüft automatisch, ob die empfangenen Daten das richtige Format haben
+- `text: str` bedeutet: Das Feld `text` muss vorhanden sein und ein String sein
+- Wenn das Feld fehlt oder der Typ falsch ist, gibt FastAPI automatisch einen Fehler zurück
 
 ---
 
 ### 6. POST /notes - Neue Notiz erstellen
 
-Jetzt implementieren wir das Erstellen von Notizen:
-
 ```python
 @app.post("/notes", status_code=201)
 def create_note(note: NoteCreate):
-    """
-    Neue Notiz erstellen
-    
-    Erstellt eine neue Notiz in der Datenbank und gibt sie zurück.
-    Der HTTP-Statuscode 201 signalisiert erfolgreiche Erstellung.
-    """
+    """Neue Notiz erstellen"""
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     
-    # WICHTIG: ? als Platzhalter verwenden (SQL-Injection-Schutz!)
     cursor.execute(
         "INSERT INTO notes (text) VALUES (?)",
         (note.text,)  # Tuple mit einem Element (Komma beachten!)
     )
     
-    # ID der neu erstellten Notiz
     new_id = cursor.lastrowid
-    
     conn.commit()
     conn.close()
     
-    return {
-        "id": new_id,
-        "text": note.text,
-        "message": "Notiz erfolgreich erstellt"
-    }
+    return {"id": new_id, "text": note.text}
 ```
 
-**Code-Erklärung:**
+**Was passiert hier?**
 
-1. **`@app.post("/notes", status_code=201)`**:
-   - POST statt GET (POST = Daten erstellen/senden)
-   - `status_code=201`: HTTP "Created" - zeigt erfolgreiche Erstellung an
-2. **`note: NoteCreate`**: Pydantic validiert automatisch!
-3. **`INSERT INTO notes (text) VALUES (?)`**:
-   - Fügt eine neue Zeile in die Tabelle ein
-   - `?` ist ein **Platzhalter** (wird durch `note.text` ersetzt)
-4. **`(note.text,)`**: Tuple mit einem Element
-   - **Wichtig:** Das Komma ist notwendig! `(note.text,)` ist ein Tuple, `(note.text)` nur eine geklammerte Variable
-5. **`cursor.lastrowid`**: Die ID der gerade eingefügten Zeile
-   - SQLite gibt automatisch die letzte eingefügte ID zurück
-6. **`conn.commit()`**: Speichert die Änderungen
-   - **Ohne commit() wird nichts gespeichert!**
+1. **`@app.post(..., status_code=201)`**: POST erstellt neue Ressourcen, 201 = "Created"
+2. **`note: NoteCreate`**: Pydantic validiert automatisch
+3. **`INSERT INTO notes (text) VALUES (?)`**: Fügt eine neue Zeile ein
+4. **`?` als Platzhalter**: Wird durch `note.text` ersetzt
+5. **`(note.text,)`**: Tuple mit einem Element - **Komma ist wichtig!**
+6. **`cursor.lastrowid`**: Die ID der neu eingefügten Zeile
+7. **`conn.commit()`**: Speichert die Änderungen dauerhaft
 
-**🚨 KRITISCH: SQL-Injection verhindern!**
+**🚨 SQL-Injection vermeiden:**
 
-**NIEMALS so:**
+**NIEMALS so** (unsicher):
 ```python
-#  GEFÄHRLICH - SQL-Injection möglich!
 cursor.execute(f"INSERT INTO notes (text) VALUES ('{note.text}')")
 ```
 
-**Warum ist das gefährlich?**
-Wenn `note.text` den Wert `"'); DROP TABLE notes; --"` hat, würde das Statement:
-```sql
-INSERT INTO notes (text) VALUES (''); DROP TABLE notes; --')
-```
-Das würde die gesamte Tabelle löschen!
-
-**IMMER so:**
+**IMMER so** (sicher):
 ```python
-#  SICHER - Parameter-Binding
 cursor.execute("INSERT INTO notes (text) VALUES (?)", (note.text,))
 ```
 
@@ -415,78 +231,50 @@ Mit `?`-Platzhaltern wird der Text automatisch escaped und ist sicher!
 
 ### 7. GET /notes/{note_id} - Einzelne Notiz abrufen
 
-Jetzt implementieren wir das Abrufen einer einzelnen Notiz:
-
 ```python
 @app.get("/notes/{note_id}")
 def get_note(note_id: int):
-    """
-    Eine einzelne Notiz abrufen
-    
-    Gibt die Notiz mit der angegebenen ID zurück.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+    """Eine einzelne Notiz abrufen"""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     
-    cursor.execute(
-        "SELECT * FROM notes WHERE id = ?",
-        (note_id,)
-    )
+    cursor.execute("SELECT * FROM notes WHERE id = ?", (note_id,))
     row = cursor.fetchone()
     conn.close()
     
     if row is None:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
     return dict(row)
 ```
 
-**Neu hier: Path Parameters**
+**Was ist neu?**
 
-- **`{note_id}`** in der URL wird zu einem Parameter in der Funktion
-- FastAPI extrahiert automatisch die ID aus der URL
-- **Type Hint `note_id: int`**: FastAPI konvertiert automatisch zu Integer
-  - Bei `/notes/abc` → Automatischer 422-Fehler (Validation Error)
-  - Bei `/notes/5` → `note_id = 5`
+- **`{note_id}` in der URL**: Path Parameter - FastAPI extrahiert die ID automatisch
+- **`note_id: int`**: Typ-Konvertierung - bei `/notes/abc` → 422 Error
+- **`fetchone()`**: Gibt nur **ein** Ergebnis zurück (oder `None`)
+- **`HTTPException`**: Wirft einen 404-Fehler, wenn die Notiz nicht existiert
 
 **Beispiele:**
-- `GET /notes/1` → `note_id = 1`
-- `GET /notes/42` → `note_id = 42`
+- `GET /notes/1` → Notiz mit ID 1
 - `GET /notes/999` → 404, wenn nicht vorhanden
-
-**`fetchone()` vs `fetchall()`:**
-- **`fetchone()`**: Gibt nur **ein** Ergebnis zurück (oder `None`)
-- **`fetchall()`**: Gibt eine **Liste** aller Ergebnisse zurück
 
 ---
 
 ## Mini-Aufgabe
 
-Jetzt bist du dran! Zeit, dein Wissen anzuwenden.
-
-**Aufgabe:** Implementiere den Endpoint `DELETE /notes/{note_id}`
+**Aufgabe:** Implementiere `DELETE /notes/{note_id}`
 
 Dieser soll eine Notiz aus der Datenbank löschen.
 
 **Anforderungen:**
-1. HTTP-Methode: DELETE
-2. Path Parameter: `note_id` (Integer)
-3. Bei Erfolg: HTTP 200 mit Bestätigungsnachricht
-4. Bei nicht existierender ID: HTTP 404
+- Bei Erfolg: Bestätigungsnachricht zurückgeben
+- Bei nicht existierender ID: HTTP 404
 
 **Hinweise:**
 - SQL: `DELETE FROM notes WHERE id = ?`
 - Prüfe mit `cursor.rowcount`, ob eine Zeile gelöscht wurde
-- `rowcount == 0` bedeutet: ID existierte nicht
-
-**Bonus:**
-- Gib in der Erfolgsnachricht auch die gelöschte ID zurück
-- Teste den Endpoint in Swagger UI
 
 <details>
 <summary>💡 Lösung anzeigen</summary>
@@ -494,52 +282,25 @@ Dieser soll eine Notiz aus der Datenbank löschen.
 ```python
 @app.delete("/notes/{note_id}")
 def delete_note(note_id: int):
-    """
-    Notiz löschen
-    
-    Löscht die Notiz mit der angegebenen ID.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+    """Notiz löschen"""
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     
-    cursor.execute(
-        "DELETE FROM notes WHERE id = ?",
-        (note_id,)
-    )
-    
-    # Prüfen, ob eine Zeile gelöscht wurde
+    cursor.execute("DELETE FROM notes WHERE id = ?", (note_id,))
     deleted_count = cursor.rowcount
     
     conn.commit()
     conn.close()
     
     if deleted_count == 0:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
-    return {
-        "message": "Notiz erfolgreich gelöscht",
-        "deleted_id": note_id
-    }
+    return {"message": "Notiz gelöscht", "id": note_id}
 ```
 
-**Erklärung:**
-- **`@app.delete(...)`**: DELETE ist die HTTP-Methode zum Löschen von Ressourcen
-- **`cursor.rowcount`**: Gibt an, wie viele Zeilen von der letzten Operation betroffen waren
-  - Bei `DELETE`: Anzahl der gelöschten Zeilen
-  - `0` = nichts gelöscht (ID existierte nicht)
-  - `1` = eine Zeile gelöscht (Erfolg!)
-- **Wichtig:** `commit()` nicht vergessen, sonst wird nichts gelöscht!
-
-**Testen in Swagger UI:**
-1. Öffne http://localhost:8000/docs
-2. Erstelle zuerst eine Notiz mit POST /notes
-3. Notiere dir die zurückgegebene ID
-4. Teste DELETE /notes/{id} mit dieser ID
-5. Versuche dieselbe ID nochmal zu löschen → sollte 404 geben
+**Wichtig:** `cursor.rowcount` gibt an, wie viele Zeilen betroffen waren:
+- `0` = nichts gelöscht (ID existierte nicht)
+- `1` = eine Zeile gelöscht (Erfolg!)
 
 </details>
 
@@ -547,114 +308,55 @@ def delete_note(note_id: int):
 
 ## Übungen für Tag 2
 
-Hier sind erweiterte Übungen, um dein Verständnis zu vertiefen!
-
 ### Übung 1: PUT /notes/{note_id} - Notiz aktualisieren
 
 Implementiere einen Endpoint zum Aktualisieren einer bestehenden Notiz.
 
 **Anforderungen:**
-- HTTP-Methode: PUT
-- Path Parameter: `note_id`
-- Request Body: Pydantic Model mit neuem Text
 - SQL: `UPDATE notes SET text = ? WHERE id = ?`
 - Bei Erfolg: Aktualisierte Notiz zurückgeben
 - Bei nicht existierender ID: HTTP 404
-
-**Hinweise:**
-- Erstelle ein neues Pydantic Model `NoteUpdate` (kann identisch zu `NoteCreate` sein)
-- Nutze `cursor.rowcount` um zu prüfen, ob die Notiz existierte
 
 <details>
 <summary>💡 Lösung anzeigen</summary>
 
 ```python
-class NoteUpdate(BaseModel):
-    """
-    Schema für das Aktualisieren einer Notiz.
-    """
-    text: str = Field(min_length=1, examples=["Aktualisierter Text"])
-    
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Aktualisierter Text"
-            }
-        }
-    }
-
 @app.put("/notes/{note_id}")
-def update_note(note_id: int, note: NoteUpdate):
-    """
-    Notiz aktualisieren
-    
-    Aktualisiert den Text einer existierenden Notiz.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+def update_note(note_id: int, note: NoteCreate):
+    """Notiz aktualisieren"""
     conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     
-    # UPDATE ausführen
-    cursor.execute(
-        "UPDATE notes SET text = ? WHERE id = ?",
-        (note.text, note_id)
-    )
-    
+    cursor.execute("UPDATE notes SET text = ? WHERE id = ?", (note.text, note_id))
     updated_count = cursor.rowcount
     conn.commit()
     
-    # Prüfen, ob die Notiz existierte
     if updated_count == 0:
         conn.close()
-        raise HTTPException(
-            status_code=404,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
     # Aktualisierte Notiz abrufen
-    cursor.execute(
-        "SELECT * FROM notes WHERE id = ?",
-        (note_id,)
-    )
+    conn.row_factory = sqlite3.Row
+    cursor.execute("SELECT * FROM notes WHERE id = ?", (note_id,))
     row = cursor.fetchone()
     conn.close()
     
     return dict(row)
 ```
 
-**Erklärung:**
-- **PUT vs POST**: PUT aktualisiert existierende Ressourcen, POST erstellt neue
-- **Zwei Parameter:** `note_id` (aus URL) und `note` (aus Request Body)
-- **Zwei SQL-Statements:**
-  1. `UPDATE` zum Ändern
-  2. `SELECT` zum Abrufen der aktualisierten Daten
-- **Alternative:** Man könnte auch nur eine Bestätigungsnachricht zurückgeben
-
-**REST-Konvention:**
-- POST: Neue Ressource erstellen
-- GET: Ressource abrufen
-- PUT: Ressource vollständig ersetzen
-- PATCH: Ressource teilweise aktualisieren
-- DELETE: Ressource löschen
+**Hinweis:** PUT ist die HTTP-Methode zum vollständigen Ersetzen einer Ressource.
 
 </details>
 
 ---
 
-### Übung 2: GET /notes/search?q=... - Volltextsuche
+### Übung 2 (Bonus): GET /notes/search - Volltextsuche
 
 Erstelle einen Endpoint, der Notizen nach einem Suchbegriff durchsucht.
 
 **Anforderungen:**
 - Query Parameter `q` für den Suchtext
-- SQL: `WHERE text LIKE ?` mit Wildcards
-- Gibt alle passenden Notizen zurück
-
-**Hinweise:**
-- Query Parameter: `def search_notes(q: str):`
-- SQL-LIKE mit Wildcards: `f"%{q}%"` findet Text überall
-- Beispiel: `/notes/search?q=Einkauf` findet "Einkaufen gehen"
+- SQL: `WHERE text LIKE ?` mit Wildcards (`%suchtext%`)
 
 <details>
 <summary>💡 Lösung anzeigen</summary>
@@ -662,375 +364,20 @@ Erstelle einen Endpoint, der Notizen nach einem Suchbegriff durchsucht.
 ```python
 @app.get("/notes/search")
 def search_notes(q: str):
-    """
-    Notizen durchsuchen
-    
-    Sucht nach Notizen, die den Suchbegriff im Text enthalten.
-    Groß-/Kleinschreibung wird ignoriert.
-    
-    Query Parameter:
-    - q: Suchbegriff
-    """
+    """Notizen durchsuchen"""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     
-    # LIKE mit Wildcards für Teilstring-Suche
     search_pattern = f"%{q}%"
-    
-    cursor.execute(
-        "SELECT * FROM notes WHERE text LIKE ? ORDER BY id DESC",
-        (search_pattern,)
-    )
+    cursor.execute("SELECT * FROM notes WHERE text LIKE ?", (search_pattern,))
     rows = cursor.fetchall()
     conn.close()
     
-    return {
-        "query": q,
-        "count": len(rows),
-        "results": [dict(row) for row in rows]
-    }
-```
-
-**Erklärung:**
-- **Query Parameter**: FastAPI extrahiert `q` aus `?q=...` in der URL
-- **SQL LIKE**: Muster-Matching für Strings
-  - `%`: Wildcard für beliebige Zeichen
-  - `%test%`: Findet "test" überall im String
-  - `test%`: Findet Strings, die mit "test" beginnen
-  - `%test`: Findet Strings, die mit "test" enden
-- **`f"%{q}%"`**: Packt den Suchbegriff zwischen Wildcards
-  - **Wichtig:** Der f-String ist hier OK, weil wir das Ergebnis dann als Parameter übergeben!
-  - Niemals: `cursor.execute(f"... LIKE '%{q}%'")` 
-  - Immer: `cursor.execute("... LIKE ?", (f"%{q}%",))` 
-
-**Beispiel-Requests:**
-- `/notes/search?q=Einkauf`
-- `/notes/search?q=wichtig`
-- `/notes/search?q=TODO`
-
-**Bonus: Case-Insensitive Search (Groß-/Kleinschreibung ignorieren):**
-SQLite's `LIKE` ist standardmäßig case-insensitive für ASCII-Zeichen. Für vollständige Unterstützung:
-```python
-cursor.execute(
-    "SELECT * FROM notes WHERE LOWER(text) LIKE LOWER(?) ORDER BY id DESC",
-    (search_pattern,)
-)
-```
-
-</details>
-
----
-
-### Übung 3: Datenbank in separates Modul auslagern
-
-**Fortgeschritten:** Refactoring für bessere Code-Organisation.
-
-Erstelle eine neue Datei `database.py` und lagere alle Datenbank-Funktionen aus.
-
-**Anforderungen:**
-- Neue Datei: `database.py`
-- Funktionen auslagern: `init_db()`, `get_all_notes()`, `create_note()`, etc.
-- In `main.py` nur noch die Endpoints (die Funktionen aus `database.py` aufrufen)
-
-**Vorteile:**
-- **Separation of Concerns**: Datenbank-Logik getrennt von API-Logik
-- **Testbarkeit**: Datenbank-Funktionen können separat getestet werden
-- **Wiederverwendbarkeit**: Funktionen können in anderen Projekten genutzt werden
-
-<details>
-<summary>💡 Lösung anzeigen</summary>
-
-**database.py:**
-```python
-"""
-Datenbank-Funktionen für die Notes API
-"""
-import sqlite3
-from typing import Optional
-
-DATABASE = "notes.db"
-
-def init_db():
-    """Initialisiert die Datenbank und erstellt die Tabelle."""
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS notes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            text TEXT NOT NULL,
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-    conn.commit()
-    conn.close()
-    print(" Datenbank initialisiert!")
-
-def get_all_notes() -> list:
-    """Gibt alle Notizen zurück."""
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM notes ORDER BY id DESC")
-    rows = cursor.fetchall()
-    conn.close()
     return [dict(row) for row in rows]
-
-def get_note_by_id(note_id: int) -> Optional[dict]:
-    """
-    Gibt eine einzelne Notiz zurück.
-    
-    Returns:
-        dict wenn gefunden, None wenn nicht gefunden
-    """
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM notes WHERE id = ?", (note_id,))
-    row = cursor.fetchone()
-    conn.close()
-    return dict(row) if row else None
-
-def create_note(text: str) -> dict:
-    """Erstellt eine neue Notiz und gibt sie zurück."""
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO notes (text) VALUES (?)", (text,))
-    new_id = cursor.lastrowid
-    conn.commit()
-    conn.close()
-    return {"id": new_id, "text": text}
-
-def update_note(note_id: int, text: str) -> bool:
-    """
-    Aktualisiert eine Notiz.
-    
-    Returns:
-        True wenn erfolgreich, False wenn ID nicht gefunden
-    """
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute("UPDATE notes SET text = ? WHERE id = ?", (text, note_id))
-    updated_count = cursor.rowcount
-    conn.commit()
-    conn.close()
-    return updated_count > 0
-
-def delete_note(note_id: int) -> bool:
-    """
-    Löscht eine Notiz.
-    
-    Returns:
-        True wenn erfolgreich, False wenn ID nicht gefunden
-    """
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM notes WHERE id = ?", (note_id,))
-    deleted_count = cursor.rowcount
-    conn.commit()
-    conn.close()
-    return deleted_count > 0
 ```
 
-**main.py (vereinfacht):**
-```python
-"""
-Mini Notes API - Tag 2: Refactored Version
-"""
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from datetime import datetime
-import database as db
-
-app = FastAPI(
-    title="Mini Notes API",
-    description="Eine API zum Speichern von Notizen mit SQLite-Datenbank",
-    version="2.0.0"
-)
-
-# Datenbank beim Start initialisieren
-db.init_db()
-
-class NoteCreate(BaseModel):
-    text: str
-
-class NoteUpdate(BaseModel):
-    text: str
-
-@app.get("/")
-def root():
-    """API-Übersicht"""
-    return {
-        "name": "Mini Notes API",
-        "version": "2.0.0",
-        "database": "SQLite (persistent)",
-        "docs": "/docs"
-    }
-
-@app.get("/health")
-def health_check():
-    """Health-Check mit DB-Status"""
-    try:
-        notes = db.get_all_notes()
-        return {
-            "status": "ok",
-            "timestamp": datetime.now().isoformat(),
-            "notes_count": len(notes)
-        }
-    except Exception as e:
-        return {
-            "status": "error",
-            "timestamp": datetime.now().isoformat(),
-            "error": str(e)
-        }
-
-@app.get("/notes")
-def get_all_notes():
-    """Alle Notizen abrufen"""
-    return db.get_all_notes()
-
-@app.get("/notes/{note_id}")
-def get_note(note_id: int):
-    """Eine einzelne Notiz abrufen"""
-    note = db.get_note_by_id(note_id)
-    if note is None:
-        raise HTTPException(status_code=404, detail=f"Notiz mit ID {note_id} nicht gefunden")
-    return note
-
-@app.post("/notes", status_code=201)
-def create_note(note: NoteCreate):
-    """Neue Notiz erstellen"""
-    return db.create_note(note.text)
-
-@app.put("/notes/{note_id}")
-def update_note(note_id: int, note: NoteUpdate):
-    """Notiz aktualisieren"""
-    success = db.update_note(note_id, note.text)
-    if not success:
-        raise HTTPException(status_code=404, detail=f"Notiz mit ID {note_id} nicht gefunden")
-    
-    updated_note = db.get_note_by_id(note_id)
-    return updated_note
-
-@app.delete("/notes/{note_id}")
-def delete_note(note_id: int):
-    """Notiz löschen"""
-    success = db.delete_note(note_id)
-    if not success:
-        raise HTTPException(status_code=404, detail=f"Notiz mit ID {note_id} nicht gefunden")
-    
-    return {
-        "message": "Notiz erfolgreich gelöscht",
-        "deleted_id": note_id
-    }
-```
-
-**Vorteile dieser Struktur:**
-1. **`main.py` ist jetzt viel kürzer** und enthält nur API-Logik
-2. **`database.py` ist wiederverwendbar** und kann in anderen Projekten genutzt werden
-3. **Bessere Testbarkeit**: Du kannst `database.py` unabhängig testen
-4. **Klare Verantwortlichkeiten**: Jede Datei hat einen klaren Zweck
-
-**Projekt-Struktur jetzt:**
-```
-mini-api/
-├── venv/
-├── main.py           # API-Endpoints
-├── database.py       # Datenbank-Logik
-├── notes.db          # SQLite-Datenbank
-└── requirements.txt
-```
-
-</details>
-
----
-
-### Übung 4: Error Handling verbessern
-
-Füge besseres Error Handling für Datenbank-Fehler hinzu.
-
-**Anforderungen:**
-- Fange alle möglichen Datenbank-Fehler ab
-- Gib sprechende Fehlermeldungen zurück
-- Nutze Try-Except-Blöcke
-
-<details>
-<summary>💡 Lösung anzeigen</summary>
-
-```python
-from fastapi import FastAPI, HTTPException, status
-
-@app.post("/notes", status_code=status.HTTP_201_CREATED)
-def create_note(note: NoteCreate):
-    """
-    Neue Notiz erstellen (mit verbessertem Error Handling)
-    """
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        
-        cursor.execute(
-            "INSERT INTO notes (text) VALUES (?)",
-            (note.text,)
-        )
-        
-        new_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
-        
-        return {
-            "id": new_id,
-            "text": note.text,
-            "message": "Notiz erfolgreich erstellt"
-        }
-        
-    except sqlite3.IntegrityError as e:
-        # Constraint-Verletzung (z.B. NOT NULL)
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Datenbank-Constraint verletzt: {str(e)}"
-        )
-    
-    except sqlite3.OperationalError as e:
-        # Datenbank-Fehler (z.B. Tabelle existiert nicht)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Datenbank-Fehler: {str(e)}"
-        )
-    
-    except Exception as e:
-        # Unerwarteter Fehler
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Unerwarteter Fehler: {str(e)}"
-        )
-```
-
-**Erklärung:**
-- **`try-except`**: Fängt Fehler ab, bevor sie die API crashen
-- **Spezifische Exceptions zuerst**: Von spezifisch zu allgemein
-- **HTTP-Statuscodes aus `fastapi.status`**: Lesbare Namen statt nackten Zahlen
-- **`finally:`** könnte genutzt werden, um `conn.close()` zu garantieren:
-
-```python
-conn = None
-try:
-    conn = sqlite3.connect(DATABASE)
-    # ... Code ...
-except Exception as e:
-    raise HTTPException(...)
-finally:
-    if conn:
-        conn.close()
-```
-
-**Wichtige HTTP-Statuscodes:**
-- **200 OK**: Erfolgreiche Anfrage
-- **201 Created**: Ressource wurde erstellt
-- **400 Bad Request**: Ungültige Anfrage
-- **404 Not Found**: Ressource nicht gefunden
-- **422 Unprocessable Entity**: Validierungsfehler
-- **500 Internal Server Error**: Serverfehler
+**Hinweis:** Der f-String `f"%{q}%"` ist hier OK, weil wir ihn als Parameter übergeben!
 
 </details>
 
@@ -1041,76 +388,53 @@ finally:
 **Was haben wir gelernt?**
 
  **SQLite-Grundlagen:**
-- Datenbank initialisieren mit `sqlite3.connect()`
-- Tabellen erstellen mit `CREATE TABLE`
-- Connection und Cursor verstehen
+- Datenbank initialisieren und Tabellen erstellen
+- Connection → Cursor → Execute → Commit → Close
 
  **CRUD-Operationen:**
-- **C**reate: `INSERT` mit POST-Endpoint
-- **R**ead: `SELECT` mit GET-Endpoints
-- **U**pdate: `UPDATE` mit PUT-Endpoint
-- **D**elete: `DELETE` mit DELETE-Endpoint
+- **C**reate: `INSERT` mit POST
+- **R**ead: `SELECT` mit GET
+- **U**pdate: `UPDATE` mit PUT  
+- **D**elete: `DELETE` mit DELETE
 
  **SQL-Sicherheit:**
-- Parametrisierte Queries mit `?`-Platzhaltern
+- `?`-Platzhalter für Parameter verwenden
 - SQL-Injection vermeiden
-- **Niemals** f-Strings direkt in SQL-Befehlen!
 
- **FastAPI-Features:**
+ **FastAPI:**
 - Path Parameters (`{note_id}`)
-- Pydantic Models für Validierung
-- HTTP-Statuscodes korrekt nutzen
-- HTTPException für Fehlerbehandlung
+- Pydantic für Validierung
+- HTTP-Statuscodes (201, 404)
+
  **Persistenz:**
 - Daten bleiben nach Neustart erhalten!
-- `notes.db`-Datei enthält alle Daten
-- `commit()` speichert Änderungen dauerhaft
 
 ---
 
 ## Ausblick auf Tag 3
 
-Morgen werden wir:
-- **SQLAlchemy** einführen (ORM = Object-Relational Mapping)
-- **Async/Await** nutzen für bessere Performance
-- **Beziehungen zwischen Tabellen** (1:n, m:n)
-- **Fortgeschrittene Queries** (Joins, Aggregationen)
-- **Context Manager** für automatisches Connection-Handling
-- **Dependency Injection** in FastAPI
-
-**Mit SQLAlchemy wird der Code noch sauberer und wartbarer!**
+Morgen machen wir den Code robuster und professioneller:
+- **Error Handling** (try-except, bessere Fehlerbehandlung)
+- **Context Manager** (`with` für automatisches Connection-Handling)
+- **FastAPI Dependencies** (Dependency Injection)
 
 ---
 
 ## main.py - Finale Version Tag 2
 
-Hier ist die finale, vollständige Version von `main.py` nach allen Übungen:
+Hier ist die finale, vollständige Version von `main.py`:
 
 ```python
 """
 Mini Notes API - Tag 2: SQLite Version
-=======================================
-Jetzt mit persistenter Datenspeicherung!
-Alle Daten bleiben nach Neustart erhalten.
-
-CRUD-Operationen:
-- CREATE: POST /notes
-- READ:   GET /notes, GET /notes/{id}, GET /notes/search
-- UPDATE: PUT /notes/{id}
-- DELETE: DELETE /notes/{id}
+Daten bleiben jetzt nach Neustart erhalten!
 """
 import sqlite3
-from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel, Field
-from datetime import datetime
-from typing import Optional
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 # FastAPI-App erstellen
-app = FastAPI(
-    title="Mini Notes API",
-    description="Eine API zum Speichern von Notizen mit SQLite-Datenbank",
-    version="2.0.0"
-)
+app = FastAPI(title="Mini Notes API", version="2.0.0")
 
 # Datenbank-Dateiname
 DATABASE = "notes.db"
@@ -1120,45 +444,17 @@ DATABASE = "notes.db"
 # ========================================
 
 class NoteCreate(BaseModel):
-    """Schema für das Erstellen einer neuen Notiz."""
-    text: str = Field(min_length=1, examples=["Einkaufen gehen: Milch, Brot, Eier"])
-    
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Einkaufen gehen: Milch, Brot, Eier"
-            }
-        }
-    }
-
-class NoteUpdate(BaseModel):
-    """Schema für das Aktualisieren einer Notiz."""
-    text: str = Field(min_length=1, examples=["Aktualisierter Text"])
-    
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Aktualisierter Text"
-            }
-        }
-    }
+    """Schema für das Erstellen/Aktualisieren einer Notiz."""
+    text: str
 
 # ========================================
 # Datenbank-Setup
 # ========================================
 
 def init_db():
-    """
-    Initialisiert die Datenbank und erstellt die Tabelle.
-    
-    Wird beim Start/Import der API ausgeführt.
-    Mit uvicorn --reload kann dies mehrfach passieren (bei Code-Änderungen),
-    ist aber dank IF NOT EXISTS unkritisch.
-    """
+    """Datenbank initialisieren und Tabelle erstellen."""
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
-    
-    # Tabelle erstellen (IF NOT EXISTS = sicher, kann mehrfach aufgerufen werden)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS notes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -1166,12 +462,10 @@ def init_db():
             created_at TEXT DEFAULT CURRENT_TIMESTAMP
         )
     """)
-    
     conn.commit()
     conn.close()
-    print("Datenbank initialisiert!")
 
-# Datenbank beim Start der API initialisieren
+# Datenbank beim Start initialisieren
 init_db()
 
 # ========================================
@@ -1180,232 +474,85 @@ init_db()
 
 @app.get("/")
 def root():
-    """
-    API-Übersicht
-    
-    Gibt grundlegende Informationen über die API zurück.
-    """
+    """API-Übersicht"""
     return {
         "name": "Mini Notes API",
-        "description": "Eine API zum Speichern von Notizen mit SQLite-Datenbank",
         "version": "2.0.0",
-        "database": "SQLite (persistent)",
-        "endpoints": {
-            "GET /": "API-Übersicht",
-            "GET /health": "Health-Check",
-            "GET /notes": "Alle Notizen abrufen",
-            "GET /notes/{id}": "Einzelne Notiz abrufen",
-            "GET /notes/search?q=...": "Notizen durchsuchen",
-            "POST /notes": "Neue Notiz erstellen",
-            "PUT /notes/{id}": "Notiz aktualisieren",
-            "DELETE /notes/{id}": "Notiz löschen"
-        },
-        "docs": "/docs"
-    }
-
-@app.get("/health")
-def health_check():
-    """
-    Health-Check Endpoint mit DB-Status
-    
-    Prüft, ob die API UND die Datenbank erreichbar sind.
-    """
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM notes")
-        count = cursor.fetchone()[0]
-        conn.close()
-        db_status = "ok"
-    except Exception as e:
-        db_status = f"error: {str(e)}"
-        count = None
-    
-    return {
-        "status": "ok",
-        "timestamp": datetime.now().isoformat(),
-        "database": db_status,
-        "notes_count": count
+        "database": "SQLite",
+        "endpoints": ["/notes", "/notes/{id}"]
     }
 
 @app.get("/notes")
 def get_all_notes():
-    """
-    Alle Notizen abrufen
-    
-    Liest alle Notizen aus der SQLite-Datenbank und gibt sie zurück.
-    Sortiert nach ID (neueste zuerst).
-    """
+    """Alle Notizen abrufen"""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
     cursor.execute("SELECT * FROM notes ORDER BY id DESC")
     rows = cursor.fetchall()
     conn.close()
-    
     return [dict(row) for row in rows]
-
-@app.get("/notes/search")
-def search_notes(q: str):
-    """
-    Notizen durchsuchen
-    
-    Sucht nach Notizen, die den Suchbegriff im Text enthalten.
-    
-    Query Parameter:
-    - q: Suchbegriff (z.B. ?q=Einkauf)
-    """
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    
-    search_pattern = f"%{q}%"
-    
-    cursor.execute(
-        "SELECT * FROM notes WHERE text LIKE ? ORDER BY id DESC",
-        (search_pattern,)
-    )
-    rows = cursor.fetchall()
-    conn.close()
-    
-    return {
-        "query": q,
-        "count": len(rows),
-        "results": [dict(row) for row in rows]
-    }
 
 @app.get("/notes/{note_id}")
 def get_note(note_id: int):
-    """
-    Eine einzelne Notiz abrufen
-    
-    Gibt die Notiz mit der angegebenen ID zurück.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+    """Eine einzelne Notiz abrufen"""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
-    cursor.execute(
-        "SELECT * FROM notes WHERE id = ?",
-        (note_id,)
-    )
+    cursor.execute("SELECT * FROM notes WHERE id = ?", (note_id,))
     row = cursor.fetchone()
     conn.close()
     
     if row is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
     return dict(row)
 
-@app.post("/notes", status_code=status.HTTP_201_CREATED)
+@app.post("/notes", status_code=201)
 def create_note(note: NoteCreate):
-    """
-    Neue Notiz erstellen
-    
-    Erstellt eine neue Notiz in der Datenbank und gibt sie zurück.
-    Der HTTP-Statuscode 201 signalisiert erfolgreiche Erstellung.
-    """
-    try:
-        conn = sqlite3.connect(DATABASE)
-        cursor = conn.cursor()
-        
-        cursor.execute(
-            "INSERT INTO notes (text) VALUES (?)",
-            (note.text,)
-        )
-        
-        new_id = cursor.lastrowid
-        conn.commit()
-        conn.close()
-        
-        return {
-            "id": new_id,
-            "text": note.text,
-            "message": "Notiz erfolgreich erstellt"
-        }
-        
-    except sqlite3.IntegrityError as e:
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Datenbank-Constraint verletzt: {str(e)}"
-        )
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Fehler beim Erstellen der Notiz: {str(e)}"
-        )
+    """Neue Notiz erstellen"""
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO notes (text) VALUES (?)", (note.text,))
+    new_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    return {"id": new_id, "text": note.text}
 
 @app.put("/notes/{note_id}")
-def update_note(note_id: int, note: NoteUpdate):
-    """
-    Notiz aktualisieren
-    
-    Aktualisiert den Text einer existierenden Notiz.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+def update_note(note_id: int, note: NoteCreate):
+    """Notiz aktualisieren"""
     conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
-    cursor.execute(
-        "UPDATE notes SET text = ? WHERE id = ?",
-        (note.text, note_id)
-    )
-    
+    cursor.execute("UPDATE notes SET text = ? WHERE id = ?", (note.text, note_id))
     updated_count = cursor.rowcount
     conn.commit()
     
     if updated_count == 0:
         conn.close()
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
-    cursor.execute(
-        "SELECT * FROM notes WHERE id = ?",
-        (note_id,)
-    )
+    # Aktualisierte Notiz abrufen
+    conn.row_factory = sqlite3.Row
+    cursor.execute("SELECT * FROM notes WHERE id = ?", (note_id,))
     row = cursor.fetchone()
     conn.close()
-    
     return dict(row)
 
 @app.delete("/notes/{note_id}")
 def delete_note(note_id: int):
-    """
-    Notiz löschen
-    
-    Löscht die Notiz mit der angegebenen ID.
-    Falls die ID nicht existiert, wird ein 404-Fehler zurückgegeben.
-    """
+    """Notiz löschen"""
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
-    
-    cursor.execute(
-        "DELETE FROM notes WHERE id = ?",
-        (note_id,)
-    )
-    
+    cursor.execute("DELETE FROM notes WHERE id = ?", (note_id,))
     deleted_count = cursor.rowcount
     conn.commit()
     conn.close()
     
     if deleted_count == 0:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Notiz mit ID {note_id} nicht gefunden"
-        )
+        raise HTTPException(status_code=404, detail="Notiz nicht gefunden")
     
-    return {
-        "message": "Notiz erfolgreich gelöscht",
-        "deleted_id": note_id
-    }
+    return {"message": "Notiz gelöscht", "id": note_id}
 ```
 
 ---
@@ -1449,22 +596,17 @@ Thumbs.db
 
 ## Checkliste Tag 2
 
-Hast du alles geschafft? 
-
 - [ ] SQLite verstanden und `notes.db` erstellt
-- [ ] `init_db()` implementiert und getestet
+- [ ] `init_db()` implementiert
 - [ ] GET /notes aus Datenbank liest
 - [ ] POST /notes in Datenbank schreibt
 - [ ] GET /notes/{id} einzelne Notiz zurückgibt
 - [ ] DELETE /notes/{id} implementiert (Mini-Aufgabe)
 - [ ] PUT /notes/{id} implementiert (Übung 1)
-- [ ] GET /notes/search mit Query-Parameter (Übung 2)
-- [ ] API neu gestartet und Daten sind noch da!
-- [ ] Swagger UI getestet: http://localhost:8000/docs
+- [ ] API neu gestartet - Daten sind noch da! 
+- [ ] Swagger UI getestet
 - [ ] Code committed mit Git
 
----
-
-**Glückwunsch! Du hast jetzt eine voll funktionsfähige CRUD-API mit persistenter Datenspeicherung!** 
+**Glückwunsch! Du hast jetzt eine CRUD-API mit persistenter Datenspeicherung!** 
 
 **Bei Fragen meldet euch bei Patrick oder mir. Viel Erfolg und bis morgen!**
