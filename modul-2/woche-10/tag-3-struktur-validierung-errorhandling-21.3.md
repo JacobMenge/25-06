@@ -94,9 +94,19 @@ def get_note_by_id(note_id: int):
         conn = sqlite3.connect(DATABASE)
         row = conn.execute("SELECT * FROM notes WHERE id = ?", (note_id,)).fetchone()
         conn.close()
+
+        # Wenn ein Datensatz gefunden wurde, wird er in ein Dictionary umgewandelt
+        # Falls row = None ist, geben wir auch None zurück
         return dict(row) if row else None
+
+    # Wenn während des try-Blocks ein Fehler auftritt (z. B. DB nicht erreichbar,
+    # SQL falsch formuliert, Datei beschädigt), wird dieser Block ausgeführt
     except sqlite3.Error as e:
+        # Fehlermeldung ausgeben, damit der Entwickler versteht, was schiefging
         print(f"Datenbankfehler: {e}")
+
+        # Rückgabe von None zeigt dem Programm:
+        # "Es gab einen Fehler oder keine Daten."
         return None
 ```
 
