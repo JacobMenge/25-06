@@ -258,7 +258,7 @@ SSH ist ein verschlüsseltes Protokoll, um sich sicher mit einem entfernten Serv
 
 **SSH-Verbindung aufbauen:**
 ```bash
-ssh -i mein-key.pem ubuntu@54.93.123.456
+ssh -i mein-key.pem ubuntu@54.93.123.45
      ^              ^       ^
      |              |       └── IP-Adresse der EC2-Instanz
      |              └── Username (ubuntu ist Standard bei Ubuntu AMIs)
@@ -445,7 +445,7 @@ Erstelle 2 Regeln:
 
 1. Klicke auf deine Instanz
 2. Notiere die **Public IPv4 address**
-   * Beispiel: `54.93.123.456`
+   * Beispiel: `54.93.123.45`
    * Diese IP brauchst du zum Verbinden!
 
 ---
@@ -481,28 +481,18 @@ Windows 10/11 hat OpenSSH meist schon vorinstalliert. Du kannst `.pem` Dateien d
 # Wechsle zum Download-Ordner
 cd Downloads
 
-# Key sollte bereits die richtigen Permissions haben
-# Wenn nicht, kannst du sie setzen (optional):
-# icacls notes-api-key.pem /inheritance:r
-# icacls notes-api-key.pem /grant:r "%USERNAME%:R"
+# Prüfe ob ssh verfügbar ist
+ssh -V
+# Sollte Version anzeigen, z.B. "OpenSSH_for_Windows_8.1"
 
-# SSH-Verbindung testen (siehe nächsten Schritt)
+# Falls "command not found":
+# OpenSSH installieren über: Einstellungen → Apps → Optionale Features → OpenSSH-Client hinzufügen
 ```
 
-**Alternative für Windows: PuTTY (falls OpenSSH fehlt)**
-
-Falls `ssh` Befehl nicht funktioniert:
-
-1. Lade PuTTY herunter: https://www.putty.org/
-2. Lade PuTTYgen herunter (kommt mit PuTTY)
-3. Öffne PuTTYgen → Load → Wähle `.pem` Datei
-4. Save Private Key → Speichere als `.ppk` Datei
-5. Öffne PuTTY:
-   * Host Name: `ubuntu@DEINE_PUBLIC_IP`
-   * Connection → SSH → Auth → Browse → Wähle `.ppk` Datei
-   * Open
-
-**Empfehlung:** Nutze OpenSSH wenn möglich (einfacher!)
+**Wichtig für Windows:**
+* Der `.pem` Key kann direkt verwendet werden
+* Keine Konvertierung nötig (im Gegensatz zu älteren Anleitungen)
+* Pfade mit Backslash: `C:\Users\NAME\Downloads\notes-api-key.pem`
 
 **Warum chmod 400?**
 * SSH lehnt Keys ab, die von anderen gelesen werden können
@@ -517,7 +507,7 @@ Falls `ssh` Befehl nicht funktioniert:
 ssh -i ~/.ssh/notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
 
 # Beispiel:
-ssh -i ~/.ssh/notes-api-key.pem ubuntu@54.93.123.456
+ssh -i ~/.ssh/notes-api-key.pem ubuntu@54.93.123.45
 ```
 
 **Windows (PowerShell/CMD):**
@@ -526,14 +516,14 @@ ssh -i ~/.ssh/notes-api-key.pem ubuntu@54.93.123.456
 ssh -i C:\Users\DEINNAME\Downloads\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
 
 # Beispiel:
-ssh -i C:\Users\Max\Downloads\notes-api-key.pem ubuntu@54.93.123.456
+ssh -i C:\Users\Max\Downloads\notes-api-key.pem ubuntu@54.93.123.45
 
 # Hinweis: Passe den Pfad an deinen Benutzernamen und Speicherort an
 ```
 
 **Was passiert beim ersten Mal?**
 ```
-The authenticity of host '54.93.123.456' can't be established.
+The authenticity of host '54.93.123.45' can't be established.
 ECDSA key fingerprint is SHA256:abc123...
 Are you sure you want to continue connecting (yes/no)?
 ```
@@ -571,6 +561,7 @@ chmod 400 ~/.ssh/notes-api-key.pem
 **Problem: "Connection timeout"**
 * Ist die Security Group korrekt?
 * Ist "Auto-assign public IP" aktiviert?
+* IP gewechselt (WLAN/VPN/Hotspot)? Dann in der Security Group die SSH-Regel "My IP" auf deine aktuelle öffentliche IP aktualisieren.
 
 ---
 
@@ -598,7 +589,7 @@ sudo apt upgrade -y
 ### Schritt 2: Benötigte Software installieren
 
 ```bash
-# Python 3.12 und pip
+# Python (System-Version), pip und venv
 sudo apt install -y python3 python3-pip python3-venv
 
 # Git für Code-Management
@@ -611,7 +602,7 @@ sudo apt install -y nginx
 sudo apt install -y awscli
 
 # Überprüfe die Installationen
-python3 --version    # Sollte Python 3.12.x zeigen
+python3 --version    # Ubuntu 24.04 zeigt typischerweise 3.12.x
 pip3 --version       # Sollte pip zeigen
 nginx -v             # Sollte nginx Version zeigen
 git --version        # Sollte git Version zeigen
@@ -857,8 +848,11 @@ sudo reboot
 * Service sollte automatisch starten
 
 ```bash
-# Warte 2 Minuten, dann neu verbinden
+# Neu verbinden (Linux/Mac)
 ssh -i ~/.ssh/notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
+
+# Neu verbinden (Windows PowerShell/CMD)
+ssh -i C:\Users\DEINNAME\Downloads\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
 
 # Status überprüfen
 sudo systemctl status notes-api
@@ -883,7 +877,7 @@ sudo nano /etc/nginx/sites-available/notes-api
 ```nginx
 # Upstream-Definition: Wo läuft die FastAPI?
 upstream notes_api {
-    server localhost:8000;
+    server 127.0.0.1:8000;
 }
 
 server {
@@ -1034,7 +1028,7 @@ http://DEINE_PUBLIC_IP/docs    ← Swagger UI
 http://DEINE_PUBLIC_IP/notes
 ```
 
-**🎉 Glückwunsch! Deine API ist jetzt öffentlich erreichbar!**
+**Glückwunsch! Deine API ist jetzt öffentlich erreichbar!**
 
 ### Schritt 5: Nginx-Logs ansehen
 
@@ -1070,6 +1064,8 @@ Jetzt implementieren wir professionelles Logging mit automatischem Upload zu S3.
 * Logs in Dateien schreiben
 * Rotation (alte Logs archivieren)
 * Zentrales Backup (S3)
+
+**Wichtig:** Das Verzeichnis `/var/log/notes-api` legen wir gleich per `sudo` an. Die App schreibt dann als User `ubuntu` dorthin.
 
 ### Schritt 1: S3-Bucket erstellen
 
@@ -1160,9 +1156,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 
-# Log-Verzeichnis erstellen
+# Log-Verzeichnis (wird vorher per sudo vorbereitet)
 LOG_DIR = "/var/log/notes-api"
-os.makedirs(LOG_DIR, exist_ok=True)
 
 def setup_logger():
     """
@@ -1317,35 +1312,34 @@ nano ~/notes-api/upload-logs-to-s3.sh
 
 ```bash
 #!/bin/bash
+set -euo pipefail
 # Script zum Hochladen von Logs zu S3
 
-# Konfiguration
 LOG_DIR="/var/log/notes-api"
-S3_BUCKET="notes-api-logs-js-2025"  # ERSETZE MIT DEINEM BUCKET!
-DATE=$(date +%Y-%m-%d)
+S3_BUCKET="notes-api-logs-js-2025"   # ERSETZE MIT DEINEM BUCKET!
+AWS_REGION="eu-central-1"
+DATE="$(date +%Y-%m-%d)"
 
-# Wechsle in Log-Verzeichnis (mit Fehler-Check)
 cd "$LOG_DIR" || exit 1
 
-# Prüfe ob Log-Dateien existieren
-if ! ls *.log 1> /dev/null 2>&1; then
-    echo "Keine Log-Dateien gefunden. Überspringe Upload."
-    exit 0
+# Prüfe ob .log Dateien existieren
+shopt -s nullglob
+LOG_FILES=( *.log )
+if [ ${#LOG_FILES[@]} -eq 0 ]; then
+  echo "Keine .log Dateien gefunden. Überspringe Upload."
+  exit 0
 fi
 
-# Log-Datei komprimieren
-tar -czf "api-logs-${DATE}.tar.gz" *.log
+ARCHIVE="api-logs-${DATE}.tar.gz"
+tar -czf "$ARCHIVE" "${LOG_FILES[@]}"
 
-# Zu S3 hochladen
-aws s3 cp "api-logs-${DATE}.tar.gz" "s3://${S3_BUCKET}/logs/"
+aws s3 cp "$ARCHIVE" "s3://${S3_BUCKET}/logs/" --region "$AWS_REGION"
+rm -f "$ARCHIVE"
 
-# Alte komprimierte Datei löschen
-rm "api-logs-${DATE}.tar.gz"
-
-# Optional: Alte Log-Dateien rotieren
+# Alte Rotationsdateien löschen (z.B. api.log.1) nach 7 Tagen
 find "$LOG_DIR" -name "*.log.*" -mtime +7 -delete
 
-echo "Logs erfolgreich zu S3 hochgeladen: s3://${S3_BUCKET}/logs/api-logs-${DATE}.tar.gz"
+echo "Logs erfolgreich hochgeladen: s3://${S3_BUCKET}/logs/$ARCHIVE"
 ```
 
 **Speichern:** Strg+X, Y, Enter
@@ -1831,7 +1825,7 @@ aws s3 ls s3://DEIN-BUCKET/backups/
 
 **Was haben wir gelernt?**
 
-### Kernziele (Pflicht) 
+### Kernziele (Pflicht)
 
 Diese Ziele machen die API produktiv erreichbar:
 
@@ -1862,11 +1856,11 @@ Diese Ziele machen die API produktiv erreichbar:
 * API über Port 80 erreichbar machen
 * Defense in Depth (Nginx als Gateway)
 
-**Ergebnis:** API ist öffentlich über `http://DEINE_IP/docs` erreichbar! 🎉
+**Ergebnis:** API ist öffentlich über `http://DEINE_IP/docs` erreichbar!
 
 ---
 
-### Bonus-Ziele (Optional) ⭐
+### Bonus-Ziele (Optional)
 
 Diese erweitern das Setup um Production-Features:
 
@@ -1910,7 +1904,7 @@ Diese erweitern das Setup um Production-Features:
 
 **Symptom:**
 ```bash
-ssh: connect to host 54.93.123.456 port 22: Connection refused
+ssh: connect to host 54.93.123.45 port 22: Connection refused
 ```
 
 **Lösungen:**
@@ -2023,7 +2017,7 @@ crontab -l
 
 ## Checkliste Tag 4
 
-### Kernziele (Pflicht) 
+### Kernziele (Pflicht)
 
 **AWS Setup:**
 - [ ] AWS Sandbox-Zugang funktioniert (https://sandboxes.techstarter.de/)
@@ -2056,11 +2050,11 @@ crontab -l
 - [ ] API erreichbar von außen: `http://DEINE_IP/docs`
 - [ ] Swagger UI funktioniert
 
-** Wenn alle obigen Punkte vorhanden sind: Kernziel erreicht!**
+**Wenn alle obigen Punkte erfüllt sind: Kernziel erreicht!**
 
 ---
 
-### Bonus-Ziele (Optional) ⭐
+### Bonus-Ziele (Optional)
 
 **Logging (Bonus):**
 - [ ] Logger-Konfiguration erstellt (logger_config.py)
@@ -2189,11 +2183,11 @@ Am Ende des Trainings/Tages solltest du aufräumen, um Budget zu sparen:
    * Nur die AWS-seitige Registrierung, deine lokale .pem-Datei bleibt
 
 **Minimale Aufräum-Checkliste für Sandbox:**
--  EC2-Instanz terminieren
--  S3-Bucket leeren und löschen
--  Elastic IPs freigeben (falls vorhanden)
--  Security Group löschen (wenn möglich)
--  IAM Role löschen (wenn selbst erstellt und erlaubt)
+- [x] EC2-Instanz terminieren
+- [x] S3-Bucket leeren und löschen
+- [x] Elastic IPs freigeben (falls vorhanden)
+- [ ] Security Group löschen (wenn möglich)
+- [ ] IAM Role löschen (wenn selbst erstellt und erlaubt)
 
 **Wenn du in deinem eigenen AWS Account arbeitest:**
 
@@ -2316,13 +2310,13 @@ S3:
 
 ---
 
-** Glückwunsch! Du hast eine vollständige Production-Umgebung aufgesetzt!**
+**Glückwunsch! Du hast eine vollständige Production-Umgebung aufgesetzt!**
 
 **Deine API ist jetzt:**
-*  Öffentlich erreichbar
-*  Automatisch startend
-*  Professionell geloggt
-*  Automatisch gesichert
-*  Produktionsreif!
+* Öffentlich erreichbar
+* Automatisch startend
+* Professionell geloggt
+* Automatisch gesichert
+* Produktionsreif!
 
 **Bei Fragen meldet euch bei Patrick oder mir. Viel Erfolg!**
