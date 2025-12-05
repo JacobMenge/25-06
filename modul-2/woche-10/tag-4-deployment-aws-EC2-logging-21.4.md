@@ -297,10 +297,7 @@ Du (mit Private Key) → Server (mit Public Key)
 ```
 
 **Wichtig:**
-* Private Key muss Permissions 400 haben:
-  ```bash
-  chmod 400 mein-key.pem
-  ```
+* Private Key muss richtige Berechtigungen haben
 * Ohne diesen Key kommst du nicht auf den Server!
 
 ---
@@ -454,6 +451,77 @@ Erstelle 2 Regeln:
 
 ### Schritt 1: Private Key vorbereiten
 
+**Windows 10/11 (PowerShell):**
+
+Windows hat spezielle Anforderungen für SSH-Key-Berechtigungen. SSH unter Windows ist sehr streng - nur dein Benutzer darf Zugriff auf den Key haben!
+
+**Methode 1: PowerShell (empfohlen, schnell):**
+
+```powershell
+# Öffne PowerShell als normaler Benutzer (NICHT als Administrator!)
+# Wechsle zum Download-Ordner (passe Benutzernamen an!)
+cd C:\Users\DEIN_BENUTZERNAME\Downloads
+
+# Erstelle .ssh Ordner falls nicht vorhanden
+New-Item -ItemType Directory -Force -Path $HOME\.ssh
+
+# Verschiebe Key in .ssh Ordner
+Move-Item notes-api-key.pem $HOME\.ssh\
+
+# Wechsle in .ssh Ordner
+cd $HOME\.ssh
+
+# Setze korrekte Berechtigungen (nur du kannst lesen!)
+# Schritt 1: Alle Berechtigungen zurücksetzen
+icacls "notes-api-key.pem" /reset
+
+# Schritt 2: Nur deinen Benutzer mit Leserechten hinzufügen
+icacls "notes-api-key.pem" /grant:r "$($env:USERNAME):(R)"
+
+# Schritt 3: Vererbung entfernen
+icacls "notes-api-key.pem" /inheritance:r
+
+# Überprüfe Berechtigungen
+icacls "notes-api-key.pem"
+# Sollte zeigen: notes-api-key.pem DEIN_PC\DEIN_NAME:(R)
+# Wichtig: Es sollte NUR dein Benutzer aufgelistet sein!
+```
+
+**Was bedeuten die icacls-Befehle?**
+* `/reset` → Entfernt alle aktuellen Berechtigungen
+* `/grant:r` → Gibt nur Leserechte (R = Read)
+* `/inheritance:r` → Entfernt vererbte Berechtigungen von übergeordneten Ordnern
+* `$($env:USERNAME)` → Dein aktueller Windows-Benutzername
+
+**Methode 2: Grafische Oberfläche (GUI):**
+
+Falls PowerShell nicht funktioniert oder du lieber die GUI nutzt:
+
+1. **Rechtsklick** auf `notes-api-key.pem` im Downloads-Ordner
+2. Wähle **"Eigenschaften"**
+3. Gehe zum Tab **"Sicherheit"**
+4. Klicke unten auf **"Erweitert"**
+5. Klicke auf **"Vererbung deaktivieren"**
+6. Wähle **"Alle geerbten Berechtigungen von diesem Objekt entfernen"**
+   * Jetzt sollte die Liste leer sein!
+7. Klicke auf **"Hinzufügen"**
+8. Klicke auf **"Prinzipal auswählen"**
+9. Gib deinen Benutzernamen ein (z.B. `jacob_arbeit` oder `menge`)
+10. Klicke **"Namen überprüfen"** → Sollte sich zu `PC\jacob_arbeit` auflösen
+11. Klicke **"OK"**
+12. Setze bei "Berechtigungen" NUR folgende Häkchen:
+    - ✅ **Lesen**
+    - ✅ **Lesen und Ausführen**
+13. Alle anderen Häkchen **ENTFERNEN** (Vollzugriff, Ändern, Schreiben, etc.)
+14. Klicke **"OK"** → **"Übernehmen"** → **"OK"**
+
+**Verschiebe dann den Key in den .ssh Ordner:**
+```powershell
+# In PowerShell
+New-Item -ItemType Directory -Force -Path $HOME\.ssh
+Move-Item C:\Users\DEIN_BENUTZERNAME\Downloads\notes-api-key.pem $HOME\.ssh\
+```
+
 **Linux/Mac:**
 
 ```bash
@@ -472,34 +540,25 @@ ls -la ~/.ssh/notes-api-key.pem
 # Sollte zeigen: -r-------- (nur Lesen für dich)
 ```
 
-**Windows 10/11:**
-
-Windows 10/11 hat OpenSSH meist schon vorinstalliert. Du kannst `.pem` Dateien direkt nutzen!
-
-```powershell
-# PowerShell oder CMD öffnen
-# Wechsle zum Download-Ordner
-cd Downloads
-
-# Prüfe ob ssh verfügbar ist
-ssh -V
-# Sollte Version anzeigen, z.B. "OpenSSH_for_Windows_8.1"
-
-# Falls "command not found":
-# OpenSSH installieren über: Einstellungen → Apps → Optionale Features → OpenSSH-Client hinzufügen
-```
-
-**Wichtig für Windows:**
-* Der `.pem` Key kann direkt verwendet werden
-* Keine Konvertierung nötig (im Gegensatz zu älteren Anleitungen)
-* Pfade mit Backslash: `C:\Users\NAME\Downloads\notes-api-key.pem`
-
 **Warum chmod 400?**
 * SSH lehnt Keys ab, die von anderen gelesen werden können
 * 400 = Nur du kannst lesen, niemand sonst
 * Sicherheitsfeature
 
 ### Schritt 2: SSH-Verbindung testen
+
+**Windows (PowerShell/CMD):**
+```powershell
+# Verbinde dich mit der EC2-Instanz
+# Der Key liegt jetzt in deinem .ssh Ordner
+ssh -i $HOME\.ssh\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
+
+# Beispiel:
+ssh -i $HOME\.ssh\notes-api-key.pem ubuntu@18.185.6.191
+
+# Alternative mit vollem Pfad:
+ssh -i C:\Users\jacob_arbeit\.ssh\notes-api-key.pem ubuntu@18.185.6.191
+```
 
 **Linux/Mac:**
 ```bash
@@ -508,17 +567,6 @@ ssh -i ~/.ssh/notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
 
 # Beispiel:
 ssh -i ~/.ssh/notes-api-key.pem ubuntu@54.93.123.45
-```
-
-**Windows (PowerShell/CMD):**
-```powershell
-# Verbinde dich mit der EC2-Instanz
-ssh -i C:\Users\DEINNAME\Downloads\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
-
-# Beispiel:
-ssh -i C:\Users\Max\Downloads\notes-api-key.pem ubuntu@54.93.123.45
-
-# Hinweis: Passe den Pfad an deinen Benutzernamen und Speicherort an
 ```
 
 **Was passiert beim ersten Mal?**
@@ -543,25 +591,64 @@ ubuntu@ip-172-31-x-x:~$
 
 ### Troubleshooting SSH
 
-**Problem: "Permission denied (publickey)"**
-```bash
-# Überprüfe Permissions
-ls -la ~/.ssh/notes-api-key.pem
+**Problem: "Bad permissions" oder "UNPROTECTED PRIVATE KEY FILE"**
 
-# Sollte sein: -r--------
-# Falls nicht:
-chmod 400 ~/.ssh/notes-api-key.pem
+Das ist DAS häufigste Problem unter Windows!
+
+```powershell
+# Lösung: Berechtigungen komplett neu setzen
+cd $HOME\.ssh
+
+# Alle Berechtigungen entfernen und neu setzen
+icacls "notes-api-key.pem" /reset
+icacls "notes-api-key.pem" /grant:r "$($env:USERNAME):(R)"
+icacls "notes-api-key.pem" /inheritance:r
+
+# Überprüfen - es sollte NUR dein Benutzer erscheinen!
+icacls "notes-api-key.pem"
 ```
 
+**Problem: "Permission denied (publickey)"**
+
+Mögliche Ursachen:
+
+1. **Falsche Berechtigungen** (siehe oben)
+2. **Falscher Username:**
+   ```powershell
+   # Für Ubuntu AMI MUSS es "ubuntu" sein:
+   ssh -i $HOME\.ssh\notes-api-key.pem ubuntu@IP
+   
+   # NICHT: ec2-user, admin, oder root!
+   ```
+
+3. **Falscher Key:**
+   ```powershell
+   # Stelle sicher, dass du den richtigen Key verwendest
+   # Der Name muss exakt übereinstimmen!
+   dir $HOME\.ssh
+   ```
+
 **Problem: "Connection refused"**
-* Ist die Instanz "Running"?
+* Ist die Instanz "Running"? (AWS Console überprüfen)
 * Ist die IP-Adresse korrekt?
 * Security Group: Ist SSH (Port 22) erlaubt von deiner IP?
 
 **Problem: "Connection timeout"**
 * Ist die Security Group korrekt?
 * Ist "Auto-assign public IP" aktiviert?
-* IP gewechselt (WLAN/VPN/Hotspot)? Dann in der Security Group die SSH-Regel "My IP" auf deine aktuelle öffentliche IP aktualisieren.
+* Hast du deine IP gewechselt (WLAN/VPN/Hotspot)?
+  * Dann in der Security Group die SSH-Regel aktualisieren auf "My IP"
+
+**Problem: Key funktioniert nach Neustart nicht mehr**
+
+Windows setzt manchmal Berechtigungen zurück. Lösung:
+```powershell
+# Einfach nochmal ausführen:
+cd $HOME\.ssh
+icacls "notes-api-key.pem" /reset
+icacls "notes-api-key.pem" /grant:r "$($env:USERNAME):(R)"
+icacls "notes-api-key.pem" /inheritance:r
+```
 
 ---
 
@@ -848,11 +935,11 @@ sudo reboot
 * Service sollte automatisch starten
 
 ```bash
+# Neu verbinden (Windows PowerShell/CMD)
+ssh -i $HOME\.ssh\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
+
 # Neu verbinden (Linux/Mac)
 ssh -i ~/.ssh/notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
-
-# Neu verbinden (Windows PowerShell/CMD)
-ssh -i C:\Users\DEINNAME\Downloads\notes-api-key.pem ubuntu@DEINE_PUBLIC_IP
 
 # Status überprüfen
 sudo systemctl status notes-api
@@ -2279,7 +2366,7 @@ S3:
 
 **Sicherheit:**
 * Nie als root arbeiten
-* Private Keys mit chmod 400
+* Private Keys mit richtigen Berechtigungen
 * Security Groups restriktiv
 * Regelmäßige Updates (apt upgrade)
 * IAM-Rollen statt Access Keys
