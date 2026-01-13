@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-Willkommen zu deinem ersten Kontakt mit JavaScript! In dieser Übung lernst du die grundlegende Syntax von JavaScript kennen - die Programmiersprache, die im Browser läuft und die Basis für React bildet.
+Willkommen zu deinem ersten Kontakt mit JavaScript! In dieser Übung lernst du die grundlegende Syntax von JavaScript kennen, die Programmiersprache, die im Browser läuft und die Basis für React bildet.
 
 **Gute Nachricht:** Du kannst bereits Python programmieren! Viele Konzepte kennst du schon - heute lernst du nur die JavaScript-Schreibweise dafür.
 
