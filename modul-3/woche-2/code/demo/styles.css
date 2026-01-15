@@ -1,0 +1,57 @@
+:root { color-scheme: dark; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #0b1633;
+  color: #eaf0ff;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+h1 { margin: 0 0 14px; font-size: 34px; }
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.row { display: flex; gap: 10px; }
+input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.15);
+  color: #eaf0ff;
+}
+
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #ffe35a;
+  color: #1a1a1a;
+  font-weight: 700;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.output { margin-top: 14px; }
+
+.loading { opacity: 0.9; }
+.error {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,0,0,0.12);
+  border: 1px solid rgba(255,0,0,0.25);
+}
+
+.result {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.small { opacity: 0.85; font-size: 14px; line-height: 1.35; }
