@@ -732,7 +732,7 @@ Falls du die Grundaufgabe erledigt hast und mehr machen möchtest:
 
 ### Beispiel: localStorage Integration (Fortgeschritten!)
 
-> **⚠️ Achtung:** Dieses Beispiel verwendet `useEffect`, das erst **nächste Woche** behandelt wird. Nur einbauen, wenn du experimentierfreudig bist! Falls du es nutzt, erwähne es in deinem README als "Extra".
+> ** Achtung:** Dieses Beispiel verwendet `useEffect`, das erst **nächste Woche** behandelt wird. Nur einbauen, wenn du experimentierfreudig bist! Falls du es nutzt, erwähne es in deinem README als "Extra".
 
 ```javascript
 // In App.jsx
@@ -832,7 +832,6 @@ Ich habe Weg [A/B] gewählt.
 ```bash
 npm install
 npm run dev
-```
 ```
 
 ---
