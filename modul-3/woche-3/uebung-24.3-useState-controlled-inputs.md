@@ -106,14 +106,14 @@ function Counter() {
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    PROPS vs STATE                            │
-│                                                              │
-│   Props                          State                       │
-│   ─────                          ─────                       │
-│   • Von außen übergeben          • Intern verwaltet          │
-│   • Read-only                    • Veränderbar               │
-│   • Parent kontrolliert          • Komponente kontrolliert   │
-│   • Wie Funktions-Parameter      • Wie Komponenten-Gedächtnis│
+│                    PROPS vs STATE                           │
+│                                                             │
+│   Props                         State                       │
+│   ─────                         ─────                       │
+│   • Von außen übergeben         • Intern verwaltet          │
+│   • Read-only                   • Veränderbar               │
+│   • Parent kontrolliert         • Komponente kontrolliert   │
+│   • Wie Funktions-Parameter     • Wie Komponenten-Gedächtnis│
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -415,20 +415,20 @@ function Counter() {
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                       useState(0)                            │
-│                           │                                  │
-│                           ▼                                  │
+│                       useState(0)                           │
+│                           │                                 │
+│                           ▼                                 │
 │              ┌────────────────────────┐                     │
 │              │  Gibt Array zurück:    │                     │
 │              │  [0, setCount]         │                     │
 │              └────────────────────────┘                     │
-│                           │                                  │
+│                           │                                 │
 │           ┌───────────────┴───────────────┐                 │
 │           ▼                               ▼                 │
-│    ┌─────────────┐                ┌─────────────┐          │
-│    │   count     │                │  setCount   │          │
-│    │   = 0       │                │  (Funktion) │          │
-│    └─────────────┘                └─────────────┘          │
+│    ┌─────────────┐                ┌─────────────┐           │
+│    │   count     │                │  setCount   │           │
+│    │   = 0       │                │  (Funktion) │           │
+│    └─────────────┘                └─────────────┘           │
 │                                          │                  │
 │                                          ▼                  │
 │                              setCount(1) → React rendert    │
@@ -640,15 +640,15 @@ function ControlledInput() {
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   CONTROLLED INPUT                           │
-│                                                              │
-│   ┌─────────────┐         value={text}          ┌─────────┐ │
-│   │             │ ──────────────────────────────>│         │ │
-│   │    State    │                                │  Input  │ │
-│   │  text=""    │ <──────────────────────────────│         │ │
-│   │             │    onChange → setText(value)   │         │ │
-│   └─────────────┘                                └─────────┘ │
-│                                                              │
+│                   CONTROLLED INPUT                          │
+│                                                             │
+│   ┌─────────────┐         value={text}           ┌─────────┐│
+│   │             │ ──────────────────────────────>│         ││
+│   │    State    │                                │  Input  ││
+│   │  text=""    │ <──────────────────────────────│         ││
+│   │             │    onChange → setText(value)   │         ││
+│   └─────────────┘                                └─────────┘│
+│                                                             │
 │   Der State ist die "Single Source of Truth"                │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -991,28 +991,28 @@ export default ProfileForm;
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      KOMPONENTEN-DESIGN                      │
-│                                                              │
+│                      KOMPONENTEN-DESIGN                     │
+│                                                             │
 │   EMPFOHLEN:                    VERMEIDEN:                  │
 │   ──────────                    ─────────                   │
-│                                                              │
-│   ┌─────────────┐              ┌─────────────┐             │
-│   │ LoginForm   │              │ LoginForm   │             │
-│   │ (stateful)  │              │ (stateful)  │             │
-│   │ email, pwd  │              │             │             │
-│   └──────┬──────┘              └──────┬──────┘             │
+│                                                             │
+│   ┌─────────────┐              ┌─────────────┐              │
+│   │ LoginForm   │              │ LoginForm   │              │
+│   │ (stateful)  │              │ (stateful)  │              │
+│   │ email, pwd  │              │             │              │
+│   └──────┬──────┘              └──────┬──────┘              │
 │          │                            │                     │
-│    ┌─────┴─────┐               ┌─────┴─────┐              │
-│    │           │               │           │              │
-│    ▼           ▼               ▼           ▼              │
-│  ┌─────┐   ┌─────┐         ┌─────┐   ┌─────┐            │
-│  │Input│   │Input│         │Input│   │Input│            │
-│  │(-)  │   │(-)  │         │(St) │   │(St) │            │
-│  └─────┘   └─────┘         └─────┘   └─────┘            │
-│                                                              │
-│  Input-Komponenten           Jede Komponente hat           │
-│  sind stateless –            eigenen State –               │
-│  Form kontrolliert           schwer zu koordinieren        │
+│    ┌─────┴─────┐               ┌─────┴─────┐                │
+│    │           │               │           │                │
+│    ▼           ▼               ▼           ▼                │
+│  ┌─────┐   ┌─────┐         ┌─────┐   ┌─────┐                │
+│  │Input│   │Input│         │Input│   │Input│                │
+│  │(-)  │   │(-)  │         │(St) │   │(St) │                │
+│  └─────┘   └─────┘         └─────┘   └─────┘                │
+│                                                             │
+│  Input-Komponenten           Jede Komponente hat            │
+│  sind stateless –            eigenen State –                │
+│  Form kontrolliert           schwer zu koordinieren         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
