@@ -78,16 +78,16 @@ API steht für **Application Programming Interface** – eine Schnittstelle, üb
 ┌─────────────────────────────────────────────────────────────┐
 │              REQUEST-RESPONSE CYCLE                         │
 │                                                             │
-│   Browser (Client)              Server (API)                │
-│   ┌──────────┐                  ┌──────────┐               │
-│   │          │ ── HTTP Request ──>│          │               │
-│   │  React   │                  │  Daten-  │               │
-│   │   App    │ <── HTTP Response ──│  bank    │               │
-│   └──────────┘                  └──────────┘               │
+│   Browser (Client)                Server (API)              │
+│   ┌──────────┐                     ┌──────────┐             │
+│   │          │ ── HTTP Request ──> │          │             │
+│   │  React   │                     │  Daten-  │             │
+│   │   App    │ <── HTTP Response ──│  bank    │             │
+│   └──────────┘                     └──────────┘             │
 │                                                             │
 │   Beispiel:                                                 │
 │   GET https://api.example.com/users                         │
-│   → Response: [{ "name": "Max" }, { "name": "Lisa" }]      │
+│   → Response: [{ "name": "Max" }, { "name": "Lisa" }]       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -441,19 +441,19 @@ function UserList() {
 │                                                             │
 │   useEffect(callback, dependencyArray)                      │
 │                │                │                           │
-│                │                └── WANN soll der Effekt     │
-│                │                    ausgeführt werden?       │
-│                └── WAS soll ausgeführt werden?               │
+│                │                └── WANN soll der Effekt    │
+│                │                    ausgeführt werden?      │
+│                └── WAS soll ausgeführt werden?              │
 │                                                             │
 │   Drei Varianten des Dependency Arrays:                     │
 │                                                             │
 │   useEffect(() => { ... })        → Bei JEDEM Render        │
 │   useEffect(() => { ... }, [])    → Nur beim ERSTEN Mount   │
-│   useEffect(() => { ... }, [a,b]) → Wenn a ODER b sich     │
+│   useEffect(() => { ... }, [a,b]) → Wenn a ODER b sich      │
 │                                     ändert                  │
 │                                                             │
-│   Für API-Calls beim Laden: useEffect(..., [])              │
-│   Für API-Calls bei Änderungen: useEffect(..., [suchbegriff])│
+│  Für API-Calls beim Laden: useEffect(..., [])               │
+│  Für API-Calls bei Änderungen: useEffect(..., [suchbegriff])│
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -1005,18 +1005,18 @@ Ohne Loading-State sieht der User kurz eine leere Seite, bevor die Daten da sind
 ┌─────────────────────────────────────────────────────────────┐
 │              DREI STATES FÜR API CALLS                      │
 │                                                             │
-│   ┌─────────┐    ┌─────────┐    ┌──────────┐              │
-│   │ Loading │ ──>│ Success │    │  Error   │              │
-│   │  true   │    │  data   │    │ message  │              │
-│   └─────────┘    └─────────┘    └──────────┘              │
-│        │              ▲               ▲                    │
-│        └──────────────┴───────────────┘                    │
+│   ┌─────────┐    ┌─────────┐    ┌──────────┐                │
+│   │ Loading │ ──>│ Success │    │  Error   │                │
+│   │  true   │    │  data   │    │ message  │                │
+│   └─────────┘    └─────────┘    └──────────┘                │
+│        │              ▲               ▲                     │
+│        └──────────────┴───────────────┘                     │
 │           fetch()   Response OK    Response Error           │
 │                                                             │
-│   State-Variablen:                                         │
-│   const [data, setData] = useState(null);                  │
-│   const [loading, setLoading] = useState(true);            │
-│   const [error, setError] = useState(null);                │
+│   State-Variablen:                                          │
+│   const [data, setData] = useState(null);                   │
+│   const [loading, setLoading] = useState(true);             │
+│   const [error, setError] = useState(null);                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -1973,7 +1973,7 @@ function MyComponent() {
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              HÄUFIGE FEHLER MIT useEffect                    │
+│              HÄUFIGE FEHLER MIT useEffect                   │
 │                                                             │
 │   FEHLER: useEffect Callback als async markieren            │
 │      useEffect(async () => { ... })                         │
@@ -1984,7 +1984,7 @@ function MyComponent() {
 │      → Endlosschleife! Fetch bei jedem Render               │
 │                                                             │
 │   FEHLER: fetch-Ergebnis direkt im Render verwenden         │
-│      const data = fetch(url)  // Im Funktionskörper        │
+│      const data = fetch(url)  // Im Funktionskörper         │
 │      → Endlosschleife! Immer useEffect verwenden            │
 │                                                             │
 │   FEHLER: response.ok nicht prüfen                          │
